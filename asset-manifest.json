@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/i-scream-i-plan/static/css/main.7acaea2f.css",
+    "main.js": "/i-scream-i-plan/static/js/main.07d3183d.js",
+    "index.html": "/i-scream-i-plan/index.html",
+    "main.7acaea2f.css.map": "/i-scream-i-plan/static/css/main.7acaea2f.css.map",
+    "main.07d3183d.js.map": "/i-scream-i-plan/static/js/main.07d3183d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.07d3183d.js"
+  ]
+}
