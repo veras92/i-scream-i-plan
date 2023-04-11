@@ -10,15 +10,16 @@
 // 8. Помилка - користувачу показується відповідне пушповідомлення"
 
 import { CalendarToolbar } from 'modules/CalendarToolbar/CalendarToolbar';
+import { ChoosedDay } from 'modules/ChoosedDay/ChoosedDay';
 import { ChoosedMonth } from 'modules/ChoosedMonth/ChoosedMonth';
 
-export const CalendarPage = () => {
+export default function CalendarPage() {
   return (
     <div>
       CalendarPage
       <CalendarToolbar />
       <ChoosedMonth />
-      {/* <ChoosedDay/> */}
+      <ChoosedDay />
     </div>
   );
-};
+}
