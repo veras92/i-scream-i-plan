@@ -12,7 +12,7 @@ const MainPage = lazy(() => import('./pages/MainPage/MainPage'));
 
 export const App = () => {
   return (
-    <Suspense>
+    <Suspense fallback={<div>Loading...</div>}>
       <Routes>
         <Route
           path="/"
@@ -21,11 +21,11 @@ export const App = () => {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/account" element={<AccountPage />} />
-        <Route path="/calendar" element={<CalendarPage />} />
-        {/* ======розібратись  =======*/}
-        <Route path="/calendar/month/:currentDate" element={<ChoosedMonth />} />
-        <Route path="/calendar/day/:currentDay" element={<ChoosedDay />} />
-        {/* ======розібратись  =======*/}
+        <Route path="/calendar" element={<CalendarPage />}>
+          <Route path="month/:currentDate" element={<ChoosedMonth />} />
+          <Route path="day/:currentDay" element={<ChoosedDay />} />
+        </Route>
+        <Route path="*" element={<MainPage />} />
       </Routes>
     </Suspense>
   );
