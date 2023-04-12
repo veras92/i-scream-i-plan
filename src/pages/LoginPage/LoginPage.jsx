@@ -5,8 +5,8 @@
 //  - LoginForm - блок з формою логінізації
 //  - AuthNavigate - загальний компонент навігації для сторінок login/register"""
 import { LoginForm } from 'modules/LoginForm/LoginForm';
-// import { AuthNavigate } from 'shared/components/AuthNavigate/AuthNavigate';
-// import { ROUTES } from 'shared/services/routes';
+import { AuthNavigate } from 'shared/components/AuthNavigate/AuthNavigate';
+import { ROUTES } from 'shared/services/routes';
 
 export default function LoginPage() {
   return (
@@ -16,7 +16,7 @@ export default function LoginPage() {
           <h1>Log In</h1>
           <LoginForm />
         </div>
-        {/* <AuthNavigate route={ROUTES.register} content="Sign Up" /> */}
+        <AuthNavigate route={ROUTES.register} content="Sign Up" />
       </div>
     </div>
   );
