@@ -9,7 +9,9 @@ export const registerRormSchema = Yup.object().shape({
       "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
     )
     .max(16, 'Name may contain only 16 characters'),
-  email: Yup.string().email('Invalid email format').required(),
+  email: Yup.string()
+    .email('Invalid email format')
+    .required('This field is required'),
   password: Yup.string()
     .required('This field is required')
     .matches(
