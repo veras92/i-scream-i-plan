@@ -4,5 +4,7 @@
 // 4. Відповідь з помилкою виводить відповідне пуш-повідомлення, і вилогінює користуваача на клієнті, як і в попередньому пункті."
 
 export const LogoutBtn = () => {
-  return <div>LogoutBtn</div>;
+  return <div>
+    <button type="button">LogoutBtn</button>
+  </div>;
 };
