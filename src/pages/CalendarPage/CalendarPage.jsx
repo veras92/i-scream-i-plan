@@ -10,16 +10,20 @@
 // 8. Помилка - користувачу показується відповідне пушповідомлення"
 
 import { CalendarToolbar } from 'modules/CalendarToolbar/CalendarToolbar';
-import { ChoosedDay } from 'modules/ChoosedDay/ChoosedDay';
-import { ChoosedMonth } from 'modules/ChoosedMonth/ChoosedMonth';
+// import { ChoosedDay } from 'modules/ChoosedDay/ChoosedDay';
+// import { ChoosedMonth } from 'modules/ChoosedMonth/ChoosedMonth';
+import { Outlet } from 'react-router-dom';
 
 export default function CalendarPage() {
   return (
     <div>
       CalendarPage
       <CalendarToolbar />
-      <ChoosedMonth />
-      <ChoosedDay />
+      {/* ці компоненти виніс в app треба з'ясувати чи правильно це, але зараз працює */}
+      {/* <ChoosedMonth /> */}
+      {/* <ChoosedDay /> */}
+      {/* ================================================================= */}
+      <Outlet />
     </div>
   );
 }
