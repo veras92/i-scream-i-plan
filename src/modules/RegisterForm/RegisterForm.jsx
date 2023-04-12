@@ -5,12 +5,15 @@
 // 5. В разі помилки користувачу потрібно вивести відповідне пуш-повідомлення з помилкою"
 
 import { useForm } from 'react-hook-form';
-// import { yupResolver } from '@hookform/resolvers/yup';
-// import { registerRormSchema } from './registerFormSchema';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { registerRormSchema } from './registerFormSchema';
 import { getDefaultValues } from 'shared/utils/getDefaultValues';
 
 import { FormFiled } from 'shared/components/FormFiled/FormField';
 import { registerFormInputs } from './registerFormInputs';
+
+import sprite from 'shared/icons/sprite.svg';
+import { Svg } from './RegisterForm.styled';
 
 const defaultValues = getDefaultValues(registerFormInputs);
 
@@ -21,7 +24,7 @@ export const RegisterForm = () => {
     reset,
     formState: { errors },
   } = useForm({
-    // resolver: yupResolver(registerRormSchema),
+    resolver: yupResolver(registerRormSchema),
     defaultValues,
   });
 
@@ -31,11 +34,16 @@ export const RegisterForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} autoComplete="false">
       {registerFormInputs.map(input => (
         <FormFiled key={input.id} {...input} register={reg} errors={errors} />
       ))}
-      <button type="submit">Sign up</button>
+      <button type="submit">
+        <span>Sign up</span>
+        <Svg width="20" height="20">
+          <use href={`${sprite}#icon-Log-in`} />
+        </Svg>
+      </button>
     </form>
   );
 };

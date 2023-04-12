@@ -1,4 +1,4 @@
-import { nameRegExp } from 'shared/validation/regExps';
+import { nameRegExp, passwordRegExp } from 'shared/validation/regExps';
 import * as Yup from 'yup';
 
 export const registerRormSchema = Yup.object().shape({
@@ -7,10 +7,13 @@ export const registerRormSchema = Yup.object().shape({
     .matches(
       nameRegExp,
       "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-    ),
+    )
+    .max(16, 'Name may contain only 16 characters'),
   email: Yup.string().email('Invalid email format').required(),
   password: Yup.string()
     .required('This field is required')
-    .min(8, 'Password is too short - should be 8 chars minimum.')
-    .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
+    .matches(
+      passwordRegExp,
+      'Password must contain minimum 8 characters, 1 upper case letter, 1 lower case letter, 1 numeric digit'
+    ),
 });

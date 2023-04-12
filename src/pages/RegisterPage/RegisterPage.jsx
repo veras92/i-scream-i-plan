@@ -6,13 +6,19 @@
 //  - AuthNavigate - загальний компонент навігації для сторінок login/register"
 import { RegisterForm } from 'modules/RegisterForm/RegisterForm';
 import { AuthNavigate } from 'shared/components/AuthNavigate/AuthNavigate';
+import { ROUTES } from 'shared/services/routes';
 
 export default function RegisterPage() {
   return (
-    <>
-      <div>RegisterPage</div>
-      <RegisterForm />
-      <AuthNavigate />;
-    </>
+    <div>
+      <div>
+        <div>
+          <h1>Sign Up</h1>
+          <RegisterForm />
+        </div>
+
+        <AuthNavigate route={ROUTES.login} content="Log In" />
+      </div>
+    </div>
   );
 }
