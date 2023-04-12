@@ -3,5 +3,8 @@
 // 3. Якщо зображення відсутнє на його місці повинна відображатись перша буква імені в верхньому регістрі"
 
 export const UserInfo = () => {
-  return <div>UserInfo</div>;
+  return <div>
+    <span>Name</span>
+    <img href="" />
+  </div>;
 };

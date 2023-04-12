@@ -3,5 +3,9 @@
 // 3. Обрана тема записується в localStorage та використовується як активна при вході користувача в його обліковий запис"
 
 export const ThemeToggler = () => {
-  return <div>ThemeToggler</div>;
+  return <div>
+    <button>
+      SVG toggle Theme
+    </button>
+  </div>;
 };
