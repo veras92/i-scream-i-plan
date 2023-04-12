@@ -11,7 +11,9 @@ import { UserInfo } from './components/UserInfo/UserInfo';
 export const Header = () => {
   return (
     <>
-      <div>Header</div>
+      <div>
+        <h1>Use Profile/ Calendar</h1>
+      </div>
       <ThemeToggler />
       <UserInfo />
     </>
