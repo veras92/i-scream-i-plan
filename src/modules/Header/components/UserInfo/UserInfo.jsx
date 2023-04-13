@@ -5,6 +5,6 @@
 export const UserInfo = () => {
   return <div>
     <span>Name</span>
-    <img href="" />
+    <img href="#" alt=""/>
   </div>;
 };
