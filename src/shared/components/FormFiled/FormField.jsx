@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import { ErrorMessage } from '@hookform/error-message';
 
+import { Label, Input } from './FormField.styled';
+
 export const FormFiled = ({
   id,
   inputName,
@@ -13,9 +15,9 @@ export const FormFiled = ({
 }) => {
   return (
     <div>
-      <label htmlFor={id}>{label}</label>
+      <Label htmlFor={id}>{label}</Label>
       {type !== 'date' ? (
-        <input
+        <Input
           id={id}
           type={type}
           placeholder={placeholder}
