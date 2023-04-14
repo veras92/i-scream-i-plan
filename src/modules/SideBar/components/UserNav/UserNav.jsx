@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 export const UserNav = () => {
   return (
     <>
-      <div>UserNav</div>
+      
       <nav>
         <NavLink to="/account">My account</NavLink>
         <NavLink to="/calendar">Calendar</NavLink>

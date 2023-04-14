@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const Svg = styled.svg`
   fill: transparent;
-  stroke: #000000;
+  stroke: #0c0000;
   transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
 /* 
   &:hover,
@@ -14,7 +14,8 @@ export const Svg = styled.svg`
 
 
 export const Arrow = styled.button `
-  border: none;
+  border: 1px solid black;
   background-color: transparent;
 
 `;
+

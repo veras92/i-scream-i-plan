@@ -14,7 +14,7 @@ import {
 const AccountPage = lazy(() => import('./pages/AccountPage/AccountPage'));
 const CalendarPage = lazy(() => import('./pages/CalendarPage/CalendarPage'));
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
-// const MainLayout = lazy(() => import('./pages/MainLayout/MainLayout'));
+const MainLayout = lazy(() => import('./pages/MainLayout/MainLayout'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage/RegisterPage'));
 const MainPage = lazy(() => import('./pages/MainPage/MainPage'));
 
