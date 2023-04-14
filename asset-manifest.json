@@ -1,9 +1,10 @@
 {
   "files": {
-    "main.js": "/i-scream-i-plan/static/js/main.ac72e95f.js",
+    "main.js": "/i-scream-i-plan/static/js/main.a03a22b3.js",
     "static/js/451.898d7dba.chunk.js": "/i-scream-i-plan/static/js/451.898d7dba.chunk.js",
     "static/js/21.5a33ad06.chunk.js": "/i-scream-i-plan/static/js/21.5a33ad06.chunk.js",
     "static/js/617.aad9de88.chunk.js": "/i-scream-i-plan/static/js/617.aad9de88.chunk.js",
+    "static/js/736.62324706.chunk.js": "/i-scream-i-plan/static/js/736.62324706.chunk.js",
     "static/js/723.73eef7b9.chunk.js": "/i-scream-i-plan/static/js/723.73eef7b9.chunk.js",
     "static/css/103.52141fc8.chunk.css": "/i-scream-i-plan/static/css/103.52141fc8.chunk.css",
     "static/js/103.c79c581c.chunk.js": "/i-scream-i-plan/static/js/103.c79c581c.chunk.js",
@@ -19,10 +20,11 @@
     "static/media/slick.ttf": "/i-scream-i-plan/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/i-scream-i-plan/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/i-scream-i-plan/index.html",
-    "main.ac72e95f.js.map": "/i-scream-i-plan/static/js/main.ac72e95f.js.map",
+    "main.a03a22b3.js.map": "/i-scream-i-plan/static/js/main.a03a22b3.js.map",
     "451.898d7dba.chunk.js.map": "/i-scream-i-plan/static/js/451.898d7dba.chunk.js.map",
     "21.5a33ad06.chunk.js.map": "/i-scream-i-plan/static/js/21.5a33ad06.chunk.js.map",
     "617.aad9de88.chunk.js.map": "/i-scream-i-plan/static/js/617.aad9de88.chunk.js.map",
+    "736.62324706.chunk.js.map": "/i-scream-i-plan/static/js/736.62324706.chunk.js.map",
     "723.73eef7b9.chunk.js.map": "/i-scream-i-plan/static/js/723.73eef7b9.chunk.js.map",
     "103.52141fc8.chunk.css.map": "/i-scream-i-plan/static/css/103.52141fc8.chunk.css.map",
     "103.c79c581c.chunk.js.map": "/i-scream-i-plan/static/js/103.c79c581c.chunk.js.map",
@@ -30,6 +32,6 @@
     "113.0339e36f.chunk.js.map": "/i-scream-i-plan/static/js/113.0339e36f.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.ac72e95f.js"
+    "static/js/main.a03a22b3.js"
   ]
 }
