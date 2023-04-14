@@ -6,6 +6,7 @@
 
 import { Header } from 'modules/Header/Header';
 import { SideBar } from 'modules/SideBar/SideBar';
+import { Outlet } from 'react-router-dom';
 
 export default function MainLayout() {
   return (
@@ -13,6 +14,7 @@ export default function MainLayout() {
       <div>MainLayout</div>
       <Header />
       <SideBar />
+      <Outlet />
     </>
   );
 }
