@@ -12,8 +12,11 @@ import { getDefaultValues } from 'shared/utils/getDefaultValues';
 import { FormFiled } from 'shared/components/FormFiled/FormField';
 import { loginFormInputs } from './loginFormInputs';
 
+import { AuthNavigate } from 'shared/components/AuthNavigate/AuthNavigate';
+import { ROUTES } from 'shared/services/routes';
+
 import sprite from 'shared/icons/sprite.svg';
-import { Svg } from './LoginForm.styled';
+import { Svg, Wrapper, FormContainer, Form, FormTitle, Button } from './LoginForm.styled';
 
 const defaultValues = getDefaultValues(loginFormInputs);
 
@@ -34,16 +37,23 @@ export const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} autoComplete="false">
-      {loginFormInputs.map(input => (
-        <FormFiled key={input.id} {...input} register={reg} errors={errors} />
-      ))}
-      <button type="submit">
-        <span>Sign up</span>
-        <Svg width="20" height="20">
-          <use href={`${sprite}#icon-Log-in`} />
-        </Svg>
-      </button>
-    </form>
+    <Wrapper>
+      <FormContainer>
+        <Form onSubmit={handleSubmit(onSubmit)} autoComplete="false">
+          <FormTitle>Log In</FormTitle>
+          {loginFormInputs.map(input => (
+            <FormFiled key={input.id} {...input} register={reg} errors={errors} />
+          ))}
+          <Button type="submit">
+            <span>Log in</span>
+            <Svg width="20" height="20">
+              <use href={`${sprite}#icon-Log-in`} />
+            </Svg>
+          </Button>
+        </Form>
+        <AuthNavigate
+          route={ROUTES.register} content="Sign Up" />
+      </FormContainer>
+    </Wrapper>
   );
 };
