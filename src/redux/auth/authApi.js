@@ -1,48 +1,74 @@
-import { gooseTrackerApi } from 'redux/api/gooseTrackerApi';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export const authApi = gooseTrackerApi.injectEndpoints({
+export const authApi = createApi({
+  reducerPath: 'authApi',
+  baseQuery: fetchBaseQuery({
+    baseUrl: 'https://goose-tracker-backend.p.goit.global/',
+    prepareHeaders: (headers, { getState }) => {
+      const state = getState();
+      const token = state.auth.token;
+      if (token) {
+        headers.set('authorization', `Bearer ${token}`);
+      }
+      return headers;
+    },
+  }),
+  tagTypes: ['Auth'],
   endpoints: builder => ({
-    register: builder.mutation({
-      query: credentials => ({
-        url: '/user/register',
+    registerUser: builder.mutation({
+      query: ({ name, email, password }) => ({
+        url: `user/register`,
         method: 'POST',
-        body: credentials,
+        body: {
+          name,
+          email,
+          password,
+        },
       }),
+      invalidatesTags: ['Auth'],
     }),
-    login: builder.mutation({
-      query: credentials => ({
-        url: '/user/login',
+    loginUser: builder.mutation({
+      query: ({ email, password }) => ({
+        url: `user/login`,
         method: 'POST',
-        body: credentials,
+        body: {
+          email,
+          password,
+        },
       }),
+      invalidatesTags: ['Auth'],
     }),
-    logout: builder.query({
-      query: () => '/user/logout',
+    logoutUser: builder.query({
+      query: () => 'user/logout',
+      invalidatesTags: ['Auth'],
     }),
-    // refresh: builder.mutation({
-    //   query: () => ({
-    //     url: '/user/refresh',
-    //     method: 'POST',
-    //   }),
-    // }),
-    getUserInfo: builder.query({
-      query: () => '/user/info',
+    refreshTokens: builder.mutation({
+      query: () => ({
+        url: `user/refresh`,
+        method: 'POST',
+      }),
+      invalidatesTags: ['Auth'],
+    }),
+    getCurrentUserInfo: builder.query({
+      query: () => 'user/info',
+      invalidatesTags: ['Auth'],
     }),
     updateUserInfo: builder.mutation({
-      query: credentials => ({
-        url: '/user/update',
-        method: 'POST',
-        body: credentials,
+      query: data => ({
+        url: `user/update`,
+        method: 'PATCH',
+        body: data,
       }),
+      invalidatesTags: ['Auth'],
     }),
   }),
 });
 
 export const {
-  useRegisterMutation,
-  useLoginMutation,
-  useLazyLogoutQuery,
-  //   useRefreshMutation,
-  useGetUserInfoQuery,
+  useRegisterUserMutation,
+  useLoginUserMutation,
+  useLazyLogoutUserQuery,
+  useRefreshTokensMutation,
+  useLazyGetCurrentUserInfoQuery,
   useUpdateUserInfoMutation,
 } = authApi;

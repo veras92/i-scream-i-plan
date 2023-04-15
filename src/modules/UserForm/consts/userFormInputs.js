@@ -1,7 +1,5 @@
 import { nanoid } from '@reduxjs/toolkit';
 
-// { "name": "One", "email": "1@gmail.com", "phone": 38094383377, "birthday": null, "skype": "One1", "userImgUrl": "image.jpg" }
-
 export const userFormInputs = [
   {
     inputName: 'name',
@@ -25,7 +23,7 @@ export const userFormInputs = [
     id: nanoid(),
     label: 'Birthday',
     required: false,
-    placeholder: 'DD/MM/YYY',
+    placeholder: 'DD/MM/YYYY',
   },
   {
     inputName: 'skype',
@@ -44,3 +42,12 @@ export const userFormInputs = [
     placeholder: 'Enter email',
   },
 ];
+
+export const userAvatarInput = {
+  inputName: 'userImgUrl',
+  type: 'file',
+  id: nanoid(),
+  label: '',
+  required: false,
+  placeholder: '',
+};

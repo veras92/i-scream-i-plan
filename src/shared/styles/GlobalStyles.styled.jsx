@@ -129,7 +129,7 @@ export const Container = styled.div`
 //   overflow: hidden;
 // }
 
-export const MainInput = styled.input`
+export const Input = styled.input`
   height: 54px;
   width: 100%;
   padding-left: 18px;
@@ -161,7 +161,7 @@ export const PageWrapper = styled.div`
   border-radius: 16px;
 `;
 
-export const MainButton = styled.button`
+export const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;

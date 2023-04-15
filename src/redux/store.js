@@ -10,14 +10,15 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { gooseTrackerApi } from 'redux/api/gooseTrackerApi';
-import { authReducer } from './auth/authSlice1';
+import { authReducer } from './auth/authSlice';
 import { themeReducer } from './theme/themeSlice';
+import { authApi } from './auth/authApi';
+import { tasksApi } from './tasks/tasksApi';
 
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['tokens'],
+  whitelist: ['token'],
 };
 
 const themePersistConfig = {
@@ -27,7 +28,8 @@ const themePersistConfig = {
 
 export const store = configureStore({
   reducer: {
-    [gooseTrackerApi.reducerPath]: [gooseTrackerApi.reducer],
+    [authApi.reducerPath]: authApi.reducer,
+    [tasksApi.reducerPath]: tasksApi.reducer,
     auth: persistReducer(authPersistConfig, authReducer),
     theme: persistReducer(themePersistConfig, themeReducer),
   },
@@ -37,7 +39,8 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-    gooseTrackerApi.middleware,
+    authApi.middleware,
+    tasksApi.middleware,
   ],
 });
 

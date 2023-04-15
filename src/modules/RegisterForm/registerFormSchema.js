@@ -1,7 +1,7 @@
 import { nameRegExp, passwordRegExp } from 'shared/validation/regExps';
 import * as Yup from 'yup';
 
-export const registerRormSchema = Yup.object().shape({
+export const registerFormSchema = Yup.object().shape({
   name: Yup.string()
     .required('This field is required')
     .matches(
