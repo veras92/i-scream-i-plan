@@ -54,14 +54,17 @@ const slice = createSlice({
       state.user.birthday = birthday;
       state.user.skype = skype;
       state.user.userImgUrl = userImgUrl;
+      state.isLoggedIn = true;
     },
     setCredentialsOnRefresh: (state, { payload: { data } }) => {
       state.token = data.accessToken;
       state.refreshToken = data.refreshToken;
       state.isLoggedIn = true;
+      console.log('token was refreshed');
     },
     setIsRefreshing: (state, { payload }) => {
       state.isRefreshing = payload;
+      console.log('token refresh was toggled');
     },
     cleanStateOnLogout: state => {
       state.user.name = '';
