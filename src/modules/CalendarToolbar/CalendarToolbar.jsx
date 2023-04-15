@@ -35,7 +35,7 @@ export const CalendarToolbar = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigate(`${type}/${format(date, 'dd-MM-yyyy')}`);
+    navigate(`${type}/${format(date, 'yyyy-MM-dd')}`);
   }, [type, date, navigate]);
 
   const onChangeDate = operation => {
@@ -56,11 +56,7 @@ export const CalendarToolbar = () => {
 
   return (
     <>
-      <PeriodPaginator
-        date={format(date, 'dd MMMM yyyy')}
-        type={type}
-        onChange={onChangeDate}
-      />
+      <PeriodPaginator date={date} type={type} onChange={onChangeDate} />
       <PeriodTypeSelect onChangeType={setType} />
     </>
   );
