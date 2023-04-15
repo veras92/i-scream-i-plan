@@ -12,6 +12,7 @@ const initialState = {
   token: null,
   refreshToken: null,
   isLoggedIn: false,
+  isRefreshing: false,
 };
 
 const slice = createSlice({
@@ -25,16 +26,9 @@ const slice = createSlice({
       state.refreshToken = data.refreshToken;
       state.isLoggedIn = true;
     },
-    setCredentialsOnLogin: (
-      state,
-      { payload: { name, email, phone, birthday, skype, userImgUrl, data } }
-    ) => {
+    setCredentialsOnLogin: (state, { payload: { name, email, data } }) => {
       state.user.name = name;
       state.user.email = email;
-      state.user.phone = phone;
-      state.user.birthday = birthday;
-      state.user.skype = skype;
-      state.user.userImgUrl = userImgUrl;
       state.token = data.accessToken;
       state.refreshToken = data.refreshToken;
       state.isLoggedIn = true;
@@ -60,12 +54,14 @@ const slice = createSlice({
       state.user.birthday = birthday;
       state.user.skype = skype;
       state.user.userImgUrl = userImgUrl;
-      state.isLoggedIn = true;
     },
     setCredentialsOnRefresh: (state, { payload: { data } }) => {
       state.token = data.accessToken;
       state.refreshToken = data.refreshToken;
       state.isLoggedIn = true;
+    },
+    setIsRefreshing: (state, { payload }) => {
+      state.isRefreshing = payload;
     },
     cleanStateOnLogout: state => {
       state.user.name = '';
@@ -87,6 +83,7 @@ export const {
   setCredentialsOnUpdate,
   setCredentialsOnGetUserInfo,
   setCredentialsOnRefresh,
+  setIsRefreshing,
   cleanStateOnLogout,
 } = slice.actions;
 

@@ -29,7 +29,7 @@ const RegisterPage = lazy(() => import('./pages/RegisterPage/RegisterPage'));
 const MainPage = lazy(() => import('./pages/MainPage/MainPage'));
 
 export const App = () => {
-  const { accessToken, isLoggedIn } = useAuth();
+  const { accessToken, isLoggedIn, isRefreshing } = useAuth();
   const [getUserInfo, { isLoading: isGettingUserInfo }] =
     useLazyGetCurrentUserInfoQuery();
   const dispatch = useDispatch();
@@ -48,7 +48,7 @@ export const App = () => {
     refreshUserInfo(getUserInfo);
   }, [accessToken, dispatch, getUserInfo]);
 
-  return isGettingUserInfo ? (
+  return isGettingUserInfo || isRefreshing ? (
     <Loader />
   ) : (
     <Suspense fallback={<div>Loading...</div>}>
