@@ -6,6 +6,8 @@
 
 import { Header } from 'modules/Header/Header';
 import { SideBar } from 'modules/SideBar/SideBar';
+import { Suspense } from 'react';
+
 import { Outlet } from 'react-router-dom';
 
 export default function MainLayout() {
@@ -14,7 +16,9 @@ export default function MainLayout() {
       <div>MainLayout</div>
       <Header />
       <SideBar />
-      <Outlet />
+      <Suspense fallback={null}>
+        <Outlet />
+      </Suspense>
     </>
   );
 }
