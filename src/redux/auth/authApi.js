@@ -4,6 +4,7 @@ import {
   setCredentialsOnRefresh,
   setIsRefreshing,
 } from './authSlice';
+import { setTasks } from 'redux/tasks/tasksSlice';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: 'https://goose-tracker-backend.p.goit.global/',
@@ -48,6 +49,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
       result = await baseQuery(args, api, extraOptions);
     } else {
       api.dispatch(cleanStateOnLogout());
+      api.dispatch(setTasks(null));
     }
     api.dispatch(setIsRefreshing(false));
   }
