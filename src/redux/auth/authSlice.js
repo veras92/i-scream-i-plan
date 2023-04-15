@@ -12,7 +12,6 @@ const initialState = {
   token: null,
   refreshToken: null,
   isLoggedIn: false,
-  // isRefreshing: false,
 };
 
 const slice = createSlice({
@@ -51,6 +50,23 @@ const slice = createSlice({
       state.user.skype = skype;
       state.user.userImgUrl = userImgUrl;
     },
+    setCredentialsOnGetUserInfo: (
+      state,
+      { payload: { name, email, phone, birthday, skype, userImgUrl } }
+    ) => {
+      state.user.name = name;
+      state.user.email = email;
+      state.user.phone = phone;
+      state.user.birthday = birthday;
+      state.user.skype = skype;
+      state.user.userImgUrl = userImgUrl;
+      state.isLoggedIn = true;
+    },
+    setCredentialsOnRefresh: (state, { payload: { data } }) => {
+      state.token = data.accessToken;
+      state.refreshToken = data.refreshToken;
+      state.isLoggedIn = true;
+    },
     cleanStateOnLogout: state => {
       state.user.name = '';
       state.user.email = '';
@@ -62,9 +78,6 @@ const slice = createSlice({
       state.token = null;
       state.refreshToken = null;
     },
-    // setIsRefreshing: (state, { payload }) => {
-    //   state.isRefreshing = payload;
-    // },
   },
 });
 
@@ -72,6 +85,8 @@ export const {
   setCredentialsOnRegister,
   setCredentialsOnLogin,
   setCredentialsOnUpdate,
+  setCredentialsOnGetUserInfo,
+  setCredentialsOnRefresh,
   cleanStateOnLogout,
 } = slice.actions;
 
