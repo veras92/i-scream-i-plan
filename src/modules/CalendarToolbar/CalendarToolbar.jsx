@@ -56,11 +56,7 @@ export const CalendarToolbar = () => {
 
   return (
     <>
-      <PeriodPaginator
-        date={format(date, 'dd MMMM yyyy')}
-        type={type}
-        onChange={onChangeDate}
-      />
+      <PeriodPaginator date={date} type={type} onChange={onChangeDate} />
       <PeriodTypeSelect onChangeType={setType} />
     </>
   );
