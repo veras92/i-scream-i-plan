@@ -35,7 +35,7 @@ export const CalendarToolbar = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigate(`${type}/${format(date, 'dd-MM-yyyy')}`);
+    navigate(`${type}/${format(date, 'yyyy-MM-dd')}`);
   }, [type, date, navigate]);
 
   const onChangeDate = operation => {
