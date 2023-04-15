@@ -12,6 +12,9 @@ import {
 } from 'shared/services/routes';
 
 const AccountPage = lazy(() => import('./pages/AccountPage/AccountPage'));
+const CalendarIndex = lazy(() =>
+  import('./modules/CalendarIndex/CalendarIndex')
+);
 const CalendarPage = lazy(() => import('./pages/CalendarPage/CalendarPage'));
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
 const MainLayout = lazy(() => import('./pages/MainLayout/MainLayout'));
@@ -27,6 +30,7 @@ export const App = () => {
           element={<MainLayout /> /* isLogin ? <MainPage /> : <MainLayout /> */}
         >
           <Route path={calendar} element={<CalendarPage />}>
+            <Route index element={<CalendarIndex />} />
             <Route path={currentDate} element={<ChoosedMonth />} />
             <Route path={currentDay} element={<ChoosedDay />} />
           </Route>
