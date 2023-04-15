@@ -1,6 +1,18 @@
-import { gooseTrackerApi } from 'redux/api/gooseTrackerApi';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export const tasksApi = gooseTrackerApi.injectEndpoints({
+export const tasksApi = createApi({
+  reducerPath: 'tasksApi',
+  baseQuery: fetchBaseQuery({
+    baseUrl: 'https://goose-tracker-backend.p.goit.global/',
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.token;
+      if (token) {
+        headers.set('authorization', `Bearer ${token}`);
+      }
+      return headers;
+    },
+  }),
+  tagTypes: ['Tasks'],
   endpoints: builder => ({
     getTasksByMonth: builder.query({
       query: (year, month) => `task/by-month?year=${year}&month=${month}`,

@@ -16,19 +16,12 @@ export const FormFiled = ({
   return (
     <div>
       <Label htmlFor={id}>{label}</Label>
-      {type !== 'date' ? (
-        <Input
-          id={id}
-          type={type}
-          placeholder={placeholder}
-          {...register(inputName, { required })}
-        />
-      ) : (
-        <div>Place for date picker</div>
-        // https://codesandbox.io/s/react-hook-form-controller-079xx
-        // https://stackoverflow.com/questions/55794770/how-can-i-style-react-datepicker
-        // https://github.com/Hacker0x01/react-datepicker
-      )}
+      <Input
+        id={id}
+        type={type}
+        placeholder={placeholder}
+        {...register(inputName, { required })}
+      />
       <ErrorMessage errors={errors} name={inputName} />
     </div>
   );

@@ -5,10 +5,8 @@ import { UserForm } from 'modules/UserForm/UserForm';
 
 export default function AccountPage() {
   return (
-    <>
-      <div>AccountPage</div>
-      
-      <UserForm />;
-    </>
+    <div>
+      <UserForm />
+    </div>
   );
 }

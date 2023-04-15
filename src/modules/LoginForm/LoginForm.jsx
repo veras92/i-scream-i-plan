@@ -4,6 +4,10 @@
 // 4. В разі успішної відповіді інформацію про користувача потрібно записати в глобальний стейт і виконати редірект на приватний маршрут /calendar/month.
 // 5. В разі помилки користувачу потрібно вивести відповідне пуш-повідомлення з помилкою"
 
+import { useLoginUserMutation } from 'redux/auth/authApi';
+import { useDispatch } from 'react-redux';
+import { setCredentialsOnLogin } from 'redux/auth/authSlice';
+
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginRormSchema } from './loginFormSchema';
@@ -16,11 +20,21 @@ import { AuthNavigate } from 'shared/components/AuthNavigate/AuthNavigate';
 import { ROUTES } from 'shared/services/routes';
 
 import sprite from 'shared/icons/sprite.svg';
-import { Svg, Wrapper, FormContainer, Form, FormTitle, Button } from './LoginForm.styled';
+import {
+  Svg,
+  Wrapper,
+  FormContainer,
+  Form,
+  FormTitle,
+  Button,
+} from './LoginForm.styled';
 
 const defaultValues = getDefaultValues(loginFormInputs);
 
 export const LoginForm = () => {
+  const [login] = useLoginUserMutation();
+  const dispatch = useDispatch();
+
   const {
     register: reg,
     handleSubmit,
@@ -31,9 +45,15 @@ export const LoginForm = () => {
     defaultValues,
   });
 
-  const onSubmit = data => {
-    console.log(data);
-    reset();
+  const onSubmit = async data => {
+    try {
+      const response = await login(data).unwrap();
+      dispatch(setCredentialsOnLogin(response));
+    } catch (err) {
+      console.log(err);
+    } finally {
+      reset();
+    }
   };
 
   return (
@@ -42,7 +62,12 @@ export const LoginForm = () => {
         <Form onSubmit={handleSubmit(onSubmit)} autoComplete="false">
           <FormTitle>Log In</FormTitle>
           {loginFormInputs.map(input => (
-            <FormFiled key={input.id} {...input} register={reg} errors={errors} />
+            <FormFiled
+              key={input.id}
+              {...input}
+              register={reg}
+              errors={errors}
+            />
           ))}
           <Button type="submit">
             <span>Log in</span>
@@ -51,8 +76,7 @@ export const LoginForm = () => {
             </Svg>
           </Button>
         </Form>
-        <AuthNavigate
-          route={ROUTES.register} content="Sign Up" />
+        <AuthNavigate route={ROUTES.register} content="Sign Up" />
       </FormContainer>
     </Wrapper>
   );
