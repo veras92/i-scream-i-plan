@@ -5,22 +5,11 @@
 import sprite from 'shared/icons/sprite.svg';
 import { Svg } from './LogoutBtn.styled';
 import { useLazyLogoutUserQuery } from 'redux/auth/authApi';
-import { useDispatch } from 'react-redux';
-import { cleanStateOnLogout } from 'redux/auth/authSlice';
 
 export const LogoutBtn = () => {
   const [logout] = useLazyLogoutUserQuery();
-  const dispatch = useDispatch();
 
-  const handleLogout = async () => {
-    try {
-      await logout().unwrap();
-    } catch (err) {
-      console.log(err);
-    } finally {
-      dispatch(cleanStateOnLogout());
-    }
-  };
+  const handleLogout = () => logout();
 
   return (
     <div>

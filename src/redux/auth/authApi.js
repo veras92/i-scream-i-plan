@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import {
-  cleanStateOnLogout,
+  cleanAuthState,
   setCredentialsOnRefresh,
   setIsRefreshing,
 } from './authSlice';
@@ -48,7 +48,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
       // retry the original query with new access token
       result = await baseQuery(args, api, extraOptions);
     } else {
-      api.dispatch(cleanStateOnLogout());
+      api.dispatch(cleanAuthState());
       api.dispatch(setTasks(null));
     }
     api.dispatch(setIsRefreshing(false));

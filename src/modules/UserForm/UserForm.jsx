@@ -9,16 +9,12 @@
 // 9. При успішній відповіді данні пишуться в глобальний стейт.
 // 10. При помилці юзеру виводиться відповідне пушповідомлення."
 
-import { useRef } from 'react';
-import { useDispatch } from 'react-redux';
-import { setCredentialsOnUpdate } from 'redux/auth/authSlice';
-
+import { useAuth } from 'hooks/useAuth';
 import { useUpdateUserInfoMutation } from 'redux/auth/authApi';
 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { userFormSchema } from './consts/userFormSchema';
-import { useAuth } from 'hooks/useAuth';
 import { formatDate } from 'shared/utils/formatDate';
 import { userAvatarInput, userFormInputs } from './consts/userFormInputs';
 
@@ -27,12 +23,8 @@ import { FormFiled } from 'shared/components/FormFiled/FormField';
 import { DatePicker } from './components/DatePicker/DatePicker';
 
 export const UserForm = () => {
-  const formRef = useRef(null);
-
   const { name, email, phone, birthday, skype, userImgUrl } = useAuth();
   const [update] = useUpdateUserInfoMutation();
-
-  const dispatch = useDispatch();
 
   const {
     register: reg,
@@ -53,25 +45,20 @@ export const UserForm = () => {
     },
   });
 
-  const onSubmit = async data => {
+  const onSubmit = data => {
     const prepareBirthday = formatDate(data.birthday);
     const preparedData = {
       ...data,
       birthday: prepareBirthday,
     };
 
-    try {
-      const response = await update(preparedData).unwrap();
-      dispatch(setCredentialsOnUpdate(response));
-    } catch (err) {
-      console.log(err);
-    } finally {
-      reset();
-    }
+    update(preparedData).unwrap();
+
+    reset();
   };
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit(onSubmit)} autoComplete="false">
+    <form onSubmit={handleSubmit(onSubmit)} autoComplete="false">
       <UserAvatarField
         userName={name}
         control={control}
