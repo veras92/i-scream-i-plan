@@ -6,6 +6,28 @@
 // 4. Компонент форматує період:
 //  - month - MARCH 2023
 //  - day - 6 MARCH 2023"
-export const PeriodTypeSelect = ({ date, periodType, changeDate }) => {
-  return <div>PeriodTypeSelect</div>;
+import { NavLink } from 'react-router-dom';
+import format from 'date-fns/format';
+
+export const PeriodTypeSelect = ({ onChangeType }) => {
+  return (
+    <ul>
+      <li>
+        <NavLink
+          to={`month/${format(Date.now(), 'dd-MM-yyyy')}`}
+          onClick={() => onChangeType('month')}
+        >
+          Month
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to={`day/${format(Date.now(), 'dd-MM-yyyy')}`}
+          onClick={() => onChangeType('day')}
+        >
+          Day
+        </NavLink>
+      </li>
+    </ul>
+  );
 };

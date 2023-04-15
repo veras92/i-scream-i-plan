@@ -6,15 +6,44 @@
 // Успіх - дані пишуться в глобальний стейт
 // Помилка - виводиться відповідне пуш повідомлення."
 
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
+import format from 'date-fns/format';
+import add from 'date-fns/add';
+import sub from 'date-fns/sub';
 import { PeriodPaginator } from './components/PeriodPaginator/PeriodPaginator';
 import { PeriodTypeSelect } from './components/PeriodTypeSelect/PeriodTypeSelect';
 
-export function CalendarToolbar() {
+export const CalendarToolbar = () => {
+  const [type, setType] = useState('month');
+  const [date, setDate] = useState(() => Date.now());
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate(`${type}/${format(date, 'dd-MM-yyyy')}`);
+  }, [type, date, navigate]);
+
+  const onChangeDate = operation => {
+    if (operation === 'addition') {
+      if (type === 'day') {
+        setDate(add(date, { days: 1 }));
+        return;
+      }
+      setDate(add(date, { months: 1 }));
+      return;
+    }
+    if (type === 'day') {
+      setDate(sub(date, { days: 1 }));
+      return;
+    }
+    setDate(sub(date, { months: 1 }));
+  };
+
   return (
     <>
-      <div>CalendarToolbar</div>
-      <PeriodPaginator />;
-      <PeriodTypeSelect />
+      <PeriodPaginator date={date} type={type} onChange={onChangeDate} />
+      <PeriodTypeSelect onChangeType={setType} />
     </>
   );
-}
+};
