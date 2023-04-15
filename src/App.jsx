@@ -24,7 +24,7 @@ export const App = () => {
       <Routes>
         <Route
           path="/"
-          element={<MainLayout /> /* isLogin ? <MainPage /> : <MainLayout /> */}
+          element={<MainPage /> /* isLogin ? <MainPage /> : <MainLayout /> */}
         >
           <Route path={calendar} element={<CalendarPage />}>
             <Route path={currentDate} element={<ChoosedMonth />} />
