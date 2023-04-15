@@ -5,7 +5,6 @@
 // 5. В разі помилки користувачу потрібно вивести відповідне пуш-повідомлення з помилкою"
 
 import { useRegisterUserMutation } from 'redux/auth/authApi';
-import { useDispatch } from 'react-redux';
 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -31,13 +30,11 @@ import {
   Button,
   GooseIMG,
 } from './RegisterForm.styled';
-import { setCredentialsOnRegister } from 'redux/auth/authSlice';
 
 const defaultValues = getDefaultValues(registerFormInputs);
 
 export const RegisterForm = () => {
   const [register] = useRegisterUserMutation();
-  const dispatch = useDispatch();
 
   const {
     register: reg,
@@ -49,15 +46,9 @@ export const RegisterForm = () => {
     defaultValues,
   });
 
-  const onSubmit = async data => {
-    try {
-      const response = await register(data).unwrap();
-      dispatch(setCredentialsOnRegister(response));
-    } catch (err) {
-      console.log(err);
-    } finally {
-      reset();
-    }
+  const onSubmit = data => {
+    register(data);
+    reset();
   };
 
   return (

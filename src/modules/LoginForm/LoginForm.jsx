@@ -5,8 +5,6 @@
 // 5. В разі помилки користувачу потрібно вивести відповідне пуш-повідомлення з помилкою"
 
 import { useLoginUserMutation } from 'redux/auth/authApi';
-import { useDispatch } from 'react-redux';
-import { setCredentialsOnLogin } from 'redux/auth/authSlice';
 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -37,7 +35,6 @@ const defaultValues = getDefaultValues(loginFormInputs);
 
 export const LoginForm = () => {
   const [login] = useLoginUserMutation();
-  const dispatch = useDispatch();
 
   const {
     register: reg,
@@ -49,15 +46,9 @@ export const LoginForm = () => {
     defaultValues,
   });
 
-  const onSubmit = async data => {
-    try {
-      const response = await login(data).unwrap();
-      dispatch(setCredentialsOnLogin(response));
-    } catch (err) {
-      console.log(err);
-    } finally {
-      reset();
-    }
+  const onSubmit = data => {
+    login(data);
+    reset();
   };
 
   return (
