@@ -18,6 +18,9 @@ import { registerFormInputs } from './registerFormInputs';
 import { AuthNavigate } from 'shared/components/AuthNavigate/AuthNavigate';
 import { ROUTES } from 'shared/services/routes';
 
+import GooseRegister from 'shared/images/GooseImg/goose-register/goose-register.png';
+import GooseRegisterRetina from 'shared/images/GooseImg/goose-register/@2x/goose-register@2x.png';
+
 import sprite from 'shared/icons/sprite.svg';
 import {
   Svg,
@@ -26,6 +29,7 @@ import {
   Form,
   FormTitle,
   Button,
+  GooseIMG,
 } from './RegisterForm.styled';
 import { setCredentialsOnRegister } from 'redux/auth/authSlice';
 
@@ -77,6 +81,11 @@ export const RegisterForm = () => {
           </Button>
         </Form>
         <AuthNavigate route={ROUTES.login} content="Log In" />
+        <GooseIMG
+          srcset={`${GooseRegister} 1x, ${GooseRegisterRetina} 2x`}
+          src={`${GooseRegister}`}
+          alt="goose"
+        />
       </FormContainer>
     </Wrapper>
   );
