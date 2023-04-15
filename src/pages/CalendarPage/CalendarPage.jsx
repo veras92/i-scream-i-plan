@@ -10,6 +10,7 @@
 // 8. Помилка - користувачу показується відповідне пушповідомлення"
 
 import { CalendarToolbar } from 'modules/CalendarToolbar/CalendarToolbar';
+import { Suspense } from 'react';
 // import { ChoosedDay } from 'modules/ChoosedDay/ChoosedDay';
 // import { ChoosedMonth } from 'modules/ChoosedMonth/ChoosedMonth';
 import { Outlet } from 'react-router-dom';
@@ -23,7 +24,9 @@ export default function CalendarPage() {
       {/* <ChoosedMonth /> */}
       {/* <ChoosedDay /> */}
       {/* ================================================================= */}
-      <Outlet />
+      <Suspense fallback={null}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 }
