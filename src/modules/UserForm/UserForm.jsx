@@ -15,7 +15,7 @@ import { useUpdateUserInfoMutation } from 'redux/auth/authApi';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { userFormSchema } from './consts/userFormSchema';
-import { formatDate } from 'shared/utils/formatDate';
+// import { formatDate } from 'shared/utils/formatDate';
 import { userAvatarInput, userFormInputs } from './consts/userFormInputs';
 
 import { UserAvatarField } from './components/UserAvatarField/UserAvatarField';
@@ -23,7 +23,7 @@ import { FormFiled } from 'shared/components/FormFiled/FormField';
 import { DatePicker } from './components/DatePicker/DatePicker';
 
 export const UserForm = () => {
-  const { name, email, phone, birthday, skype, userImgUrl } = useAuth();
+  const { name, email, phone, skype } = useAuth();
   const [update] = useUpdateUserInfoMutation();
 
   const {
@@ -32,24 +32,24 @@ export const UserForm = () => {
     handleSubmit,
 
     reset,
-    formState: { errors, isDirty },
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(userFormSchema),
     defaultValues: {
       name,
       email,
       phone,
-      birthday: birthday || new Date(),
+      birthday: new Date(),
       skype,
-      userImgUrl,
+      userImgUrl: '',
     },
   });
 
   const onSubmit = data => {
-    const prepareBirthday = formatDate(data.birthday);
+    // const prepareBirthday = formatDate(data.birthday);
     const preparedData = {
       ...data,
-      birthday: prepareBirthday,
+      // birthday: prepareBirthday,
     };
 
     update(preparedData).unwrap();
@@ -84,7 +84,11 @@ export const UserForm = () => {
           )
         )}
       </div>
-      <button type="submit" disabled={!isDirty}>
+      <button
+        type="submit"
+        disabled={true}
+        // disabled={!isDirty}
+      >
         Save changes
       </button>
     </form>
