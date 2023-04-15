@@ -1,4 +1,4 @@
-const themeLight = {
+export const themeLight = {
   // Styles for components that do not change color between Light/Dark themes
   componentPrimary: '#FFFFFF', // Main white to be used when components do not change color in themes
   componentAccent: '#3E85F3', // Main blue to be used when components do not change color in themes
@@ -32,7 +32,7 @@ const themeLight = {
   bcgPriorityHigh: '#FFD2DD',
 };
 
-const themeDark = {
+export const themeDark = {
   // Styles for components that do not change color between Light/Dark themes
   componentPrimary: '#FFFFFF', // Main white to be used when components do not change color in themes
   componentAccent: '#3E85F3', // Main blue to be used when components do not change color in themes
