@@ -5,8 +5,6 @@
 //  - RegisterForm - блок з формою реєстрації
 //  - AuthNavigate - загальний компонент навігації для сторінок login/register"
 import { RegisterForm } from 'modules/RegisterForm/RegisterForm';
-import { AuthNavigate } from 'shared/components/AuthNavigate/AuthNavigate';
-import { ROUTES } from 'shared/services/routes';
 
 export default function RegisterPage() {
   return (

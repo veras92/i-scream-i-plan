@@ -1,16 +1,5 @@
 import styled from '@emotion/styled/macro';
 
-// export const Svg = styled.svg`
-//   fill: transparent;
-//   stroke: #ffffff;
-//   transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-//   &:hover,
-//   &:focus {
-//     stroke: rgba(17, 17, 17, 0.1);
-//   }
-// `;
-
 export const Wrapper = styled.div`
   height: 100vh;
 
@@ -141,5 +130,21 @@ export const Button = styled.button`
 
   &:hover ${Svg} {
     animation: scale-up-hor-left 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  }
+`;
+
+export const GooseIMG = styled.img`
+  display: none;
+
+  @media (min-width: 1260px) {
+    position: fixed;
+    width: 400px;
+    height: 454px;
+    left: 10px;
+    bottom: 0;
+    display: block;
+  }
+  @media (min-width: 1360px) {
+    left: 50px;
   }
 `;

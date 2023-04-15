@@ -20,6 +20,9 @@ import { AuthNavigate } from 'shared/components/AuthNavigate/AuthNavigate';
 import { ROUTES } from 'shared/services/routes';
 
 import sprite from 'shared/icons/sprite.svg';
+import GooseRocket from 'shared/images/GooseImg/goose-login/goose-login.png';
+import GooseRocketRetina from 'shared/images/GooseImg/goose-login/@2x/goose-login@2x.png';
+
 import {
   Svg,
   Wrapper,
@@ -27,6 +30,7 @@ import {
   Form,
   FormTitle,
   Button,
+  GooseIMG,
 } from './LoginForm.styled';
 
 const defaultValues = getDefaultValues(loginFormInputs);
@@ -77,6 +81,11 @@ export const LoginForm = () => {
           </Button>
         </Form>
         <AuthNavigate route={ROUTES.register} content="Sign Up" />
+        <GooseIMG
+          srcset={`${GooseRocket} 1x, ${GooseRocketRetina} 2x`}
+          src={`${GooseRocket}`}
+          alt="goose"
+        />
       </FormContainer>
     </Wrapper>
   );

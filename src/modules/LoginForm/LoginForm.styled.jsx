@@ -132,3 +132,16 @@ export const Button = styled.button`
     animation: scale-up-hor-left 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   }
 `;
+
+export const GooseIMG = styled.img`
+  display: none;
+
+  @media (min-width: 1120px) {
+    position: fixed;
+    width: 368px;
+    height: 521px;
+    right: 20px;
+    bottom: 20px;
+    display: block;
+  }
+`;
