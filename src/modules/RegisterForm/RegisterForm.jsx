@@ -15,8 +15,18 @@ import { getDefaultValues } from 'shared/utils/getDefaultValues';
 import { FormFiled } from 'shared/components/FormFiled/FormField';
 import { registerFormInputs } from './registerFormInputs';
 
+import { AuthNavigate } from 'shared/components/AuthNavigate/AuthNavigate';
+import { ROUTES } from 'shared/services/routes';
+
 import sprite from 'shared/icons/sprite.svg';
-import { Svg } from './RegisterForm.styled';
+import {
+  Svg,
+  Wrapper,
+  FormContainer,
+  Form,
+  FormTitle,
+  Button,
+} from './RegisterForm.styled';
 import { setCredentialsOnRegister } from 'redux/auth/authSlice';
 
 const defaultValues = getDefaultValues(registerFormInputs);
@@ -47,16 +57,27 @@ export const RegisterForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} autoComplete="false">
-      {registerFormInputs.map(input => (
-        <FormFiled key={input.id} {...input} register={reg} errors={errors} />
-      ))}
-      <button type="submit">
-        <span>Sign up</span>
-        <Svg width="20" height="20">
-          <use href={`${sprite}#icon-Log-in`} />
-        </Svg>
-      </button>
-    </form>
+    <Wrapper>
+      <FormContainer>
+        <Form onSubmit={handleSubmit(onSubmit)} autoComplete="false">
+          <FormTitle>Sign Up</FormTitle>
+          {registerFormInputs.map(input => (
+            <FormFiled
+              key={input.id}
+              {...input}
+              register={reg}
+              errors={errors}
+            />
+          ))}
+          <Button type="submit">
+            <span>Sign up</span>
+            <Svg width="20" height="20">
+              <use href={`${sprite}#icon-Log-in`} />
+            </Svg>
+          </Button>
+        </Form>
+        <AuthNavigate route={ROUTES.login} content="Log In" />
+      </FormContainer>
+    </Wrapper>
   );
 };
