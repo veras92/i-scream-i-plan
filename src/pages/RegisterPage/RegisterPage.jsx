@@ -13,11 +13,8 @@ export default function RegisterPage() {
     <div>
       <div>
         <div>
-          <h1>Sign Up</h1>
           <RegisterForm />
         </div>
-
-        <AuthNavigate route={ROUTES.login} content="Log In" />
       </div>
     </div>
   );
