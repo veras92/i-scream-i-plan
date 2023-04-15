@@ -7,16 +7,30 @@
 // Помилка - виводиться відповідне пуш повідомлення."
 
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import format from 'date-fns/format';
 import add from 'date-fns/add';
 import sub from 'date-fns/sub';
+import { useGetTasksByMonthQuery } from 'redux/tasks/tasksApi';
+import { setTasks } from 'redux/tasks/tasksSlice';
 import { PeriodPaginator } from './components/PeriodPaginator/PeriodPaginator';
 import { PeriodTypeSelect } from './components/PeriodTypeSelect/PeriodTypeSelect';
 
 export const CalendarToolbar = () => {
   const [type, setType] = useState('month');
   const [date, setDate] = useState(() => Date.now());
+
+  const dispatch = useDispatch();
+
+  const { data } = useGetTasksByMonthQuery({
+    year: format(date, 'yyyy'),
+    month: format(date, 'MM'),
+  });
+
+  useEffect(() => {
+    dispatch(setTasks(data));
+  }, [dispatch, data]);
 
   const navigate = useNavigate();
 
@@ -42,7 +56,11 @@ export const CalendarToolbar = () => {
 
   return (
     <>
-      <PeriodPaginator date={date} type={type} onChange={onChangeDate} />
+      <PeriodPaginator
+        date={format(date, 'dd MMMM yyyy')}
+        type={type}
+        onChange={onChangeDate}
+      />
       <PeriodTypeSelect onChangeType={setType} />
     </>
   );
