@@ -7,9 +7,16 @@ import "slick-carousel/slick/slick-theme.css";
 import { reviews, Rating } from './reviews';
 
 import sprite from 'shared/icons/sprite.svg';
-import { Svg } from './MainPage.styled';
+import { 
+  Svg, 
+  ArrowLeft, 
+  ArrowRight, 
+  SliderContainer, 
+  Avatar, 
+  Comment,
+  Name, 
+} from './MainPage.styled';
 
-import { Arrow } from './MainPage.styled';
 import one from './images/one.png';
 import two from './images/two.png';
 import three from './images/three.png';
@@ -18,24 +25,24 @@ import goose from 'shared/icons/goose.svg';
 function SamplePrevArrow(props) {
   const { onClick } = props;
   return (
-    <Arrow
+    <ArrowRight
       onClick={onClick}>
-        <Svg width="47">
+        <Svg width="61" height="61">
             <use href={`${sprite}#icon-arrow-right`} />
         </Svg>
-    </Arrow>
+    </ArrowRight>
   );
 }
 
 function SampleNextArrow(props) {
   const { onClick } = props;
   return (
-    <Arrow
+    <ArrowLeft
     onClick={onClick}>
-      <Svg width="47">
+      <Svg width="61" height="61">
         <use href={`${sprite}#icon-arrow-left`} />
       </Svg>
-      </Arrow>
+      </ArrowLeft>
   );
 }
 
@@ -103,10 +110,16 @@ export default function MainPage() {
         <Slider {...settings}>
           {reviews.map((review) => (
             <div key={review.id}>
-              <img src={review.photo} alt={review.name} width="40px" height="40px"/>
-              <h3>{review.name}</h3>
-              <Rating rating={review.rating} />
-              <p>{review.text}</p>              
+              <SliderContainer>                
+              <div>
+                <Avatar src={review.photo} alt={review.name} />
+              </div>
+              <div>
+                <Name>{review.name}</Name>
+                <Rating rating={review.rating} />
+                <Comment>{review.text}</Comment>      
+              </div>    
+              </SliderContainer>      
             </div>
           ))}
         </Slider> 
