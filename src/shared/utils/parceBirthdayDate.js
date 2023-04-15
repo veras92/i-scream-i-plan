@@ -1,5 +1,5 @@
-import { parse } from 'date-fns';
+import { parse, parseISO } from 'date-fns';
 
 export const parseBirthdayDate = dateString => {
-  return parse(dateString, 'yyyy-MM-dd', new Date());
+  return parse(parseISO(dateString), 'yyyy-MM-dd', new Date());
 };
