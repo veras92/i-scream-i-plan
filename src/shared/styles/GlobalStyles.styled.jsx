@@ -2,10 +2,18 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { modernNormalizeCss } from 'emotion-modern-normalize';
 import { DEVICE_SIZE_PX } from 'shared/services/deviceWidth';
-
+import Coolvetica from '../fonts/Coolvetica/CoolveticaRg-Regular.ttf';
+import Inter from '../fonts/Inter/Inter-VariableFont_slnt,wght.ttf';
 export const GlobalStyles = css`
   ${modernNormalizeCss}
-
+  @font-face {
+    font-family: 'Inter';
+    src: url(${Inter});
+  }
+  @font-face {
+    font-family: 'Coolvetica';
+    src: url(${Coolvetica});
+  }
   :root {
     --main-blue-color: #3e85f3;
     --main-white-color: #fff;
