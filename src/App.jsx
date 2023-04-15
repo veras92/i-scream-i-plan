@@ -1,7 +1,18 @@
+import { useAuth } from 'hooks/useAuth';
 import { ChoosedDay } from 'modules/ChoosedDay/ChoosedDay';
 import { ChoosedMonth } from 'modules/ChoosedMonth/ChoosedMonth';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
+import {
+  useLazyGetCurrentUserInfoQuery,
+  useRefreshTokensMutation,
+} from 'redux/auth/authApi';
+import {
+  setCredentialsOnGetUserInfo,
+  setCredentialsOnRefresh,
+} from 'redux/auth/authSlice';
+import { Loader } from 'shared/components/Loader/Loader';
 import {
   account,
   calendar,
@@ -22,7 +33,28 @@ const RegisterPage = lazy(() => import('./pages/RegisterPage/RegisterPage'));
 const MainPage = lazy(() => import('./pages/MainPage/MainPage'));
 
 export const App = () => {
-  return (
+  const { accessToken } = useAuth();
+  const [getUserInfo, { isLoading: isGettingUserInfo }] =
+    useLazyGetCurrentUserInfoQuery();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const refreshUserInfo = async getUserInfo => {
+      if (!accessToken) return;
+      try {
+        const getUserInfoResponse = await getUserInfo().unwrap();
+        dispatch(setCredentialsOnGetUserInfo(getUserInfoResponse));
+        console.log('refreshed');
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    refreshUserInfo(getUserInfo);
+  }, [accessToken, dispatch, getUserInfo]);
+
+  return isGettingUserInfo ? (
+    <Loader />
+  ) : (
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
         <Route

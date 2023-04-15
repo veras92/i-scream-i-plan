@@ -1,5 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+let persistedRefreshToken = null;
+
 export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
@@ -8,6 +10,7 @@ export const authApi = createApi({
       const state = getState();
       const token = state.auth.token;
       if (token) {
+        persistedRefreshToken = state.auth.refreshToken;
         headers.set('authorization', `Bearer ${token}`);
       }
       return headers;
@@ -46,6 +49,9 @@ export const authApi = createApi({
       query: () => ({
         url: `user/refresh`,
         method: 'POST',
+        body: {
+          refreshToken: persistedRefreshToken,
+        },
       }),
       invalidatesTags: ['Auth'],
     }),
@@ -69,6 +75,7 @@ export const {
   useLoginUserMutation,
   useLazyLogoutUserQuery,
   useRefreshTokensMutation,
+  useGetCurrentUserInfoQuery,
   useLazyGetCurrentUserInfoQuery,
   useUpdateUserInfoMutation,
 } = authApi;
