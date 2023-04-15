@@ -48,16 +48,20 @@ export const App = () => {
     refreshUserInfo(getUserInfo);
   }, [accessToken, dispatch, getUserInfo]);
 
-  const StartPage = isLoggedIn ? <MainLayout /> : <MainPage />;
   return isGettingUserInfo ? (
     <Loader />
   ) : (
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
-        <Route
-          path="/"
-          element={StartPage /* isLogin ? <MainPage /> : <MainLayout /> */}
-        >
+        {!isLoggedIn && <Route path="/" element={<MainPage />} />}
+
+        <Route path="/" element={<MainLayout />}>
+          <Route
+            path={account}
+            element={
+              <PrivateRoute redirectTo={login} component={<AccountPage />} />
+            }
+          />
           <Route
             path={calendar}
             element={
@@ -65,8 +69,18 @@ export const App = () => {
             }
           >
             <Route index element={<CalendarIndex />} />
-            <Route path={currentDate} element={<ChoosedMonth />} />
-            <Route path={currentDay} element={<ChoosedDay />} />
+            <Route
+              path={currentDate}
+              element={
+                <PrivateRoute redirectTo={login} component={<ChoosedMonth />} />
+              }
+            />
+            <Route
+              path={currentDay}
+              element={
+                <PrivateRoute redirectTo={login} component={<ChoosedDay />} />
+              }
+            />
           </Route>
         </Route>
         <Route
@@ -78,20 +92,20 @@ export const App = () => {
             />
           }
         />
+
         <Route
           path={login}
           element={
             <RestrictedRoute redirectTo={calendar} component={<LoginPage />} />
           }
         />
+
         <Route
-          path={account}
+          path="*"
           element={
-            <PrivateRoute redirectTo={login} component={<AccountPage />} />
+            <RestrictedRoute redirectTo={calendar} component={<MainPage />} />
           }
         />
-
-        <Route path="*" element={StartPage} />
       </Routes>
     </Suspense>
   );
