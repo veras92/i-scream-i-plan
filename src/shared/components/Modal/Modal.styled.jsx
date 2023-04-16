@@ -21,9 +21,9 @@ export const ModalWindow = styled.div`
 
   padding: 40px 28px;
 
-  background: #ffffff;
-  border: 1px solid rgba(220, 227, 229, 0.8);
-  box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
+  background: ${props => props.theme.bcgPrimary};
+  border: 1px solid rgba ${props => props.theme.disabled};
+  box-shadow: 0px 4px 16px rgba ${props => props.theme.reviewsText};
   border-radius: 8px;
 `;
 
@@ -49,7 +49,7 @@ export const Svg = styled.svg`
   padding: 3px;
   border-radius: 50%;
 
-  fill: #111111;
+  fill: ${props => props.theme.text};
   transition: backgrond-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
