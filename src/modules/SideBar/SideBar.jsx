@@ -5,17 +5,30 @@
 import { LogoutBtn } from './components/LogoutBtn/LogoutBtn';
 import { UserNav } from './components/UserNav/UserNav';
 import goose from 'shared/icons/goose.svg';
+import sprite from 'shared/icons/sprite.svg';
+
+import {
+  LogoTitle,
+  SidebarWrapper,
+  SidebarHeader,
+  GooseImg,
+  CloseIcon,
+  SidebarSubTitle,
+} from './SideBar.styled';
 
 export const SideBar = () => {
   return (
-    <>
-      <div>
-      <img width="71" src={goose} alt="goose"/> 
-      <h2>Goose Track</h2>
-      <span>User Panel</span>
-      </div>
+    <SidebarWrapper>
+      <SidebarHeader>
+        <GooseImg src={goose} alt="goose" />
+        <LogoTitle>Goose Track</LogoTitle>
+        <CloseIcon>
+          <use href={`${sprite}#icon-x-close`} />
+        </CloseIcon>
+      </SidebarHeader>
+      <SidebarSubTitle>User Panel</SidebarSubTitle>
       <UserNav />
       <LogoutBtn />
-    </>
+    </SidebarWrapper>
   );
 };
