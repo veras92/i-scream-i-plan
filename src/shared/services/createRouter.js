@@ -36,6 +36,7 @@ const AccountPageWithRedirect = withAuthRedirect(AccountPage, login);
 const CalendarPageWithRedirect = withAuthRedirect(CalendarPage, '/');
 
 // const MainPageWithRedirect = withAuthRedirect(MainPage, account);
+const NotFoundPageWithRedirect = withAuthRedirect(MainPage, '/');
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -67,11 +68,11 @@ export const router = createBrowserRouter(
         <Route path={calendar} element={<CalendarPageWithRedirect />}>
           <Route index element={<CalendarIndex />} />
           <Route path={currentDate} element={<ChoosedMonth />} />
-          <Route path={currentDay} element={<ChoosedDay />} />{' '}
+          <Route path={currentDay} element={<ChoosedDay />} />
         </Route>
       </Route>
 
-      <Route path="*" element={<SharedLayout />} />
+      <Route path="*" element={<NotFoundPageWithRedirect />} />
     </Route>
   ),
 
