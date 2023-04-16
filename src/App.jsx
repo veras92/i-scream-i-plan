@@ -28,7 +28,8 @@ const MainPage = lazy(() => import('./pages/MainPage/MainPage'));
 
 export const App = () => {
   const { accessToken, isLoggedIn, isRefreshing } = useAuth();
-  const [getUserInfo] = useLazyGetCurrentUserInfoQuery();
+  const [getUserInfo, { isLoading: isGettingUserInfo }] =
+    useLazyGetCurrentUserInfoQuery();
 
   useEffect(() => {
     const refreshUserInfo = (accessToken, getUserInfo) => {
@@ -39,65 +40,5 @@ export const App = () => {
     refreshUserInfo(accessToken, getUserInfo);
   }, [accessToken, getUserInfo]);
 
-  return isRefreshing ? (
-    <Loader />
-  ) : (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Routes>
-        {!isLoggedIn && <Route path="/" element={<MainPage />} />}
-
-        <Route path="/" element={<MainLayout />}>
-          <Route
-            path={account}
-            element={
-              <PrivateRoute redirectTo={login} component={<AccountPage />} />
-            }
-          />
-          <Route
-            path={calendar}
-            element={
-              <PrivateRoute redirectTo={login} component={<CalendarPage />} />
-            }
-          >
-            <Route index element={<CalendarIndex />} />
-            <Route
-              path={currentDate}
-              element={
-                <PrivateRoute redirectTo={login} component={<ChoosedMonth />} />
-              }
-            />
-            <Route
-              path={currentDay}
-              element={
-                <PrivateRoute redirectTo={login} component={<ChoosedDay />} />
-              }
-            />
-          </Route>
-        </Route>
-        <Route
-          path={register}
-          element={
-            <RestrictedRoute
-              redirectTo={calendar}
-              component={<RegisterPage />}
-            />
-          }
-        />
-
-        <Route
-          path={login}
-          element={
-            <RestrictedRoute redirectTo={calendar} component={<LoginPage />} />
-          }
-        />
-
-        <Route
-          path="*"
-          element={
-            <RestrictedRoute redirectTo={calendar} component={<MainPage />} />
-          }
-        />
-      </Routes>
-    </Suspense>
-  );
+  return isGettingUserInfo ? <Loader /> : <RouterProvider router={router} />;
 };
