@@ -3,8 +3,9 @@
 // 3. Успішна відповідь переводить користувача в статус неавторизованого, змінюючи відповідне поле в глобальному сетейті, а також обнуляє всі данні авторизованого користувача  в глобальному стейті.
 // 4. Відповідь з помилкою виводить відповідне пуш-повідомлення, і вилогінює користуваача на клієнті, як і в попередньому пункті."
 import sprite from 'shared/icons/sprite.svg';
-import { Svg } from './LogoutBtn.styled';
+
 import { useLazyLogoutUserQuery } from 'redux/auth/authApi';
+import { Svg, Button } from 'shared/styles/components';
 
 export const LogoutBtn = () => {
   const [logout] = useLazyLogoutUserQuery();
@@ -13,11 +14,13 @@ export const LogoutBtn = () => {
 
   return (
     <div>
-      <button type="button" onClick={handleLogout}>
-        <Svg width="20" height="20">
+      <Button type="button" onClick={handleLogout}>
+        {' '}
+        Log out
+        <Svg>
           <use href={`${sprite}#icon-log-out`} />
         </Svg>
-      </button>
+      </Button>
     </div>
   );
 };

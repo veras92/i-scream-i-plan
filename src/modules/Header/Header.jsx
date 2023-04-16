@@ -7,15 +7,18 @@
 
 import { ThemeToggler } from './components/ThemeToggler/ThemeToggler';
 import { UserInfo } from './components/UserInfo/UserInfo';
-
+import { Wrapper, Info, SectionTitle } from './Header.styled';
 export const Header = () => {
   return (
     <>
-      <div>
-        <h1>Use Profile/ Calendar</h1>
-      </div>
-      <ThemeToggler />
-      <UserInfo />
+      <Wrapper>
+        <SectionTitle>Use Profile/ Calendar</SectionTitle>
+
+        <Info>
+          <ThemeToggler />
+          <UserInfo />
+        </Info>
+      </Wrapper>
     </>
   );
 };

@@ -19,6 +19,7 @@ export const themeLight = {
   bcgFocusSecondary: '#E3F3FF', // Calendar incactive "Day/Month" tab. Light blue that changes to light dark in DT
 
   disabled: 'rgba(220, 227, 229, 0.8)', // for all inactive items (inputs or arrows) + Weekend dates color. Remains the same in both themes
+  btnShadow: 'rgba(136, 165, 191, 0.48)',
 
   text: '#111111', // Main text black color - changes to white in dark theme (+sidebar inactive tab text)
   textSecondary: '#616161', //grey subheaders text - remains greay in dark theme.  Sidebar "User panel" text
@@ -53,6 +54,7 @@ export const themeDark = {
   bcgFocusSecondary: 'rgba(255, 255, 255, 0.15)', // Calendar incactive "Day/Month" tab. Light dark that changes to light blue in DT
 
   disabled: 'rgba(220, 227, 229, 0.8)', // for all inactive items (inputs or arrows) + Weekend dates color. Remains the same in both themes
+  btnShadow: 'rgba(136, 165, 191, 0.3)',
 
   text: '#FFFFFF', // Main text white color,  changes to black in white theme
   textSecondary: 'rgba(250, 250, 250, 0.3)', // grey subheaders text - remains greay in dark theme. Sidebar "User panel" text

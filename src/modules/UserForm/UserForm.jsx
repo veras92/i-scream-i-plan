@@ -22,6 +22,7 @@ import { UserAvatarField } from './components/UserAvatarField/UserAvatarField';
 import { FormFiled } from 'shared/components/FormFiled/FormField';
 import { DatePicker } from './components/DatePicker/DatePicker';
 
+import { Button } from 'shared/styles/components';
 export const UserForm = () => {
   const { name, email, phone, skype } = useAuth();
   const [update] = useUpdateUserInfoMutation();
@@ -84,13 +85,14 @@ export const UserForm = () => {
           )
         )}
       </div>
-      <button
+      <Button
         type="submit"
         disabled={true}
+        function="save"
         // disabled={!isDirty}
       >
         Save changes
-      </button>
+      </Button>
     </form>
   );
 };
