@@ -12,9 +12,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <CustomThemeProvider>
-          <BrowserRouter basename="/i-scream-i-plan">
-            <App />
-          </BrowserRouter>
+          <App />
         </CustomThemeProvider>
       </PersistGate>
     </Provider>
