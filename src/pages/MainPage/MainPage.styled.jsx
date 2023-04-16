@@ -1,49 +1,89 @@
 import styled from '@emotion/styled';
 
 export const Svg = styled.svg`
+ 
   fill: transparent;
   stroke: #0c0000;
   transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
-/* 
-  &:hover,
-  &:focus {
-    stroke: rgba(17, 17, 17, 0.1);
-  } */
+
 `;
-
-
 
 export const ArrowLeft = styled.button `
   border: none;
-   background-color: transparent;   
+  
+  background-color: transparent;   
   position: absolute;
-  bottom: -50%;
-  right: 49%;
-  transform: translateX(-50%);  
+  padding: 0 10px;
+  right: 50%;
+ 
+
 `;
 
 export const ArrowRight = styled.button `
-    border: none;
-   background-color: transparent;
-   position: absolute;
-   bottom: -50%;
-   left: 51%;
-   transform: translateX(-50%);
-   margin-left:24px;
-  
+  border: none;
+  background-color: transparent;   
+  position: absolute;
+  padding: 0 10px;
+  top: 100%;
+  left: 50%;
+`;
+
+export const ColorContainer = styled.div `
+   
+  @media (min-width: 1440px) {
+            
+    padding: 0 12px;
+    
+  }
+ 
+`;
+
+export const MainContainerSlider = styled.div `
+    margin-left: auto;
+    margin-right: auto;
+ 
+    width: 335px;
+    height: 100%;
+    position: relative;
+
+  @media (min-width: 768px) {
+    width: 580px;
+   
+  }
+  @media (min-width: 1440px) {
+    width: 1208px;  
+    
+  }
+ 
 `;
 
 export const SliderContainer = styled.div `
-  width: 580px;
-  height: 187px;
+  width: 335px;
+  height: 234px;
   border: 1px solid rgba(17, 17, 17, 0.1);
   border-radius: 8px;
-  padding: 32px;
-  height: 187px;
-  margin-right: 24px;
-  display: flex;
-  column-gap: 18px;
-  position: relative;
+  padding: 24px;
+  margin: 0;
+
+  @media (min-width: 768px) {
+    width: 580px;
+    height: 190px;   
+       
+  }
+ 
+`;
+
+
+
+export const ContainerTitle = styled.div `
+    display: flex;
+    column-gap: 18px;
+    
+`;
+
+export const ImgContainer = styled.div `
+    width: 50px;
+    
 `;
 
 export const Avatar = styled.img `
@@ -53,7 +93,6 @@ export const Avatar = styled.img `
     object-fit: cover;
     
 `;
-
 
 export const Comment = styled.p `
   
@@ -67,6 +106,10 @@ export const Comment = styled.p `
   color: rgba(17, 17, 17, 0.7); 
   margin-top: 24px;
 
+  @media (min-width: 768px) {
+    margin-left: 68px;
+   
+  }
 `;
 
 export const Name = styled.h3 `

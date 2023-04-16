@@ -12,7 +12,7 @@ export const SideBar = () => {
       <div>
       <img width="71" src={goose} alt="goose"/> 
       <h2>Goose Track</h2>
-      <span>User Panel</span>
+      <p>User Panel</p>
       </div>
       <UserNav />
       <LogoutBtn />

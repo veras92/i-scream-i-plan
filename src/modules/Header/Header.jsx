@@ -19,3 +19,26 @@ export const Header = () => {
     </>
   );
 };
+
+
+// import { useLocation } from 'react-router-dom';
+// import { ThemeToggler } from './components/ThemeToggler/ThemeToggler';
+// import { UserInfo } from './components/UserInfo/UserInfo';
+
+// function Header() {
+//   const location = useLocation();
+
+//   return (
+//     <header>
+//       {location.pathname === '/calendar' ? (
+//         <h1>Calendar</h1>
+//       ) : location.pathname === '/account' ? (
+//         <h1>Use Profile</h1>
+//       ) : (
+//         <h1></h1>
+//       )}
+//       <ThemeToggler />
+//       <UserInfo />
+//     </header>
+//   );
+// }

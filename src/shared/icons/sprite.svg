@@ -67,13 +67,11 @@
         d="M16 10.667v10.667M10.667 16h10.667M29.333 16c0 7.364-5.97 13.333-13.333 13.333s-13.333-5.97-13.333-13.333c0-7.364 5.97-13.333 13.333-13.333s13.333 5.97 13.333 13.333z">
       </path>
     </symbol>
-    <symbol id="icon-smoll-arrow-left" viewBox="0 0 32 32">
-      <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="4"
-        d="M22 28l-12-12 12-12"></path>
-    </symbol>
-    <symbol id="icon-smoll-arrow-right" viewBox="0 0 32 32">
-      <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="4"
-        d="M10 28l12-12-12-12"></path>
+    <symbol id="icon-smoll-arrow-left" viewBox="0 0 208 32">
+      <path d="M26.863 24.894l-10.024-6.816 190.638-0.005v-5.333l-189.443 0.005 9.443-5.427-2.656-4.624-21.731 12.485 20.773 14.125 3-4.411z"></path>
+    </symbol> 
+    <symbol id="icon-right" viewBox="0 0 208 32">
+      <path d="M180.613 5.918l10.024 6.816-190.637 0.005v5.333l189.443-0.005-9.443 5.427 2.656 4.624 21.731-12.485-20.773-14.125-3 4.411z"></path>
     </symbol>
     <symbol id="icon-star" viewBox="0 0 32 32">
       <path

@@ -12,6 +12,10 @@ import {
   ArrowLeft, 
   ArrowRight, 
   SliderContainer, 
+  ColorContainer,
+  MainContainerSlider,
+  ContainerTitle,
+  ImgContainer,
   Avatar, 
   Comment,
   Name, 
@@ -27,7 +31,7 @@ function SamplePrevArrow(props) {
   return (
     <ArrowRight
       onClick={onClick}>
-        <Svg width="61" height="61">
+        <Svg width="61" height="50">
             <use href={`${sprite}#icon-arrow-right`} />
         </Svg>
     </ArrowRight>
@@ -39,7 +43,7 @@ function SampleNextArrow(props) {
   return (
     <ArrowLeft
     onClick={onClick}>
-      <Svg width="61" height="61">
+      <Svg width="61" height="50">
         <use href={`${sprite}#icon-arrow-left`} />
       </Svg>
       </ArrowLeft>
@@ -53,7 +57,16 @@ const settings = {
   slidesToShow: 2,
   slidesToScroll: 1,
   nextArrow: <SampleNextArrow />,
-  prevArrow: <SamplePrevArrow />
+  prevArrow: <SamplePrevArrow />,
+  responsive: [
+    {
+      breakpoint: 1440, // точка, на которой меняется количество слайдов на мобильном устройстве
+      settings: {
+        slidesToShow: 1, // количество отображаемых слайдов на мобильном устройстве
+        slidesToScroll: 1, // количество прокручиваемых слайдов на мобильном устройстве
+      },
+    },
+  ],
 
 };
 
@@ -107,22 +120,27 @@ export default function MainPage() {
     </main>
       <section>
         <h2>REVIEWS</h2>  
+        <MainContainerSlider>
         <Slider {...settings}>
           {reviews.map((review) => (
-            <div key={review.id}>
-              <SliderContainer>                
-              <div>
+            <ColorContainer>
+              <SliderContainer key={review.id}>                             
+              <ContainerTitle>
+              <ImgContainer>
                 <Avatar src={review.photo} alt={review.name} />
-              </div>
+              </ImgContainer>
               <div>
                 <Name>{review.name}</Name>
-                <Rating rating={review.rating} />
-                <Comment>{review.text}</Comment>      
-              </div>    
-              </SliderContainer>      
-            </div>
+                <Rating rating={review.rating} />   
+              </div>  
+              </ContainerTitle>    
+              <Comment>{review.text}</Comment>    
+            </SliderContainer>
+            </ColorContainer>
           ))}
         </Slider> 
+        </MainContainerSlider>
+        
       </section>
       </div>
     </>
