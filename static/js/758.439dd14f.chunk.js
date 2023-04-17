@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[758],{1636:function(e,a,t){t(2791);a.Z=t.p+"static/media/goose.c6a7b737f606941aca78d31d3dfc5946.svg"}}]);
+//# sourceMappingURL=758.439dd14f.chunk.js.map
