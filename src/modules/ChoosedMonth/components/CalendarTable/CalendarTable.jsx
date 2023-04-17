@@ -3,12 +3,83 @@
 // 3. Клік по комірці переадресовує юзера на відповідний день по маршруту /calendar/day/:date і показує модуль одного дня ChoosedDay з відповідною датою.
 // Додатково:
 // Клік по завданню з комірки, відкриває модалку для редагування даного завдання, заповнену даними з цього завдання."
+import {
+  format,
+  startOfMonth,
+  endOfMonth,
+  eachDayOfInterval,
+  getDay,
+} from 'date-fns';
+// import { Re } from 'react-router-dom';
+
 import PropTypes from 'prop-types';
+import { StyledDay, StyledListTasks, StyledTd } from './CalendarTable.styled';
+// import { useNavigate } from 'react-router';
 
 export default function CalendarTable({ tasks, currentDate }) {
-  return <div>CalendarTable</div>;
-}
+  const startMonth = startOfMonth(new Date(currentDate));
+  const endMonth = endOfMonth(new Date(currentDate));
+  const firstDayOfMonth = getDay(startMonth) - 1;
 
+  const daysOfMonth = eachDayOfInterval({ start: startMonth, end: endMonth });
+  // const daysOfMonth = eachDayOfInterval({
+  //   start: startOfMonth(new Date(currentDate)),
+  //   end: endOfMonth(new Date(currentDate)),
+  // });
+  // const navigate = useNavigate();
+  const daysWithTasks = daysOfMonth.map(day => ({
+    date: format(day, 'yyyy-MM-dd'),
+    tasks: tasks.filter(task => task.date === format(day, 'yyyy-MM-dd')),
+  }));
+
+  const emptyCells = Array.from({ length: firstDayOfMonth }, (_, index) => (
+    <td key={`empty-${index}`}></td>
+  ));
+
+  function formattedDay(date) {
+    const day = date.split('-')[2];
+
+    return day.startsWith('0') ? day.slice(1) : day;
+  }
+
+  const rows = [];
+
+  let cells = [...emptyCells];
+
+  daysWithTasks.forEach((day, index) => {
+    cells.push(
+      <StyledTd
+        key={day.date}
+        // onClick={() => {
+        //   navigate(`/calendar/day/2023-04-17`);
+        // }}
+      >
+        {day.tasks.length > 0 &&
+          day.tasks.map(({ tasks }, index) => {
+            return (
+              <StyledListTasks key={index}>
+                {tasks.map(task => (
+                  <li key={task.title}>{task.title}</li>
+                ))}
+              </StyledListTasks>
+            );
+          })}
+        <StyledDay>{formattedDay(day.date)}</StyledDay>
+      </StyledTd>
+    );
+
+    if (cells.length === 7 || index === daysWithTasks.length - 1) {
+      rows.push(<tr key={day.date}>{cells}</tr>);
+      cells = [];
+    }
+  });
+
+  return (
+    <table>
+      <tbody>{rows}</tbody>
+    </table>
+  );
+}
 CalendarTable.propTypes = {
   tasks: PropTypes.arrayOf(
     PropTypes.shape({
