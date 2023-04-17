@@ -45,6 +45,7 @@ export const GooseImg = styled.img`
 
 export const CloseIcon = styled.svg`
   fill: ${props => props.theme.text};
+
   margin-left: auto;
   height: 24px;
   width: 24px;

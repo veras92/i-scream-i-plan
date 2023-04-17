@@ -1,5 +1,10 @@
 import styled from '@emotion/styled/macro';
 import { Link } from 'react-router-dom';
+import facepaint from 'facepaint';
+
+import { BREAKPOINTS } from 'shared/services/deviceWidth';
+
+const media = facepaint(BREAKPOINTS.map(bp => `@media (min-width: ${bp}px)`));
 
 export const StyledHeader = styled.header`
   width: 100%;
@@ -119,66 +124,174 @@ export const LogInBtn = styled(Link)`
   }
 `;
 
+export const StyledNumber = styled.span`
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 1;
+  letter-spacing: -4px;
+  color: ${props => props.theme.componentAccent};
+  margin-bottom: 14px;
+  @media (min-width: 765px) {
+    font-size: 104px;
+  }
+`;
 
+export const StyledLabel = styled.span`
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.25;
+  text-transform: uppercase;
+  border-radius: 44px;
+  padding: 8px 18px;
+  margin-bottom: 8px;
+
+  background-color: ${props => props.theme.bcgHomepage};
+  color: ${props => props.theme.componentAccent};
+
+  @media (min-width: 765px) {
+    font-size: 40px;
+    line-height: 1.1;
+  }
+`;
+
+export const StyledTitleText = styled.span`
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.25;
+  text-transform: uppercase;
+  color: ${props => props.theme.homepageTitle};
+
+  @media (min-width: 765px) {
+    font-size: 40px;
+    line-height: 1.1;
+  }
+`;
+
+export const TitleWrapper = styled.h2`
+  display: inline-flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+
+  @media (min-width: 765px) {
+    margin-bottom: 24px;
+  }
+`;
+
+export const StyledText = styled.p`
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.3;
+  color: ${props => props.theme.homepageTitle};
+  margin-bottom: 40px;
+
+  ${media({
+    marginBottom: ['40px', '40px', '48px', '0'],
+  })};
+`;
+
+export const HomepageContainer = styled.div`
+  ${media({
+    padding: ['64px 20px', '64px 20px', '64px 32px', '64px 128px'],
+  })};
+`;
+
+export const StyledBlock = styled.li`
+  margin-bottom: 64px;
+  @media (min-width: 765px) {
+    display: flex;
+    flex-direction: column;
+    :nth-of-type(2) {
+      & div:nth-child(1) {
+        margin-left: auto;
+      }
+    }
+  }
+
+  @media (min-width: 1440px) {
+    flex-direction: row;
+    gap: 228px;
+    justify-content: flex-end;
+    :nth-of-type(2) {
+      flex-direction: row-reverse;
+      align-items: flex-start;
+      & div:nth-child(1) {
+        margin-left: 0;
+    }
+  }
+`;
+
+export const InfoWrapper = styled.div`
+  @media (min-width: 765px) {
+    max-width: 275px;
+  }
+`;
+
+export const StyledImg = styled.img`
+  width: 100%;
+`;
+
+export const ReviewsTitle = styled.h3`
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.15;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 40px;
+
+  color: ${props => props.theme.componentAccent};
+  @media (min-width: 765px) {
+    font-size: 44px;
+    margin-bottom: 50px;
+  }
+`;
 //Slider mostly
 export const Svg = styled.svg`
- 
   fill: transparent;
   stroke: #0c0000;
   transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
 `;
 
-export const ArrowLeft = styled.button `
+export const ArrowLeft = styled.button`
   border: none;
-  
-  background-color: transparent;   
+
+  background-color: transparent;
   position: absolute;
   padding: 0 10px;
   right: 50%;
- 
-
 `;
 
-export const ArrowRight = styled.button `
+export const ArrowRight = styled.button`
   border: none;
-  background-color: transparent;   
+  background-color: transparent;
   position: absolute;
   padding: 0 10px;
   top: 100%;
   left: 50%;
 `;
 
-export const ColorContainer = styled.div `
-   
+export const ColorContainer = styled.div`
   @media (min-width: 1440px) {
-            
     padding: 0 12px;
-    
   }
- 
 `;
 
-export const MainContainerSlider = styled.div `
-    margin-left: auto;
-    margin-right: auto;
- 
-    width: 335px;
-    height: 100%;
-    position: relative;
+export const MainContainerSlider = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+
+  width: 335px;
+  height: 100%;
+  position: relative;
 
   @media (min-width: 768px) {
     width: 580px;
-   
   }
   @media (min-width: 1440px) {
-    width: 1208px;  
-    
+    width: 1208px;
   }
- 
 `;
 
-export const SliderContainer = styled.div `
+export const SliderContainer = styled.div`
   width: 335px;
   height: 234px;
   border: 1px solid rgba(17, 17, 17, 0.1);
@@ -188,32 +301,27 @@ export const SliderContainer = styled.div `
 
   @media (min-width: 768px) {
     width: 580px;
-    height: 190px;   
-       
-  } 
+    height: 190px;
+  }
 `;
 
-export const ContainerTitle = styled.div `
-    display: flex;
-    column-gap: 18px;
-    
+export const ContainerTitle = styled.div`
+  display: flex;
+  column-gap: 18px;
 `;
 
-export const ImgContainer = styled.div `
-    width: 50px;
-    
+export const ImgContainer = styled.div`
+  width: 50px;
 `;
 
-export const Avatar = styled.img `
-    border-radius: 50%;
-    max-width: 50px;
-    height: 50px; 
-    object-fit: cover;
-    
+export const Avatar = styled.img`
+  border-radius: 50%;
+  max-width: 50px;
+  height: 50px;
+  object-fit: cover;
 `;
 
-export const Comment = styled.p `
-  
+export const Comment = styled.p`
   font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
@@ -221,26 +329,22 @@ export const Comment = styled.p `
   line-height: 1.3;
   /* or 129% */
 
-  color: rgba(17, 17, 17, 0.7); 
+  color: ${props => props.theme.reviewsText};
   margin-top: 24px;
 
   @media (min-width: 768px) {
     margin-left: 68px;
-   
   }
 `;
 
-export const Name = styled.h3 `
-  
+export const Name = styled.h3`
   font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
-  line-height: 18px;
-  /* identical to box height, or 100% */
+  line-height: 1;
 
   margin-bottom: 13px;
 
-  color: #343434; 
-
+  color: ${props => props.theme.homepageTitle};
 `;
