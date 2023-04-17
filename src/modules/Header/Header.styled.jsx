@@ -20,4 +20,5 @@ display: none;
     font-weight: 700;
     font-size: 32px;
     text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07), 0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
+  }
 `;

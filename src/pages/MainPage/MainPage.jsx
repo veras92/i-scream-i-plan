@@ -224,8 +224,8 @@ export default function MainPage() {
           <MainContainerSlider>
             <Slider {...settings}>
               {reviews.map(review => (
-                <ColorContainer>
-                  <SliderContainer key={review.id}>
+                <ColorContainer key={review.id}>
+                  <SliderContainer>
                     <ContainerTitle>
                       <ImgContainer>
                         <Avatar src={review.photo} alt={review.name} />

@@ -2,11 +2,33 @@
 // 2. Компонент відображає ім'я користувача та його зображення/аватар.
 // 3. Якщо зображення відсутнє на його місці повинна відображатись перша буква імені в верхньому регістрі"
 import { Wrapper, UserName, UserPicture } from './UserInfo.styled';
+import { useAuth } from 'hooks/useAuth';
+
+
 export const UserInfo = () => {
+  function getInitials(name) {
+    const initials = name
+      .split(' ')
+      .map((word) => word.charAt(0))
+      .join('')
+      .toUpperCase();
+  
+    return initials;
+  }
+    
+  const {name, userImgUrl} = useAuth();
+  
+  const displayName = userImgUrl ? (
+    <img src={userImgUrl} alt="UserPicture" />
+  ) : (
+    <p className="initials">{getInitials(name)}</p>
+  );
   return (
     <Wrapper>
-      <UserName>Name</UserName>
-      <UserPicture href="#" alt="userPicture" />
+      <UserName>{name}</UserName>
+      <UserPicture>
+      {displayName}
+      </UserPicture> 
     </Wrapper>
   );
 };

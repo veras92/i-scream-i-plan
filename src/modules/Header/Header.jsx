@@ -8,11 +8,24 @@
 import { ThemeToggler } from './components/ThemeToggler/ThemeToggler';
 import { UserInfo } from './components/UserInfo/UserInfo';
 import { Wrapper, Info, SectionTitle } from './Header.styled';
+import { useLocation } from 'react-router-dom';
+
 export const Header = () => {
+  const location = useLocation();
+  const currentPath = location.pathname;
+
+  let title = '';
+  if (currentPath.startsWith('/account')) {
+    title = 'User Profile';
+  } else if (currentPath.startsWith ('/calendar/')) {
+    title = 'Calendar';
+  } else {
+    title = '';
+  }
   return (
     <>
       <Wrapper>
-        <SectionTitle>Use Profile/ Calendar</SectionTitle>
+        <SectionTitle>{title}</SectionTitle>
 
         <Info>
           <ThemeToggler />
