@@ -7,20 +7,53 @@
 import { useParams } from 'react-router-dom';
 import CalendarTable from './components/CalendarTable/CalendarTable';
 import MonthCalendarHead from './components/MonthCalendarHead/MonthCalendarHead';
-import { useSelector } from 'react-redux';
-import { selectTasks } from 'redux/tasks/selectors';
+// import { useSelector } from 'react-redux';
+// import { selectTasks } from 'redux/tasks/selectors';
 
 export function ChoosedMonth() {
   const { currentDate } = useParams();
 
-  const tasks = useSelector(selectTasks);
+  // const tasks = useSelector(selectTasks);
   //-----------------------example
+  const tasks = [
+    {
+      date: currentDate,
+      tasks: [
+        {
+          title: 'example',
+          date: currentDate,
+          priority: 'priority',
+        },
+        {
+          title: 'example2',
+          date: currentDate,
+          priority: 'priority',
+        },
+        {
+          title: 'example3',
+          date: currentDate,
+          priority: 'priority',
+        },
+      ],
+    },
+    {
+      date: '2023-04-25',
+      tasks: [
+        {
+          title: 'example',
+          date: currentDate,
+          priority: 'priority',
+        },
+      ],
+    },
+  ];
 
   return (
     <>
-      <div>ChoosedMonth</div>
-      <MonthCalendarHead />
-      <CalendarTable tasks={tasks} currentDate={currentDate} />
+      <div style={{ width: '1087px' }}>
+        <MonthCalendarHead />
+        <CalendarTable tasks={tasks} currentDate={currentDate} />
+      </div>
     </>
   );
 }
