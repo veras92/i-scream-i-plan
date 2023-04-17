@@ -12,10 +12,6 @@ import {
   ArrowLeft,
   ArrowRight,
   SliderContainer,
-  ColorContainer,
-  MainContainerSlider,
-  ContainerTitle,
-  ImgContainer,
   Avatar,
   Comment,
   Name,
@@ -37,7 +33,7 @@ function SamplePrevArrow(props) {
   const { onClick } = props;
   return (
     <ArrowRight onClick={onClick}>
-      <Svg width="61" height="50">
+      <Svg width="61" height="61">
         <use href={`${sprite}#icon-arrow-right`} />
       </Svg>
     </ArrowRight>
@@ -48,7 +44,7 @@ function SampleNextArrow(props) {
   const { onClick } = props;
   return (
     <ArrowLeft onClick={onClick}>
-      <Svg width="61" height="50">
+      <Svg width="61" height="61">
         <use href={`${sprite}#icon-arrow-left`} />
       </Svg>
     </ArrowLeft>
@@ -63,15 +59,6 @@ const settings = {
   slidesToScroll: 1,
   nextArrow: <SampleNextArrow />,
   prevArrow: <SamplePrevArrow />,
-  responsive: [
-    {
-      breakpoint: 1440, 
-      settings: {
-        slidesToShow: 1, 
-        slidesToScroll: 1, 
-      },
-    },
-  ],
 };
 
 export default function MainPage() {
@@ -145,8 +132,8 @@ export default function MainPage() {
       </main>
       <section>
         <h2>REVIEWS</h2>
-        <MainContainerSlider>
         <Slider {...settings}>
+<<<<<<< Updated upstream
           {reviews.map((review) => (
             <ColorContainer key={review.id}>
               <SliderContainer>                             
@@ -162,9 +149,23 @@ export default function MainPage() {
               <Comment>{review.text}</Comment>    
             </SliderContainer>
             </ColorContainer>
+=======
+          {reviews.map(review => (
+            <div key={review.id}>
+              <SliderContainer>
+                <div>
+                  <Avatar src={review.photo} alt={review.name} />
+                </div>
+                <div>
+                  <Name>{review.name}</Name>
+                  <Rating rating={review.rating} />
+                  <Comment>{review.text}</Comment>
+                </div>
+              </SliderContainer>
+            </div>
+>>>>>>> Stashed changes
           ))}
-        </Slider> 
-        </MainContainerSlider>
+        </Slider>
       </section>
     </>
   );

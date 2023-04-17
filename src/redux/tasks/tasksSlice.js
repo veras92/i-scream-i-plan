@@ -1,6 +1,5 @@
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { authApi } from 'redux/auth/authApi';
-import { reauthApi } from 'redux/auth/reauthApi';
 
 const tasksSlice = createSlice({
   name: 'tasks',
@@ -11,16 +10,9 @@ const tasksSlice = createSlice({
     },
   },
   extraReducers: builder => {
-    builder.addMatcher(
-      isAnyOf(
-        authApi.endpoints.logoutUser.matchFulfilled,
-        authApi.endpoints.logoutUser.matchRejected,
-        reauthApi.endpoints.refreshTokens.matchRejected
-      ),
-      state => {
-        state.items = null;
-      }
-    );
+    builder.addMatcher(authApi.endpoints.logoutUser.matchFulfilled, state => {
+      state.items = null;
+    });
   },
 });
 

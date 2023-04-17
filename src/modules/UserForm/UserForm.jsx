@@ -15,7 +15,7 @@ import { useUpdateUserInfoMutation } from 'redux/auth/authApi';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { userFormSchema } from './consts/userFormSchema';
-import { formatDate } from 'shared/utils/formatDate';
+// import { formatDate } from 'shared/utils/formatDate';
 import { userAvatarInput, userFormInputs } from './consts/userFormInputs';
 
 import { UserAvatarField } from './components/UserAvatarField/UserAvatarField';
@@ -23,66 +23,47 @@ import { FormFiled } from 'shared/components/FormFiled/FormField';
 import { DatePicker } from './components/DatePicker/DatePicker';
 
 import { Button } from 'shared/styles/components';
-import { parse } from 'date-fns';
-import { useState } from 'react';
-
-const today = new Date();
-
 export const UserForm = () => {
-  const { name, email, phone, skype, birthday, userImgUrl } = useAuth();
-  const [currentAvatarUrl, setCurrentAvatarUrl] = useState(userImgUrl);
-
-  const [update, { isLoading }] = useUpdateUserInfoMutation();
+  const { name, email, phone, skype } = useAuth();
+  const [update] = useUpdateUserInfoMutation();
 
   const {
     register: reg,
     control,
     handleSubmit,
-    formState: { errors, isDirty },
+
+    reset,
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(userFormSchema),
     defaultValues: {
       name,
       email,
-      phone: !phone ? '' : phone,
-      birthday: !birthday ? today : parse('2023-04-15', 'yyyy-MM-dd', today),
-      skype: !skype ? '' : skype,
-      userImgUrl: !userImgUrl ? '' : userImgUrl,
+      phone,
+      birthday: new Date(),
+      skype,
+      userImgUrl: '',
     },
   });
 
-  const onSubmit = async data => {
-    const preparedBirthday =
-      formatDate(data.birthday) === formatDate(today)
-        ? null
-        : formatDate(data.birthday);
-    const preparedUserImgUrl = data.userImgUrl === '' ? null : currentAvatarUrl;
-    const preparedPhone = data.phone === '' ? null : Number(data.phone);
-    const preparedSkype = data.skype === '' ? null : data.skype;
+  const onSubmit = data => {
+    // const prepareBirthday = formatDate(data.birthday);
     const preparedData = {
       ...data,
-      phone: preparedPhone,
-      skype: preparedSkype,
-      birthday: preparedBirthday,
-      userImgUrl: preparedUserImgUrl,
+      // birthday: prepareBirthday,
     };
-    try {
-      await update(preparedData).unwrap();
-    } catch (e) {
-      if (e.status === 413) {
-        alert('the image is too large');
-      }
-    }
+
+    update(preparedData).unwrap();
+
+    reset();
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} autoComplete="false">
       <UserAvatarField
         userName={name}
+        control={control}
         errors={errors}
-        register={reg}
-        currentAvatarUrl={currentAvatarUrl}
-        setCurrentAvatarUrl={setCurrentAvatarUrl}
         {...userAvatarInput}
       />
       <div>
@@ -106,8 +87,9 @@ export const UserForm = () => {
       </div>
       <Button
         type="submit"
+        disabled={true}
         function="save"
-        disabled={isLoading || (userImgUrl === currentAvatarUrl && !isDirty)}
+        // disabled={!isDirty}
       >
         Save changes
       </Button>
