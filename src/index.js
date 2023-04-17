@@ -7,13 +7,13 @@ import { persistor, store } from 'redux/store';
 import { CustomThemeProvider } from './shared/styles/CustomThemeProvider';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
-  <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <CustomThemeProvider>
-        <App />
-      </CustomThemeProvider>
-    </PersistGate>
-  </Provider>
-  // </React.StrictMode>
+  <React.StrictMode>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <CustomThemeProvider>
+          <App />
+        </CustomThemeProvider>
+      </PersistGate>
+    </Provider>
+  </React.StrictMode>
 );
