@@ -4,14 +4,16 @@
 //  - CalendarTable - таблиця з днями обраного місяця, відповідно до днів тижня.
 // 3. Модуль підписаний на колекцію задач з глобального стейту."
 
-import { useParams } from 'react-router-dom';
 import CalendarTable from './components/CalendarTable/CalendarTable';
 import MonthCalendarHead from './components/MonthCalendarHead/MonthCalendarHead';
+import { useSelector } from 'react-redux';
+import { selectDate } from 'redux/date/selectors';
 // import { useSelector } from 'react-redux';
 // import { selectTasks } from 'redux/tasks/selectors';
 
 export function ChoosedMonth() {
-  const { currentDate } = useParams();
+  // const { currentDate } = useParams();
+  const currentDate = useSelector(selectDate);
 
   // const tasks = useSelector(selectTasks);
   //-----------------------example

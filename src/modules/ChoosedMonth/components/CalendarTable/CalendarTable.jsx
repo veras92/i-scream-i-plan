@@ -24,12 +24,10 @@ export default function CalendarTable({ tasks, currentDate }) {
   const firstDayOfMonth = getDay(startMonth) - 1;
 
   const daysOfMonth = eachDayOfInterval({ start: startMonth, end: endMonth });
-  // const daysOfMonth = eachDayOfInterval({
-  //   start: startOfMonth(new Date(currentDate)),
-  //   end: endOfMonth(new Date(currentDate)),
-  // });
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const daysWithTasks = daysOfMonth.map(day => ({
     date: format(day, 'yyyy-MM-dd'),
     tasks: tasks.filter(task => task.date === format(day, 'yyyy-MM-dd')),
