@@ -3,7 +3,7 @@
 // 3. Комопонент рендерить:
 //  - Header - модуль що відображається на всіх сторінках авторизованого юзера. Показує загальну інформацію та допоміжний інтерфейс роботи з обліковим записом.
 //  - SideBar - модуль що відображається на всіх сторінках авторизованого юзера, на планшеті та мобілці знаходиться в бургер-меню. Показує навігацію між сторінками та кнопку виходу з облікового запису. "
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import { Header } from 'modules/Header/Header';
@@ -42,8 +42,12 @@ export default function MainLayout() {
   const [isVisible, setVisible] = useState(false);
   const toggleSidebar = () => setVisible(isVisible => !isVisible);
 
-  // const size = useWindowSize();
-  // console.log(size.width);
+  const size = useWindowSize();
+  console.log(size.width);
+
+  useEffect(() => {
+    setVisible(size.width > 1440 && true);
+  }, [size.width]);
 
   // size.width > 1440 ? setVisible(true) : setVisible(false);
   return (
