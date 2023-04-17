@@ -4,6 +4,7 @@ import { selectDate } from 'redux/date/selectors';
 
 const CalendarIndex = () => {
   const date = useSelector(selectDate);
+
   return <Navigate to={`month/${date}`} />;
 };
 

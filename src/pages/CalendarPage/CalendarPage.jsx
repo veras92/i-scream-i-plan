@@ -12,8 +12,6 @@
 import { CalendarToolbar } from 'modules/CalendarToolbar/CalendarToolbar';
 import { Suspense } from 'react';
 import { Helmet } from 'react-helmet';
-// import { ChoosedDay } from 'modules/ChoosedDay/ChoosedDay';
-// import { ChoosedMonth } from 'modules/ChoosedMonth/ChoosedMonth';
 import { Outlet } from 'react-router-dom';
 
 export default function CalendarPage() {
@@ -24,10 +22,6 @@ export default function CalendarPage() {
       </Helmet>
       CalendarPage
       <CalendarToolbar />
-      {/* ці компоненти виніс в app треба з'ясувати чи правильно це, але зараз працює */}
-      {/* <ChoosedMonth /> */}
-      {/* <ChoosedDay /> */}
-      {/* ================================================================= */}
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>

@@ -14,7 +14,9 @@ import {
 
 import PropTypes from 'prop-types';
 import { StyledDay, StyledListTasks, StyledTd } from './CalendarTable.styled';
-// import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { setDates } from 'redux/date/dateSlice';
 
 export default function CalendarTable({ tasks, currentDate }) {
   const startMonth = startOfMonth(new Date(currentDate));
@@ -22,11 +24,10 @@ export default function CalendarTable({ tasks, currentDate }) {
   const firstDayOfMonth = getDay(startMonth) - 1;
 
   const daysOfMonth = eachDayOfInterval({ start: startMonth, end: endMonth });
-  // const daysOfMonth = eachDayOfInterval({
-  //   start: startOfMonth(new Date(currentDate)),
-  //   end: endOfMonth(new Date(currentDate)),
-  // });
-  // const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const daysWithTasks = daysOfMonth.map(day => ({
     date: format(day, 'yyyy-MM-dd'),
     tasks: tasks.filter(task => task.date === format(day, 'yyyy-MM-dd')),
@@ -41,6 +42,10 @@ export default function CalendarTable({ tasks, currentDate }) {
 
     return day.startsWith('0') ? day.slice(1) : day;
   }
+  const handleClick = date => {
+    dispatch(setDates(date));
+    navigate(`/calendar/day/${date}`);
+  };
 
   const rows = [];
 
@@ -48,12 +53,7 @@ export default function CalendarTable({ tasks, currentDate }) {
 
   daysWithTasks.forEach((day, index) => {
     cells.push(
-      <StyledTd
-        key={day.date}
-        // onClick={() => {
-        //   navigate(`/calendar/day/2023-04-17`);
-        // }}
-      >
+      <StyledTd key={day.date} onClick={() => handleClick(day.date)}>
         {day.tasks.length > 0 &&
           day.tasks.map(({ tasks }, index) => {
             return (
