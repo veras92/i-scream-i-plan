@@ -29,7 +29,7 @@ export const DayCalendarHead = () => {
       {dates.map(date => (
         <li key={date}>
           <p>{format(date, 'eee')}</p>
-          <button onClick={() => handleClick(date)}>
+          <button type="button" onClick={() => handleClick(date)}>
             {format(date, 'dd')}
           </button>
         </li>

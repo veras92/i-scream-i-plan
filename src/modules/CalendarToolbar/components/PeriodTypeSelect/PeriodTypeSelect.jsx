@@ -6,25 +6,22 @@
 // 4. Компонент форматує період:
 //  - month - MARCH 2023
 //  - day - 6 MARCH 2023"
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import format from 'date-fns/format';
+import { selectDate } from 'redux/date/selectors';
 
 export const PeriodTypeSelect = ({ onChangeType }) => {
+  const date = useSelector(selectDate);
+
   return (
     <ul>
       <li>
-        <NavLink
-          to={`month/${format(Date.now(), 'yyyy-MM-dd')}`}
-          onClick={() => onChangeType('month')}
-        >
+        <NavLink to={`month/${date}`} onClick={() => onChangeType('month')}>
           Month
         </NavLink>
       </li>
       <li>
-        <NavLink
-          to={`day/${format(Date.now(), 'yyyy-MM-dd')}`}
-          onClick={() => onChangeType('day')}
-        >
+        <NavLink to={`day/${date}`} onClick={() => onChangeType('day')}>
           Day
         </NavLink>
       </li>

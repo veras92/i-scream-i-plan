@@ -19,21 +19,30 @@ export const PeriodPaginator = ({ type }) => {
   const onChangeDate = e => {
     if (e.target.name === 'addition') {
       if (type === 'day') {
-        dispatch(setDates(format(add(date, { days: 1 }), 'yyyy-MM-dd')));
-        navigate(`${type}/${format(date, 'yyyy-MM-dd')}`);
+        const newDate = add(date, { days: 1 });
+        const formattedNewDate = format(newDate, 'yyyy-MM-dd');
+        dispatch(setDates(formattedNewDate));
+        navigate(`${type}/${formattedNewDate}`);
         return;
       }
-      dispatch(setDates(format(add(date, { months: 1 }), 'yyyy-MM-dd')));
-      navigate(`${type}/${format(date, 'yyyy-MM-dd')}`);
+      const newDate = add(date, { months: 1 });
+      const formattedNewDate = format(newDate, 'yyyy-MM-dd');
+      dispatch(setDates(formattedNewDate));
+      navigate(`${type}/${formattedNewDate}`);
       return;
     }
     if (type === 'day') {
-      dispatch(setDates(format(sub(date, { days: 1 }), 'yyyy-MM-dd')));
-      navigate(`${type}/${format(date, 'yyyy-MM-dd')}`);
+      const newDate = sub(date, { days: 1 });
+      const formattedNewDate = format(newDate, 'yyyy-MM-dd');
+      dispatch(setDates(formattedNewDate));
+      navigate(`${type}/${formattedNewDate}`);
       return;
     }
-    dispatch(setDates(format(sub(date, { months: 1 }), 'yyyy-MM-dd')));
-    navigate(`${type}/${format(date, 'yyyy-MM-dd')}`);
+    const newDate = sub(date, { months: 1 });
+    const formattedNewDate = format(newDate, 'yyyy-MM-dd');
+    dispatch(setDates(formattedNewDate));
+    navigate(`${type}/${formattedNewDate}`);
+    return;
   };
 
   const currentDate = format(date, 'dd MMMM yyyy');

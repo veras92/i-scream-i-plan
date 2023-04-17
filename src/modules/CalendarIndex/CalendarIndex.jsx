@@ -1,8 +1,10 @@
+import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import format from 'date-fns/format';
+import { selectDate } from 'redux/date/selectors';
 
 const CalendarIndex = () => {
-  return <Navigate to={`month/${format(Date.now(), 'yyyy-MM-dd')}`} />;
+  const date = useSelector(selectDate);
+  return <Navigate to={`month/${date}`} />;
 };
 
 export default CalendarIndex;
