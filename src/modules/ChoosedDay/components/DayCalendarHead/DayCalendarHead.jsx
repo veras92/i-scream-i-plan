@@ -21,7 +21,7 @@ export const DayCalendarHead = () => {
 
   const handleClick = date => {
     dispatch(setDates(format(date, 'yyyy-MM-dd')));
-    navigate(navigate(`/calendar/day/${format(date, 'yyyy-MM-dd')}`));
+    navigate(`/calendar/day/${format(date, 'yyyy-MM-dd')}`);
   };
 
   return (

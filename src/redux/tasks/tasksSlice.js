@@ -4,10 +4,10 @@ import { reauthApi } from 'redux/auth/reauthApi';
 
 const tasksSlice = createSlice({
   name: 'tasks',
-  initialState: { items: null },
+  initialState: [],
   reducers: {
-    setTasks: (state, { payload }) => {
-      state.items = payload;
+    setTasks: (_, { payload }) => {
+      return payload;
     },
   },
   extraReducers: builder => {
@@ -18,7 +18,7 @@ const tasksSlice = createSlice({
         reauthApi.endpoints.refreshTokens.matchRejected
       ),
       state => {
-        state.items = null;
+        state.length = 0;
       }
     );
   },

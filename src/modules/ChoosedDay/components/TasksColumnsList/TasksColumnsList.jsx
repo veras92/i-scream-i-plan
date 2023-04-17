@@ -10,8 +10,6 @@ export const TasksColumnsList = () => {
   const inProgress = [];
   const done = [];
 
-  console.log('tasks', tasks);
-
   tasks.forEach(task => {
     task.tasks.forEach(task => {
       if (task.category === 'to-do') {
