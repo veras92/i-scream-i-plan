@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const UserName = styled.p`
+export const UserName = styled.span`
   font-size: 14px;
   font-weight: 700;
   line-height: 1.3;
@@ -13,10 +13,9 @@ export const UserName = styled.p`
   color: ${props => props.theme.text};
 `;
 
-export const UserPicture = styled.div`
+export const UserPicture = styled.img`
   width: 32px;
   height: 32px;
-  overflow: hidden;
 
   border: 1.8px solid ${props => props.theme.componentAccent};
   border-radius: 50%;
@@ -31,4 +30,3 @@ export const Wrapper = styled.div`
   align-items: center;
   display: flex;
 `;
-

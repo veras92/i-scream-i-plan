@@ -16,6 +16,7 @@ import { tasksReducer } from './tasks/tasksSlice';
 import { dateReducer } from './date/dateSlice';
 import { authApi } from './auth/authApi';
 import { tasksApi } from './tasks/tasksApi';
+import { reauthApi } from './auth/reauthApi';
 
 const authPersistConfig = {
   key: 'auth',
@@ -30,6 +31,7 @@ const themePersistConfig = {
 
 export const store = configureStore({
   reducer: {
+    [reauthApi.reducerPath]: reauthApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
     [tasksApi.reducerPath]: tasksApi.reducer,
     auth: persistReducer(authPersistConfig, authReducer),
@@ -43,6 +45,7 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
+    reauthApi.middleware,
     authApi.middleware,
     tasksApi.middleware,
   ],

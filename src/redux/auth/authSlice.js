@@ -1,19 +1,15 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { authApi } from './authApi';
-<<<<<<< Updated upstream
 import { reauthApi } from './reauthApi';
-import { createSelector } from 'reselect';
-=======
->>>>>>> Stashed changes
 
 const initialState = {
   user: {
-    name: '',
-    email: '',
-    phone: '',
-    birthday: '',
-    skype: '',
-    userImgUrl: '',
+    name: null,
+    email: null,
+    phone: null,
+    birthday: null,
+    skype: null,
+    userImgUrl: null,
   },
   token: null,
   refreshToken: null,
@@ -24,36 +20,27 @@ const initialState = {
 const slice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {
-    setCredentialsOnUpdate: (
-      state,
-      { payload: { name, email, phone, birthday, skype, userImgUrl } }
-    ) => {
-      state.user.name = name;
-      state.user.email = email;
-      state.user.phone = phone;
-      state.user.birthday = birthday;
-      state.user.skype = skype;
-      state.user.userImgUrl = userImgUrl;
-    },
-    setCredentialsOnRefresh: (state, { payload: { data } }) => {
-      state.token = data.accessToken;
-      state.refreshToken = data.refreshToken;
-      state.isLoggedIn = true;
-    },
-    setIsRefreshing: (state, { payload }) => {
-      state.isRefreshing = payload;
-    },
-    cleanAuthState: cleanState,
-  },
+  reducers: {},
   extraReducers: builder => {
     builder
-      .addMatcher(authApi.endpoints.getCurrentUserInfo.matchPending, state => {
-        state.isRefreshing = true;
-      })
-      .addMatcher(authApi.endpoints.getCurrentUserInfo.matchRejected, state => {
-        state.isRefreshing = false;
-      })
+      .addMatcher(
+        isAnyOf(
+          authApi.endpoints.getCurrentUserInfo.matchPending,
+          reauthApi.endpoints.refreshTokens.matchPending
+        ),
+        state => {
+          state.isRefreshing = true;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          authApi.endpoints.getCurrentUserInfo.matchRejected,
+          reauthApi.endpoints.refreshTokens.matchRejected
+        ),
+        state => {
+          state.isRefreshing = false;
+        }
+      )
       .addMatcher(
         authApi.endpoints.getCurrentUserInfo.matchFulfilled,
         (
@@ -68,6 +55,14 @@ const slice = createSlice({
           state.user.userImgUrl = userImgUrl;
           state.isLoggedIn = true;
           state.isRefreshing = false;
+        }
+      )
+      .addMatcher(
+        reauthApi.endpoints.refreshTokens.matchFulfilled,
+        (state, { payload: { data } }) => {
+          state.token = data.accessToken;
+          state.refreshToken = data.refreshToken;
+          state.isLoggedIn = true;
         }
       )
       .addMatcher(
@@ -86,13 +81,6 @@ const slice = createSlice({
       )
       .addMatcher(
         isAnyOf(
-          authApi.endpoints.logoutUser.matchFulfilled,
-          authApi.endpoints.logoutUser.matchRejected
-        ),
-        cleanState
-      )
-      .addMatcher(
-        isAnyOf(
           authApi.endpoints.loginUser.matchFulfilled,
           authApi.endpoints.registerUser.matchFulfilled
         ),
@@ -103,29 +91,26 @@ const slice = createSlice({
           state.refreshToken = data.refreshToken;
           state.isLoggedIn = true;
         }
+      )
+      .addMatcher(
+        isAnyOf(
+          authApi.endpoints.logoutUser.matchFulfilled,
+          authApi.endpoints.logoutUser.matchRejected,
+          reauthApi.endpoints.refreshTokens.matchRejected
+        ),
+        state => {
+          state.user.name = '';
+          state.user.email = '';
+          state.user.phone = '';
+          state.user.birthday = '';
+          state.user.skype = '';
+          state.user.userImgUrl = '';
+          state.isLoggedIn = false;
+          state.token = null;
+          state.refreshToken = null;
+        }
       );
   },
 });
 
-export const { setCredentialsOnRefresh, setIsRefreshing, cleanAuthState } =
-  slice.actions;
-
 export const authReducer = slice.reducer;
-
-<<<<<<< Updated upstream
-const selectUser = state => state.auth.user;
-export const selectUserName = createSelector(selectUser, user => user.name);
-export const selectUserAvatar = createSelector(selectUser, user => user.userImgUrl);
-=======
-function cleanState(state) {
-  state.user.name = '';
-  state.user.email = '';
-  state.user.phone = '';
-  state.user.birthday = '';
-  state.user.skype = '';
-  state.user.userImgUrl = '';
-  state.isLoggedIn = false;
-  state.token = null;
-  state.refreshToken = null;
-}
->>>>>>> Stashed changes
