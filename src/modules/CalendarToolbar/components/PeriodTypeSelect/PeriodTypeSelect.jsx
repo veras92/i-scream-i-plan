@@ -14,7 +14,7 @@ export const PeriodTypeSelect = ({ onChangeType }) => {
     <ul>
       <li>
         <NavLink
-          to={`month/${format(Date.now(), 'dd-MM-yyyy')}`}
+          to={`month/${format(Date.now(), 'yyyy-MM-dd')}`}
           onClick={() => onChangeType('month')}
         >
           Month
@@ -22,7 +22,7 @@ export const PeriodTypeSelect = ({ onChangeType }) => {
       </li>
       <li>
         <NavLink
-          to={`day/${format(Date.now(), 'dd-MM-yyyy')}`}
+          to={`day/${format(Date.now(), 'yyyy-MM-dd')}`}
           onClick={() => onChangeType('day')}
         >
           Day

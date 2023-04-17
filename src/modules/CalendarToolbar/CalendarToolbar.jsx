@@ -7,19 +7,20 @@
 // Помилка - виводиться відповідне пуш повідомлення."
 
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router';
-import format from 'date-fns/format';
-import add from 'date-fns/add';
-import sub from 'date-fns/sub';
+import { useDispatch, useSelector } from 'react-redux';
+import { format, parse } from 'date-fns';
 import { useGetTasksByMonthQuery } from 'redux/tasks/tasksApi';
 import { setTasks } from 'redux/tasks/tasksSlice';
+import { selectDate } from 'redux/date/selectors';
 import { PeriodPaginator } from './components/PeriodPaginator/PeriodPaginator';
 import { PeriodTypeSelect } from './components/PeriodTypeSelect/PeriodTypeSelect';
 
 export const CalendarToolbar = () => {
   const [type, setType] = useState('month');
-  const [date, setDate] = useState(() => Date.now());
+
+  const normalizedDate = useSelector(selectDate);
+
+  const date = parse(normalizedDate, 'yyyy-MM-dd', Date.now());
 
   const dispatch = useDispatch();
 
@@ -32,31 +33,9 @@ export const CalendarToolbar = () => {
     dispatch(setTasks(data));
   }, [dispatch, data]);
 
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    navigate(`${type}/${format(date, 'yyyy-MM-dd')}`);
-  }, [type, date, navigate]);
-
-  const onChangeDate = operation => {
-    if (operation === 'addition') {
-      if (type === 'day') {
-        setDate(add(date, { days: 1 }));
-        return;
-      }
-      setDate(add(date, { months: 1 }));
-      return;
-    }
-    if (type === 'day') {
-      setDate(sub(date, { days: 1 }));
-      return;
-    }
-    setDate(sub(date, { months: 1 }));
-  };
-
   return (
     <>
-      <PeriodPaginator date={date} type={type} onChange={onChangeDate} />
+      <PeriodPaginator type={type} />
       <PeriodTypeSelect onChangeType={setType} />
     </>
   );
