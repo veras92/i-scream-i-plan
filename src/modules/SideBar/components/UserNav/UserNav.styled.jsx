@@ -20,7 +20,8 @@ export const StyledLink = styled(NavLink)`
     background-color: ${props => props.theme.bcgFocus};
 
     & > svg {
-      fill: ${props => props.theme.activeText};
+      fill: transparent;
+      stroke: ${props => props.theme.activeText};
     }
   }
 
@@ -31,7 +32,9 @@ export const StyledLink = styled(NavLink)`
 `;
 
 export const NavIcon = styled.svg`
-  fill: ${props => props.theme.text};
+  fill: transparent;
+  stroke: ${props => props.theme.text};
+
   width: 20px;
   height: 20px;
   margin-right: 10px;
