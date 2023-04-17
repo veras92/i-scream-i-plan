@@ -5,9 +5,9 @@ export const Form = styled.form`
   flex-direction: column;
   align-items: center;
   border-radius: 16px;
+  background-color: ${props => props.theme.bcgTernary};
 
   // ----------------
-  outline: 1px solid #000;
   margin: 20px;
   // -----------------
 

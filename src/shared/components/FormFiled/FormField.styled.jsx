@@ -11,13 +11,13 @@ export const Label = styled.label`
   font-size: 12px;
   line-height: 15px;
 
-  color: #111111;
+  color: ${props => props.theme.textSecondary};
 `;
 
 export const Input = styled.input`
-  background: #FFFFFF;
+  background-color: ${props => props.theme.bcgTernary};
   outline: none;
-  border: 1px solid rgba(220, 227, 229, 0.6);
+  border: 1px solid ${props => props.theme.disabled};
   border-radius: 8px;
 
   padding: 0.875rem;
@@ -31,7 +31,6 @@ export const Input = styled.input`
     font-size: 16px;
     line-height: 18px;
 
-    color: #DCE3E5;
+    color: ${props => props.theme.text};
   }
 `;
-
