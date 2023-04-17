@@ -14,7 +14,7 @@ import {
 
 import PropTypes from 'prop-types';
 import { StyledDay, StyledListTasks, StyledTd } from './CalendarTable.styled';
-import { useNavigate } from 'react-router';
+// import { useNavigate } from 'react-router';
 
 export default function CalendarTable({ tasks, currentDate }) {
   const startMonth = startOfMonth(new Date(currentDate));
@@ -26,7 +26,7 @@ export default function CalendarTable({ tasks, currentDate }) {
   //   start: startOfMonth(new Date(currentDate)),
   //   end: endOfMonth(new Date(currentDate)),
   // });
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const daysWithTasks = daysOfMonth.map(day => ({
     date: format(day, 'yyyy-MM-dd'),
     tasks: tasks.filter(task => task.date === format(day, 'yyyy-MM-dd')),
