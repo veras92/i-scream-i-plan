@@ -3,21 +3,39 @@
 // 3. Комопонент рендерить:
 //  - Header - модуль що відображається на всіх сторінках авторизованого юзера. Показує загальну інформацію та допоміжний інтерфейс роботи з обліковим записом.
 //  - SideBar - модуль що відображається на всіх сторінках авторизованого юзера, на планшеті та мобілці знаходиться в бургер-меню. Показує навігацію між сторінками та кнопку виходу з облікового запису. "
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import { Header } from 'modules/Header/Header';
 import { SideBar } from 'modules/SideBar/SideBar';
 import { Outlet } from 'react-router-dom';
 import { MainWrapper } from 'shared/styles/components';
+import { Wrapper } from './MainLayout.styled';
 
 export default function MainLayout() {
+  const [isVisible, setVisible] = useState(false);
+  const toggleSidebar = () => setVisible(isVisible => !isVisible);
+
   return (
-    <MainWrapper>
-      <div>
-        MainLayout
-        <Header />
-      </div>
-      <SideBar />
-      <Outlet />
-    </MainWrapper>
+    <>
+      <Wrapper>
+        <AnimatePresence>
+          {isVisible && (
+            <motion.div
+              initial={{ y: 10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -10, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <SideBar onToggle={toggleSidebar} />
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <MainWrapper>
+          <Header onToggle={toggleSidebar} />
+          <Outlet />
+        </MainWrapper>
+      </Wrapper>
+    </>
   );
 }

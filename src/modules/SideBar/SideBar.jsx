@@ -16,13 +16,17 @@ import {
   SidebarSubTitle,
 } from './SideBar.styled';
 
-export const SideBar = () => {
+export const SideBar = ({ onToggle }) => {
   return (
     <SidebarWrapper>
       <SidebarHeader>
         <GooseImg src={goose} alt="goose" />
         <LogoTitle>Goose Track</LogoTitle>
-        <CloseIcon>
+        <CloseIcon
+          onClick={() => {
+            onToggle();
+          }}
+        >
           <use href={`${sprite}#icon-x-close`} />
         </CloseIcon>
       </SidebarHeader>
