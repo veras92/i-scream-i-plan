@@ -35,6 +35,13 @@ export const reviews = [
   },
   {
     id: 5,
+    name: "Nicki Colt",
+    photo: "https://cs11.pikabu.ru/post_img/2019/01/10/6/1547110253183648811.jpg",
+    rating: 3,
+    text: "I love using GooseTrack to manage my work and personal tasks. The sidebar is a lifesaver and the calendar feature is especially useful for staying on top of deadlines. I don't know how I managed without it!",
+  },
+  {
+    id: 6,
     name: "Mike Proper",
     photo: "https://photoschool.ua/images/bagallery/original/low-key--4-.jpg",
     rating: 5,

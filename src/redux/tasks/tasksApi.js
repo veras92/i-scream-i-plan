@@ -24,14 +24,14 @@ export const tasksApi = createApi({
         method: 'POST',
         body: task,
       }),
-      invalidatesTags: ['Tasks'],
+      providesTags: ['Tasks'],
     }),
     deleteTask: builder.mutation({
       query: id => ({
         url: `task/${id}`,
         method: 'DELETE',
       }),
-      invalidatesTags: ['Tasks'],
+      providesTags: ['Tasks'],
     }),
     changeTask: builder.mutation({
       query: (id, task) => ({
@@ -39,7 +39,7 @@ export const tasksApi = createApi({
         method: 'PUT',
         body: task,
       }),
-      invalidatesTags: ['Tasks'],
+      providesTags: ['Tasks'],
     }),
   }),
 });
