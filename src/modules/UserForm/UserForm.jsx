@@ -25,6 +25,7 @@ import { DatePicker } from './components/DatePicker/DatePicker';
 import { Button } from 'shared/styles/components';
 import { parse } from 'date-fns';
 import { useState } from 'react';
+import { Form, FormBody } from './UserForm.styled'
 
 const today = new Date();
 
@@ -76,7 +77,7 @@ export const UserForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} autoComplete="false">
+    <Form onSubmit={handleSubmit(onSubmit)} autoComplete="false">
       <UserAvatarField
         userName={name}
         errors={errors}
@@ -85,7 +86,7 @@ export const UserForm = () => {
         setCurrentAvatarUrl={setCurrentAvatarUrl}
         {...userAvatarInput}
       />
-      <div>
+      <FormBody>
         {userFormInputs.map(input =>
           input.type !== 'date' ? (
             <FormFiled
@@ -103,7 +104,7 @@ export const UserForm = () => {
             />
           )
         )}
-      </div>
+      </FormBody>
       <Button
         type="submit"
         function="save"
@@ -111,7 +112,7 @@ export const UserForm = () => {
       >
         Save changes
       </Button>
-    </form>
+    </Form>
   );
 };
 

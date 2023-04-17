@@ -12,8 +12,9 @@ export const DatePicker = ({
   errors,
 }) => {
   return (
-    <>
+    <div>
       <Label htmlFor={id}>{label}</Label>
+
       <Controller
         control={control}
         name={inputName}
@@ -30,6 +31,6 @@ export const DatePicker = ({
         )}
       />
       <ErrorMessage errors={errors} name={inputName} />
-    </>
+    </div>
   );
 };
