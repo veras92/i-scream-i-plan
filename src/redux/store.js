@@ -13,6 +13,7 @@ import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/authSlice';
 import { themeReducer } from './theme/themeSlice';
 import { tasksReducer } from './tasks/tasksSlice';
+import { dateReducer } from './date/dateSlice';
 import { authApi } from './auth/authApi';
 import { tasksApi } from './tasks/tasksApi';
 import { reauthApi } from './auth/reauthApi';
@@ -35,6 +36,7 @@ export const store = configureStore({
     [tasksApi.reducerPath]: tasksApi.reducer,
     auth: persistReducer(authPersistConfig, authReducer),
     theme: persistReducer(themePersistConfig, themeReducer),
+    date: dateReducer,
     tasks: tasksReducer,
   },
   middleware: getDefaultMiddleware => [
