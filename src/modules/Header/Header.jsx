@@ -7,17 +7,18 @@
 
 import { ThemeToggler } from './components/ThemeToggler/ThemeToggler';
 import { UserInfo } from './components/UserInfo/UserInfo';
-import { Wrapper, Info, SectionTitle } from './Header.styled';
+import { Wrapper, Info, SectionTitle, Toggler } from './Header.styled';
 import { useLocation } from 'react-router-dom';
+import sprite from 'shared/icons/sprite.svg';
 
-export const Header = () => {
+export const Header = ({ onToggle }) => {
   const location = useLocation();
   const currentPath = location.pathname;
 
   let title = '';
   if (currentPath.startsWith('/account')) {
     title = 'User Profile';
-  } else if (currentPath.startsWith ('/calendar/')) {
+  } else if (currentPath.startsWith('/calendar/')) {
     title = 'Calendar';
   } else {
     title = '';
@@ -26,7 +27,13 @@ export const Header = () => {
     <>
       <Wrapper>
         <SectionTitle>{title}</SectionTitle>
-
+        <Toggler
+          onClick={() => {
+            onToggle();
+          }}
+        >
+          <use href={`${sprite}#icon-menu`} />
+        </Toggler>
         <Info>
           <ThemeToggler />
           <UserInfo />

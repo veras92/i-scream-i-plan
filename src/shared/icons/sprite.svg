@@ -95,5 +95,11 @@
     <symbol id="icon-x-close" viewBox="0 0 32 32">
       <path d="M23.733 10.304 22.229 8.8l-5.963 5.963L10.303 8.8l-1.504 1.504 5.963 5.963-5.963 5.963 1.504 1.504 5.963-5.963 5.963 5.963 1.504-1.504-5.963-5.963 5.963-5.963z"/>
     </symbol>
+    <symbol id="icon-menu" viewBox="0 0 32 32">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.3529" d="M4 16h24"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.3529" d="M4 8h24"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.3529" d="M4 24h24"></path>
+</symbol>
+
   </defs>
 </svg>
