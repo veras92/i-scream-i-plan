@@ -11,7 +11,6 @@ import { TasksColumnsList } from './components/TasksColumnsList/TasksColumnsList
 export const ChoosedDay = () => {
   return (
     <>
-      <div>ChoosedDay</div>
       <DayCalendarHead />
       <TasksColumnsList />
     </>

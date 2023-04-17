@@ -7,11 +7,22 @@
 // - видалення картки - виконує запит на бек, який видаляє завдання.
 // Успіх - завдання видаляється зі списку на сторінці, юзеру показується пушповідомлення про видалення
 // Помилка - юзеру показується відповідне пушповідомлення"
+import { useDeleteTaskMutation } from 'redux/tasks/tasksApi';
 
-export const TaskToolbar = () => {
+export const TaskToolbar = ({ task }) => {
+  const [deleteTask] = useDeleteTaskMutation();
+
+  const handleClick = async () => {
+    await deleteTask(task._id);
+  };
+
   return (
     <>
-      <div>TaskToolbar</div>
+      <button type="button">Move</button>
+      <button type="button">Edit</button>
+      <button type="button" onClick={handleClick}>
+        Delete
+      </button>
     </>
   );
 };

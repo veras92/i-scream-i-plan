@@ -1,11 +1,48 @@
 // "1. Компонент рендерить блок навігації для переадресацї юзера на таблицю з задачами відповідно до обраного типу періоду day | month.
 // 2. Кнопка що вказує поточний тип обраного періоду має активні стилі, як показано на макеті."
-import { format } from 'date-fns';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { format, parse, add, sub } from 'date-fns';
+import { setDates } from 'redux/date/dateSlice';
+import { selectDate } from 'redux/date/selectors';
 import sprite from 'shared/icons/sprite.svg';
 
-export const PeriodPaginator = ({ date, type, onChange }) => {
-  const handleClick = e => {
-    onChange(e.currentTarget.name);
+export const PeriodPaginator = ({ type }) => {
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  const normalizedDate = useSelector(selectDate);
+
+  const date = parse(normalizedDate, 'yyyy-MM-dd', Date.now());
+
+  const onChangeDate = e => {
+    if (e.target.name === 'addition') {
+      if (type === 'day') {
+        const newDate = add(date, { days: 1 });
+        const formattedNewDate = format(newDate, 'yyyy-MM-dd');
+        dispatch(setDates(formattedNewDate));
+        navigate(`${type}/${formattedNewDate}`);
+        return;
+      }
+      const newDate = add(date, { months: 1 });
+      const formattedNewDate = format(newDate, 'yyyy-MM-dd');
+      dispatch(setDates(formattedNewDate));
+      navigate(`${type}/${formattedNewDate}`);
+      return;
+    }
+    if (type === 'day') {
+      const newDate = sub(date, { days: 1 });
+      const formattedNewDate = format(newDate, 'yyyy-MM-dd');
+      dispatch(setDates(formattedNewDate));
+      navigate(`${type}/${formattedNewDate}`);
+      return;
+    }
+    const newDate = sub(date, { months: 1 });
+    const formattedNewDate = format(newDate, 'yyyy-MM-dd');
+    dispatch(setDates(formattedNewDate));
+    navigate(`${type}/${formattedNewDate}`);
+    return;
   };
 
   const currentDate = format(date, 'dd MMMM yyyy');
@@ -21,14 +58,14 @@ export const PeriodPaginator = ({ date, type, onChange }) => {
           <button
             type="button"
             name="subtraction"
-            onClick={handleClick}
+            onClick={onChangeDate}
             disabled={shouldDisable}
           >
             <svg>
               <use href={`${sprite}#icon-smoll-arrow-left`} />
             </svg>
           </button>
-          <button type="button" name="addition" onClick={handleClick}>
+          <button type="button" name="addition" onClick={onChangeDate}>
             <svg>
               <use href={`${sprite}#icon-smoll-arrow-right`} />
             </svg>

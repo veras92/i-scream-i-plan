@@ -3,5 +3,5 @@
 // 3. Клік по кнопці відкриває модалку TaskModal для створення нового завдання в поточній колонці"
 
 export const AddTaskBtn = () => {
-  return <div>AddTaskBtn</div>;
+  return <button type="button">Add Task</button>;
 };

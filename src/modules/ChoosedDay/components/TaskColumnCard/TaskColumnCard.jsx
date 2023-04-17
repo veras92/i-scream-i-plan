@@ -10,11 +10,12 @@
 import { TaskModal } from 'shared/components/TaskModal/TaskModal';
 import { TaskToolbar } from '../TaskToolbar/TaskToolbar';
 
-export const TaskColumnCard = () => {
+export const TaskColumnCard = ({ task }) => {
   return (
     <>
-      <div>TaskColumnCard</div>;
-      <TaskToolbar />
+      <h3>{task.title}</h3>
+      <p>{task.priority}</p>
+      <TaskToolbar task={task} />
       <TaskModal />
     </>
   );
