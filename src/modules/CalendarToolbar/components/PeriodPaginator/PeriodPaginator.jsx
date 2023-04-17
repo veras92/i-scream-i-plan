@@ -17,7 +17,7 @@ export const PeriodPaginator = ({ type }) => {
   const date = parse(normalizedDate, 'yyyy-MM-dd', Date.now());
 
   const onChangeDate = e => {
-    if (e.target.name === 'addition') {
+    if (e.currentTarget.name === 'addition') {
       if (type === 'day') {
         const newDate = add(date, { days: 1 });
         const formattedNewDate = format(newDate, 'yyyy-MM-dd');
