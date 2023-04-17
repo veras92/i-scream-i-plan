@@ -2,8 +2,8 @@
 // 2. Компонент відображає ім'я користувача та його зображення/аватар.
 // 3. Якщо зображення відсутнє на його місці повинна відображатись перша буква імені в верхньому регістрі"
 import { Wrapper, UserName, UserPicture } from './UserInfo.styled';
-import { useSelector } from 'react-redux';
-import { selectUserName, selectUserAvatar } from '../../../../redux/auth/authSlice';
+import { useAuth } from 'hooks/useAuth';
+
 
 export const UserInfo = () => {
   function getInitials(name) {
@@ -15,12 +15,11 @@ export const UserInfo = () => {
   
     return initials;
   }
+    
+  const {name, userImgUrl} = useAuth();
   
-  const imageUrl = useSelector(selectUserAvatar);; 
-  const name = useSelector(selectUserName);
-  
-  const displayName = imageUrl ? (
-    <img src={imageUrl} alt={name} />
+  const displayName = userImgUrl ? (
+    <img src={userImgUrl} alt="UserPicture" />
   ) : (
     <p className="initials">{getInitials(name)}</p>
   );

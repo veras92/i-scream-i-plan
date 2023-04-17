@@ -1,7 +1,6 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { authApi } from './authApi';
 import { reauthApi } from './reauthApi';
-import { createSelector } from 'reselect';
 
 const initialState = {
   user: {
@@ -115,8 +114,3 @@ const slice = createSlice({
 });
 
 export const authReducer = slice.reducer;
-
-const selectUser = state => state.auth.user;
-export const selectUserName = createSelector(selectUser, user => user.name);
-export const selectUserAvatar = createSelector(selectUser, user => user.userImgUrl);
-
