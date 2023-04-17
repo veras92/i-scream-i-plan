@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux';
 import { selectUserName, selectUserAvatar } from '../../../../redux/auth/authSlice';
 
 
-
 export const UserInfo = () => {
  
   function getInitials(name) {
@@ -28,8 +27,7 @@ export const UserInfo = () => {
   ) : (
     <p className="initials">{getInitials(name)}</p>
   );
-  
- 
+   
   return (
     <Wrapper>
       <UserName>{name}</UserName>
