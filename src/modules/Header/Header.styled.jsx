@@ -13,7 +13,7 @@ export const Info = styled.div`
 
 export const SectionTitle = styled.h1`
 display: none;
-
+color: ${props => props.theme.text};
   @media (min-width: 1440px) {
         display: block;
 

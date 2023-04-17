@@ -7,14 +7,17 @@
 import { Header } from 'modules/Header/Header';
 import { SideBar } from 'modules/SideBar/SideBar';
 import { Outlet } from 'react-router-dom';
+import { MainWrapper } from 'shared/styles/components';
 
 export default function MainLayout() {
   return (
-    <>
-      <div>MainLayout</div>
-      <Header />
+    <MainWrapper>
+      <div>
+        MainLayout
+        <Header />
+      </div>
       <SideBar />
       <Outlet />
-    </>
+    </MainWrapper>
   );
 }

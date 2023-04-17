@@ -1,6 +1,11 @@
 import { setFileUrl } from 'shared/utils/setFileUrl';
 import sprite from 'shared/icons/sprite.svg';
-import { HiddenInput, Label, Svg, UserAvatarWrapper } from './UserAvatarField.styled';
+import {
+  HiddenInput,
+  Label,
+  Svg,
+  UserAvatarWrapper,
+} from './UserAvatarField.styled';
 import { ErrorMessage } from '@hookform/error-message';
 
 export const UserAvatarField = ({
@@ -19,7 +24,7 @@ export const UserAvatarField = ({
         {!currentAvatarUrl ? (
           <p>
             <Svg>
-              <use href={sprite + '#icon-user-check-01'} />
+              <use href={`${sprite}#icon-user-check-01`} />
             </Svg>
           </p>
         ) : (

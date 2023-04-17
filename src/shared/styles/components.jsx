@@ -84,3 +84,15 @@ export const Button = styled.button`
           ],
         })};
 `;
+
+export const MainWrapper = styled.div`
+  background-color: ${props => props.theme.bcgSecondary};
+  ${media({
+    padding: [
+      '24px 20px 40px',
+      '24px 20px 40px',
+      '24px 32px 42px',
+      '40px 32px 32px',
+    ],
+  })};
+`;
