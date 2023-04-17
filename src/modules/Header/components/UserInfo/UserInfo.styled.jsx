@@ -13,10 +13,10 @@ export const UserName = styled.span`
   color: ${props => props.theme.text};
 `;
 
-export const UserPicture = styled.img`
+export const UserPicture = styled.div`
   width: 32px;
   height: 32px;
-
+  overflow: hidden;
   border: 1.8px solid ${props => props.theme.componentAccent};
   border-radius: 50%;
 

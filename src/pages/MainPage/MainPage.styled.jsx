@@ -218,6 +218,7 @@ export const StyledBlock = styled.li`
         margin-left: 0;
     }
   }
+  }
 `;
 
 export const InfoWrapper = styled.div`
