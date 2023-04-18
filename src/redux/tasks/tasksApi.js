@@ -34,11 +34,13 @@ export const tasksApi = createApi({
       invalidatesTags: ['Tasks'],
     }),
     changeTask: builder.mutation({
-      query: (id, task) => ({
-        url: `task/${id}`,
-        method: 'PUT',
-        body: task,
-      }),
+      query: ({ id, task }) => {
+        return {
+          url: `task/${id}`,
+          method: 'PUT',
+          body: task,
+        };
+      },
       invalidatesTags: ['Tasks'],
     }),
   }),

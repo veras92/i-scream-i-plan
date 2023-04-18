@@ -13,7 +13,7 @@ export const TasksColumn = ({ type, tasks }) => {
     <>
       <ColumnHeadBar type={type} />
       {tasks.length > 0 && <ColumnsTasksList tasks={tasks} />}
-      <AddTaskBtn />
+      <AddTaskBtn type={type} />
     </>
   );
 };
