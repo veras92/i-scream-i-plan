@@ -13,11 +13,11 @@ export const App = () => {
   const [refreshTokens] = useRefreshTokensMutation();
 
   useEffect(() => {
-    const refreshUserInfo = async (getUserInfo, refreshTokens) => {
+    const refreshUserInfo = (getUserInfo, refreshTokens) => {
       if (!accessToken) return;
-      getUserInfo().unwrap();
+      getUserInfo();
       if (error?.status === 401) {
-        refreshTokens().unwrap();
+        refreshTokens();
       }
     };
     refreshUserInfo(getUserInfo, refreshTokens);
