@@ -34,11 +34,9 @@ export function ChoosedMonth() {
   });
 
   return (
-    <>
-      <div style={{ width: '1087px' }}>
-        <MonthCalendarHead />
-        <CalendarTable tasks={filteredDates} currentDate={currentDate} />
-      </div>
-    </>
+    <div>
+      <MonthCalendarHead />
+      <CalendarTable tasks={filteredDates} currentDate={currentDate} />
+    </div>
   );
 }
