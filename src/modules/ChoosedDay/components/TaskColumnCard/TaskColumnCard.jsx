@@ -7,7 +7,6 @@
 //  - TaskToolbar - інетрфейс для роботи з карткою
 //  - TaskModal - модалка з формою для редагування завдання."
 
-import { TaskModal } from 'shared/components/TaskModal/TaskModal';
 import { TaskToolbar } from '../TaskToolbar/TaskToolbar';
 
 export const TaskColumnCard = ({ task }) => {
@@ -16,7 +15,6 @@ export const TaskColumnCard = ({ task }) => {
       <h3>{task.title}</h3>
       <p>{task.priority}</p>
       <TaskToolbar task={task} />
-      <TaskModal />
     </>
   );
 };
