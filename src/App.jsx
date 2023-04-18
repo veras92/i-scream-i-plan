@@ -23,7 +23,8 @@ export const App = () => {
       }
     };
     refreshUserInfo(getUserInfo, refreshTokens);
-  }, [accessToken, error, getUserInfo, refreshTokens]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [accessToken, error]);
 
   return isUserRefreshing || isTokenRefreshing ? (
     <Loader />
