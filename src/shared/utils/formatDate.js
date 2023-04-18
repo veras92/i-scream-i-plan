@@ -1,4 +1,5 @@
 export const formatDate = date => {
+  if (typeof date === 'string') return date;
   const y = date.getFullYear();
   const m = date.getMonth();
   const d = date.getDate();

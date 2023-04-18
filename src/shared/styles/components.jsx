@@ -55,7 +55,7 @@ export const Button = styled.button`
   &:hover ${Svg} {
     animation: scale-up-hor-left 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   }
-  function: ${props => props.function || false};
+
   padding: ${props =>
     props.padding
       ? props.padding

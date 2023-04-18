@@ -31,6 +31,11 @@ export const themeLight = {
   bcgPriorityLow: '#CEEEFD',
   bcgpPriorityMedium: '#FCF0D4',
   bcgPriorityHigh: '#FFD2DD',
+
+  // for radio buttonds and calendar by day
+  bcgPriorityLowStrong: '#72C2F8',
+  bcgPriorityMediumStrong: '#F3B249',
+  bcgPriorityHighStrong: '#EA3D65',
 };
 
 export const themeDark = {
@@ -66,4 +71,9 @@ export const themeDark = {
   bcgPriorityLow: '#CEEEFD',
   bcgpPriorityMedium: '#FCF0D4',
   bcgPriorityHigh: '#FFD2DD',
+
+  // for radio buttonds and calendar by day
+  bcgPriorityLowStrong: '#72C2F8',
+  bcgPriorityMediumStrong: '#F3B249',
+  bcgPriorityHighStrong: '#EA3D65',
 };
