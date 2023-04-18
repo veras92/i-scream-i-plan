@@ -7,18 +7,21 @@ import { Loader } from 'shared/components/Loader/Loader';
 import { router } from 'shared/services/createRouter';
 
 export const App = () => {
-  const { accessToken, isRefreshing } = useAuth();
-  const [getUserInfo] = useLazyGetCurrentUserInfoQuery();
+  const { isRefreshing, accessToken } = useAuth();
+
+  const [getUserInfo, { error }] = useLazyGetCurrentUserInfoQuery();
   const [refreshTokens] = useRefreshTokensMutation();
 
   useEffect(() => {
-    const refreshUserInfo = async (getUserInfo, refreshTokens) => {
-      await refreshTokens().unwrap();
-      await getUserInfo().unwrap();
+    const refreshUserInfo = (getUserInfo, refreshTokens) => {
+      if (!accessToken) return;
+      getUserInfo();
+      if (error?.status === 401) {
+        refreshTokens();
+      }
     };
-    if (!accessToken) return;
     refreshUserInfo(getUserInfo, refreshTokens);
-  }, [accessToken, getUserInfo, refreshTokens]);
+  }, [accessToken, error, getUserInfo, refreshTokens]);
 
   return isRefreshing ? <Loader /> : <RouterProvider router={router} />;
 };
