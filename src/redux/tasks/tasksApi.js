@@ -15,7 +15,7 @@ export const tasksApi = createApi({
   tagTypes: ['Tasks'],
   endpoints: builder => ({
     getTasksByMonth: builder.query({
-      query: (year, month) => `task/by-month?year=${year}&month=${month}`,
+      query: ({ year, month }) => `task/by-month?year=${year}&month=${month}`,
       providesTags: ['Tasks'],
     }),
     createTask: builder.mutation({
