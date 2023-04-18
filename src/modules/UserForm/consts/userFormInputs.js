@@ -6,7 +6,6 @@ export const userFormInputs = [
     type: 'text',
     id: nanoid(),
     label: 'User Name',
-    required: true,
     placeholder: 'Enter your name',
   },
   {
@@ -14,7 +13,6 @@ export const userFormInputs = [
     type: 'tel',
     id: nanoid(),
     label: 'Phone',
-    required: false,
     placeholder: 'Enter phone',
   },
   {
@@ -22,7 +20,6 @@ export const userFormInputs = [
     type: 'date',
     id: nanoid(),
     label: 'Birthday',
-    required: false,
     placeholder: 'DD/MM/YYYY',
   },
   {
@@ -30,7 +27,6 @@ export const userFormInputs = [
     type: 'string',
     id: nanoid(),
     label: 'Skype',
-    required: false,
     placeholder: 'Enter skype',
   },
   {
@@ -38,7 +34,6 @@ export const userFormInputs = [
     type: 'email',
     id: nanoid(),
     label: 'Email',
-    required: true,
     placeholder: 'Enter email',
   },
 ];
@@ -48,6 +43,5 @@ export const userAvatarInput = {
   type: 'file',
   id: nanoid(),
   label: '',
-  required: false,
   placeholder: '',
 };

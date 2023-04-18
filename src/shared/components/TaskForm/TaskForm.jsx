@@ -7,7 +7,6 @@
 // 7. Помилка - юзеру показується відповідне пушповідомлення
 // 8. Клік по кнопці Cancel або кнопці закриття на формі закриває модалку."
 
-// import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { FormFiled } from '../FormFiled/FormField';
 import {
@@ -38,19 +37,23 @@ import { taskFormSchema } from './consts/taskFormSchema';
 import { CATEGORIES_OPTIONS } from 'shared/services/categoriesOptions';
 import { TASK_MODAL_TYPES } from 'shared/services/taskModalTypes';
 
-export const TaskForm = ({
-  id = '',
-  title = '',
-  start = '9-00',
-  end = '14-00',
-  priority = 'low',
-  category = CATEGORIES_OPTIONS.toDo,
-  type,
-  date,
-  onCloseModal,
-}) => {
+export const TaskForm = props => {
   const [createTask, { isLoading: isCreating }] = useCreateTaskMutation();
   const [changeTask, { isLoading: isChanging }] = useChangeTaskMutation();
+
+  const {
+    id = '',
+    title = '',
+    start = '9-00',
+    end = '14-00',
+    priority = 'low',
+    category = CATEGORIES_OPTIONS.toDo,
+    type,
+    date,
+    onCloseModal,
+  } = props;
+
+  console.log(props);
 
   const isAdd = type === TASK_MODAL_TYPES.add;
   const isEdit = type === TASK_MODAL_TYPES.edit;
@@ -92,7 +95,7 @@ export const TaskForm = ({
     }
     if (isEdit) {
       try {
-        await changeTask(id, formData).unwrap();
+        await changeTask({ id, task: formData }).unwrap();
         reset();
         onCloseModal();
       } catch (err) {

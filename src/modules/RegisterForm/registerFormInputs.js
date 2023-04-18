@@ -6,7 +6,6 @@ export const registerFormInputs = [
     type: 'text',
     id: nanoid(),
     label: 'Name',
-    required: true,
     placeholder: 'Enter your name',
   },
   {
@@ -14,7 +13,6 @@ export const registerFormInputs = [
     type: 'email',
     id: nanoid(),
     label: 'Email',
-    required: true,
     placeholder: 'Enter email',
   },
   {
@@ -22,7 +20,6 @@ export const registerFormInputs = [
     type: 'password',
     id: nanoid(),
     label: 'Password',
-    required: true,
     placeholder: 'Enter password',
   },
 ];

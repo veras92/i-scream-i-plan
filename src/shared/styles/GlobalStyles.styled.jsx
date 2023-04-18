@@ -1,7 +1,5 @@
-import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { modernNormalizeCss } from 'emotion-modern-normalize';
-import { DEVICE_SIZE_PX } from 'shared/services/deviceWidth';
 import Coolvetica from '../fonts/Coolvetica/CoolveticaRg-Regular.ttf';
 import Inter from '../fonts/Inter/Inter-VariableFont_slnt,wght.ttf';
 export const GlobalStyles = css`
@@ -110,73 +108,4 @@ export const GlobalStyles = css`
       cursor: pointer;
     }
   }
-`;
-
-export const Container = styled.div`
-  @media screen and (min-width: ${DEVICE_SIZE_PX.mobile}) {
-  }
-
-  @media screen and (min-width: ${DEVICE_SIZE_PX.tablet}) {
-  }
-
-  @media screen and (min-width: ${DEVICE_SIZE_PX.desktop}) {
-  }
-`;
-
-// @mixin visually-hidden {
-//   position: absolute;
-//   width: 1px;
-//   height: 1px;
-//   margin: -1px;
-//   border: 0;
-//   padding: 0;
-
-//   white-space: nowrap;
-//   clip-path: inset(100%);
-//   clip: rect(0 0 0 0);
-//   overflow: hidden;
-// }
-
-export const Input = styled.input`
-  height: 54px;
-  width: 100%;
-  padding-left: 18px;
-
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 18px;
-  color: var(--main-black-color);
-
-  background: none;
-  border: 1px solid #dce3e599;
-  border-radius: 8px;
-
-  &::placeholder {
-    color: #dce3e5;
-  }
-
-  &:focus {
-    outline: 2px solid darkgrey;
-  }
-`;
-
-export const PageWrapper = styled.div`
-  width: 100%;
-  height: calc(100vh - 148px);
-  min-height: 752px;
-  padding: 60px 165px;
-  background-color: var(--main-white-color);
-  border-radius: 16px;
-`;
-
-export const Button = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: none;
-  border: none;
-  font-family: inherit;
-  width: 100%;
-  height: 46px;
-  padding: 0;
 `;

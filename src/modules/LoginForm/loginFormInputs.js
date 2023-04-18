@@ -6,7 +6,6 @@ export const loginFormInputs = [
     type: 'email',
     id: nanoid(),
     label: 'Email',
-    required: true,
     placeholder: 'Enter email',
   },
   {
@@ -14,7 +13,6 @@ export const loginFormInputs = [
     type: 'password',
     id: nanoid(),
     label: 'Password',
-    required: true,
     placeholder: 'Enter password',
   },
 ];

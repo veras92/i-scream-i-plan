@@ -25,7 +25,7 @@ const tasksSlice = createSlice({
           return state.map(item => {
             return {
               ...item,
-              tasks: [...item.tasks, ...payload],
+              tasks: [...item.tasks, payload],
             };
           });
         }
