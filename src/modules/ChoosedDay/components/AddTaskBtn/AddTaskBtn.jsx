@@ -13,20 +13,18 @@ export const AddTaskBtn = ({ type }) => {
 
   const date = useSelector(selectDate);
 
-  const handleClick = () => setOpening(true);
-
-  const handleClosure = () => setOpening(false);
+  const handleToggleModal = () => setOpening(!isOpened);
 
   return (
     <>
-      <button type="button" onClick={handleClick}>
+      <button type="button" onClick={handleToggleModal}>
         Add Task
       </button>
       {isOpened && (
         <TaskModal
           date={parse(date, 'yyyy-MM-dd', new Date())}
           type={TASK_MODAL_TYPES.add}
-          onCloseModal={handleClosure}
+          onCloseModal={handleToggleModal}
           category={type}
         />
       )}
