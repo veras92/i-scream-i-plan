@@ -1,15 +1,12 @@
 import styled from '@emotion/styled';
 
 export const Form = styled.form`
+  // width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 16px;
   background-color: ${props => props.theme.bcgTernary};
-
-  // ----------------
-  margin: 20px;
-  // -----------------
 
   & > button {
     padding: 14px 50px;
@@ -29,16 +26,16 @@ export const Form = styled.form`
 export const FormBody = styled.div`
   width: 100%;
   display: grid;
-  padding: 40px 18px;
+  padding: 0px 18px;
+  margin: 40px 0;
   gap: 18px;
 
   @media (min-width: 768px) {
-    padding: 40px 0px;
     max-width: 354px;
+    padding: 0px;
   }
 
   @media (min-width: 1078px) {
-    padding: 40px 0px;
     max-width: 758px;
 
     grid-template-columns: 1fr 1fr;
@@ -48,9 +45,12 @@ export const FormBody = styled.div`
 
   @media (min-width: 1440px) {
     max-width: 1080px;
+    padding: 0;
+    margin-top: 44px;
+    margin-bottom: 88px;
   }
 
-  @media (min-width: 1600px) {
+  @media (min-width: 2560px) {
     max-width: 1440px;
     padding: 50px;
     grid-template-columns: repeat(auto-fit, minmax(345px, 1fr));

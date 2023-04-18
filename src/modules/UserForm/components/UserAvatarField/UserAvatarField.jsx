@@ -24,7 +24,7 @@ export const UserAvatarField = ({
         {!currentAvatarUrl ? (
           <p>
             <Svg>
-              <use href={`${sprite}#icon-user-check-01`} />
+              <use href={`${sprite}#icon-user`} />
             </Svg>
           </p>
         ) : (
