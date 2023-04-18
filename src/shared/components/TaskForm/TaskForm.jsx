@@ -53,8 +53,6 @@ export const TaskForm = props => {
     onCloseModal,
   } = props;
 
-  console.log(props);
-
   const isAdd = type === TASK_MODAL_TYPES.add;
   const isEdit = type === TASK_MODAL_TYPES.edit;
 

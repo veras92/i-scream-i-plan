@@ -12,7 +12,8 @@
 // import { format } from 'date-fns';
 import { CalendarToolbar } from 'modules/CalendarToolbar/CalendarToolbar';
 import { Suspense } from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
+
 // import { useDispatch, useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 // import { selectDate } from 'redux/date/selectors';

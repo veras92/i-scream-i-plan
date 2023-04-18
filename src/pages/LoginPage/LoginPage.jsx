@@ -5,7 +5,7 @@
 //  - LoginForm - блок з формою логінізації
 //  - AuthNavigate - загальний компонент навігації для сторінок login/register"""
 import { LoginForm } from 'modules/LoginForm/LoginForm';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 export default function LoginPage() {
   return (
