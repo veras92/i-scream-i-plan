@@ -24,7 +24,7 @@ export const SidebarWrapper = styled.div`
   max-width: 289px;
   padding: 24px 32px;
   background-color: ${props => props.theme.bcgPrimary};
-  @media (max-width: 1440px) {
+  @media (max-width: 1439px) {
     position: absolute;
     z-index: 5000;
   }

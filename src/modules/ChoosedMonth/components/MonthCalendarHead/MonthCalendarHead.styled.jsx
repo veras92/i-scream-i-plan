@@ -13,7 +13,7 @@ export const StyledItem = styled.li`
   color: ${props =>
     props.item === 'SAT' || props.item === 'SUN'
       ? 'var(--main-blue-color);'
-      : 'initial'};
+      : props.theme.calendarHeadDate};
 
   .full-name {
     display: block;
@@ -22,7 +22,7 @@ export const StyledItem = styled.li`
     display: none;
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 480px) {
     .full-name {
       display: none;
     }

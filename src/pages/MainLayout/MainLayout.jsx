@@ -12,7 +12,7 @@ import { Outlet } from 'react-router-dom';
 import { MainWrapper } from 'shared/styles/components';
 import { Wrapper } from './MainLayout.styled';
 
-function useWindowSize() {
+export function useWindowSize() {
   const [windowSize, setWindowSize] = useState({
     width: undefined,
     height: undefined,
@@ -41,7 +41,7 @@ export default function MainLayout() {
   const size = useWindowSize();
 
   useEffect(() => {
-    setVisible(size.width > 1440 && true);
+    setVisible(size.width > 1439 && true);
   }, [size.width]);
 
   return (

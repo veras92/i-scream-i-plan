@@ -37,6 +37,10 @@ export const themeLight = {
   bcgPriorityLowStrong: '#72C2F8',
   bcgPriorityMediumStrong: '#F3B249',
   bcgPriorityHighStrong: '#EA3D65',
+
+  calendarTableBorder: 'rgba(220, 227, 229, 0.5)',
+  calendarDate: '#343434',
+  calendarHeadDate: '#616161',
 };
 
 export const themeDark = {
@@ -79,4 +83,8 @@ export const themeDark = {
   bcgPriorityLowStrong: '#72C2F8',
   bcgPriorityMediumStrong: '#F3B249',
   bcgPriorityHighStrong: '#EA3D65',
+
+  calendarTableBorder: 'rgba(255, 255, 255, 0.15)',
+  calendarDate: '#FFFFFF',
+  calendarHeadDate: '#FFFFFF',
 };

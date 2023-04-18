@@ -24,6 +24,7 @@ import {
 import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { setDates } from 'redux/date/dateSlice';
+import { useWindowSize } from 'pages/MainLayout/MainLayout';
 
 export default function CalendarTable({ tasks, currentDate }) {
   const startMonth = startOfMonth(new Date(currentDate));
@@ -34,6 +35,8 @@ export default function CalendarTable({ tasks, currentDate }) {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const size = useWindowSize();
 
   const daysWithTasks = daysOfMonth.map(day => ({
     date: format(day, 'yyyy-MM-dd'),
@@ -54,6 +57,9 @@ export default function CalendarTable({ tasks, currentDate }) {
     navigate(`/calendar/day/${date}`);
   };
   function truncateString(str) {
+    if (size.width < 767) {
+      return str.substring(0, 3) + '...';
+    }
     if (str.length > 7) {
       return str.substring(0, 7) + '...';
     }
