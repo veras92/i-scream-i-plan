@@ -9,6 +9,8 @@ import {
   endOfMonth,
   eachDayOfInterval,
   getDay,
+  isToday,
+  parseISO,
 } from 'date-fns';
 // import { Re } from 'react-router-dom';
 
@@ -46,6 +48,12 @@ export default function CalendarTable({ tasks, currentDate }) {
     dispatch(setDates(date));
     navigate(`/calendar/day/${date}`);
   };
+  function truncateString(str) {
+    if (str.length > 7) {
+      return str.substring(0, 7) + '...';
+    }
+    return str;
+  }
 
   const rows = [];
 
@@ -53,18 +61,22 @@ export default function CalendarTable({ tasks, currentDate }) {
 
   daysWithTasks.forEach((day, index) => {
     cells.push(
-      <StyledTd key={day.date} onClick={() => handleClick(day.date)}>
+      <StyledTd key={index} onClick={() => handleClick(day.date)}>
         {day.tasks.length > 0 &&
           day.tasks.map(({ tasks }, index) => {
             return (
               <StyledListTasks key={index}>
                 {tasks.map(task => (
-                  <li key={task.title}>{task.title}</li>
+                  <li className={task.priority} key={task._id}>
+                    {truncateString(task.title)}
+                  </li>
                 ))}
               </StyledListTasks>
             );
           })}
-        <StyledDay>{formattedDay(day.date)}</StyledDay>
+        <StyledDay className={isToday(parseISO(day.date)) && 'today'}>
+          {formattedDay(day.date)}
+        </StyledDay>
       </StyledTd>
     );
 
