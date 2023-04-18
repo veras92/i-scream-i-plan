@@ -53,6 +53,7 @@ export const TaskForm = ({
   const [changeTask, { isLoading: isChanging }] = useChangeTaskMutation();
 
   const isAdd = type === TASK_MODAL_TYPES.add;
+  const isEdit = type === TASK_MODAL_TYPES.edit;
 
   const {
     register,
@@ -78,13 +79,25 @@ export const TaskForm = ({
       end: formatTimeOnOutput(data.end),
       date: formatDate(data.date),
     };
-    try {
-      if (isAdd) await createTask(formData).unwrap();
-      await changeTask(id, formData).unwrap();
-      reset();
-      onCloseModal();
-    } catch (err) {
-      console.log(err);
+
+    if (isAdd) {
+      try {
+        await createTask(formData).unwrap();
+        reset();
+        onCloseModal();
+        return;
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    if (isEdit) {
+      try {
+        await changeTask(id, formData).unwrap();
+        reset();
+        onCloseModal();
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
@@ -118,7 +131,9 @@ export const TaskForm = ({
             </Svg>
             <span>{type}</span>
           </Button>
-          <Cancel type="button"> Cancel</Cancel>
+          <Cancel type="button" onClick={onCloseModal}>
+            Cancel
+          </Cancel>
         </BtnsWrap>
       ) : (
         <Button type="submit" function="save" disabled={!isValid || isChanging}>
