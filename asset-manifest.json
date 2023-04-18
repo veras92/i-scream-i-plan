@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/i-scream-i-plan/static/js/main.d38803ca.js",
+    "main.js": "/i-scream-i-plan/static/js/main.16cf3724.js",
     "static/js/350.639d8813.chunk.js": "/i-scream-i-plan/static/js/350.639d8813.chunk.js",
     "static/js/860.7a49cd3a.chunk.js": "/i-scream-i-plan/static/js/860.7a49cd3a.chunk.js",
     "static/js/450.620e8a68.chunk.js": "/i-scream-i-plan/static/js/450.620e8a68.chunk.js",
@@ -41,7 +41,7 @@
     "static/media/slick.ttf": "/i-scream-i-plan/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/i-scream-i-plan/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/i-scream-i-plan/index.html",
-    "main.d38803ca.js.map": "/i-scream-i-plan/static/js/main.d38803ca.js.map",
+    "main.16cf3724.js.map": "/i-scream-i-plan/static/js/main.16cf3724.js.map",
     "350.639d8813.chunk.js.map": "/i-scream-i-plan/static/js/350.639d8813.chunk.js.map",
     "860.7a49cd3a.chunk.js.map": "/i-scream-i-plan/static/js/860.7a49cd3a.chunk.js.map",
     "450.620e8a68.chunk.js.map": "/i-scream-i-plan/static/js/450.620e8a68.chunk.js.map",
@@ -57,6 +57,6 @@
     "758.439dd14f.chunk.js.map": "/i-scream-i-plan/static/js/758.439dd14f.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.d38803ca.js"
+    "static/js/main.16cf3724.js"
   ]
 }
