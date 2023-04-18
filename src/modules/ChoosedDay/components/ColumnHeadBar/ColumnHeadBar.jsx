@@ -2,6 +2,13 @@
 // 2. Компонент рендерить блок розмітки
 //  - з заголовком колонки,
 //  - кнопкою для створення нової задачі, що відкриває модалку для створення задачі."
+import sprite from 'shared/icons/sprite.svg';
+import {
+  ColumnTitleWrapper,
+  ColumnTitle,
+  AddButton,
+  StyledAddIcon,
+} from './ColumnHeadBar.styled';
 
 export const ColumnHeadBar = ({ type }) => {
   const normalizeTitle = type => {
@@ -18,9 +25,13 @@ export const ColumnHeadBar = ({ type }) => {
   };
 
   return (
-    <div>
-      <h2>{normalizeTitle(type)}</h2>
-      <button type="button">+</button>
-    </div>
+    <ColumnTitleWrapper>
+      <ColumnTitle>{normalizeTitle(type)}</ColumnTitle>
+      <AddButton type="button">
+        <StyledAddIcon>
+          <use href={`${sprite}#icon-plus-circle`} />
+        </StyledAddIcon>
+      </AddButton>
+    </ColumnTitleWrapper>
   );
 };

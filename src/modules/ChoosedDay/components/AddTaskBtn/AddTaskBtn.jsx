@@ -7,7 +7,8 @@ import { TASK_MODAL_TYPES } from 'shared/services/taskModalTypes';
 import { useSelector } from 'react-redux';
 import { selectDate } from 'redux/date/selectors';
 import parse from 'date-fns/parse';
-
+import sprite from 'shared/icons/sprite.svg';
+import { StyledAddTaskBtn, AddTaskSvg } from './AddTaskBtn.styled';
 export const AddTaskBtn = ({ type }) => {
   const [isOpened, setOpening] = useState(false);
 
@@ -17,9 +18,12 @@ export const AddTaskBtn = ({ type }) => {
 
   return (
     <>
-      <button type="button" onClick={handleToggleModal}>
+      <StyledAddTaskBtn type="button" onClick={handleToggleModal}>
+        <AddTaskSvg>
+          <use href={`${sprite}#icon-plus`} />
+        </AddTaskSvg>{' '}
         Add Task
-      </button>
+      </StyledAddTaskBtn>
       {isOpened && (
         <TaskModal
           date={parse(date, 'yyyy-MM-dd', new Date())}

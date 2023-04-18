@@ -201,7 +201,7 @@ export const StyledBlock = styled.li`
     display: flex;
     flex-direction: column;
     :nth-of-type(2) {
-      & div:nth-child(1) {
+      & div:nth-of-type(1) {
         margin-left: auto;
       }
     }
@@ -214,10 +214,10 @@ export const StyledBlock = styled.li`
     :nth-of-type(2) {
       flex-direction: row-reverse;
       align-items: flex-start;
-      & div:nth-child(1) {
+      & div:nth-of-type(1) {
         margin-left: 0;
+      }
     }
-  }
   }
 `;
 

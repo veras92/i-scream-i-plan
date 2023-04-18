@@ -2,6 +2,7 @@ import React from 'react';
 import { Input, Label, StyledDatePicker } from './DatePicker.styled';
 import { Controller } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
+import { StyledErrorMessage } from 'shared/styles/components';
 
 export const DatePicker = ({
   control,
@@ -29,7 +30,9 @@ export const DatePicker = ({
           />
         )}
       />
-      <ErrorMessage errors={errors} name={inputName} />
+      <StyledErrorMessage>
+        <ErrorMessage errors={errors} name={inputName} />
+      </StyledErrorMessage>
     </div>
   );
 };
