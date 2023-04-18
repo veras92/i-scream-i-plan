@@ -11,10 +11,17 @@ import { Wrapper, Info, SectionTitle, Toggler } from './Header.styled';
 import { useLocation } from 'react-router-dom';
 import sprite from 'shared/icons/sprite.svg';
 
+import { useSelector } from 'react-redux';
+import { selectTasksForToday } from '../../redux/tasks/tasksSlice';
+import gooseTask from 'shared/icons/goose-task.svg';
+
 export const Header = ({ onToggle }) => {
   const location = useLocation();
   const currentPath = location.pathname;
+  const tasksForToday = useSelector(selectTasksForToday);
 
+  const isCalendarPage = currentPath.startsWith('/calendar/');
+  
   let title = '';
   if (currentPath.startsWith('/account')) {
     title = 'User Profile';
@@ -26,7 +33,9 @@ export const Header = ({ onToggle }) => {
   return (
     <>
       <Wrapper>
+        {isCalendarPage && tasksForToday.length > 0 && <img src={gooseTask} alt="goose"/>}
         <SectionTitle>{title}</SectionTitle>
+        {isCalendarPage && tasksForToday.length > 0 && <p>Let go of the past and focus on the present!</p>}
         <Toggler
           onClick={() => {
             onToggle();
