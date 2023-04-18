@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { ErrorMessage } from '@hookform/error-message';
 
 import { Label, Input } from './FormField.styled';
+import { StyledErrorMessage } from 'shared/styles/components';
 
 export const FormFiled = ({
   id,
@@ -22,7 +23,9 @@ export const FormFiled = ({
         placeholder={placeholder}
         {...register(inputName, { required })}
       />
-      <ErrorMessage errors={errors} name={inputName} />
+      <StyledErrorMessage>
+        <ErrorMessage errors={errors} name={inputName} />
+      </StyledErrorMessage>
     </div>
   );
 };

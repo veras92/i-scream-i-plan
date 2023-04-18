@@ -2,6 +2,7 @@
 import { useSelector } from 'react-redux';
 import { selectTasks } from 'redux/tasks/selectors';
 import { TasksColumn } from '../TasksColumn/TasksColumn';
+import { ColumnsWrapper, StyledColumn } from './TasksColumnsList.styled';
 
 export const TasksColumnsList = () => {
   const tasks = useSelector(selectTasks);
@@ -28,16 +29,16 @@ export const TasksColumnsList = () => {
   });
 
   return (
-    <ul>
-      <li>
+    <ColumnsWrapper>
+      <StyledColumn>
         <TasksColumn type={'to-do'} tasks={toDo} />
-      </li>
-      <li>
+      </StyledColumn>
+      <StyledColumn>
         <TasksColumn type={'in-progress'} tasks={inProgress} />
-      </li>
-      <li>
+      </StyledColumn>
+      <StyledColumn>
         <TasksColumn type={'done'} tasks={done} />
-      </li>
-    </ul>
+      </StyledColumn>
+    </ColumnsWrapper>
   );
 };
