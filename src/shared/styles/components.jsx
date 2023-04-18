@@ -55,34 +55,10 @@ export const Button = styled.button`
   &:hover ${Svg} {
     animation: scale-up-hor-left 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   }
-
-  padding: ${props =>
-    props.padding
-      ? props.padding
-      : media({
-          padding: [
-            props.function === 'add'
-              ? '16px 62px'
-              : props.function === 'save'
-              ? '14px 50px'
-              : '14px 28px',
-            props.function === 'add'
-              ? '16px 62px'
-              : props.function === 'save'
-              ? '14px 50px'
-              : '14px 28px',
-            props.function === 'add'
-              ? '16px 62px'
-              : props.function === 'save'
-              ? '14px 84px'
-              : '16px 24px',
-            props.function === 'add'
-              ? '16px 62px'
-              : props.function === 'save'
-              ? '14px 84px'
-              : '16px 23px',
-          ],
-        })};
+  padding: 14px 28px;
+  @media (min-width: 765px) {
+    padding: 16px 23px;
+  }
 `;
 
 export const MainWrapper = styled.div`
