@@ -6,7 +6,6 @@ export const titleInput = {
   type: 'text',
   id: nanoid(),
   label: 'Title',
-  required: true,
   placeholder: 'Enter text',
 };
 
@@ -16,7 +15,6 @@ export const timeInputs = [
     type: 'time',
     id: nanoid(),
     label: 'Start',
-    required: true,
     placeholder: '',
   },
   {
@@ -24,7 +22,6 @@ export const timeInputs = [
     type: 'time',
     id: nanoid(),
     label: 'End',
-    required: true,
     placeholder: '',
   },
 ];

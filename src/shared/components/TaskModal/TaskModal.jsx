@@ -7,16 +7,10 @@
 import { Modal } from '../Modal/Modal';
 import { TaskForm } from '../TaskForm/TaskForm';
 
-export const TaskModal = ({ date, category, onCloseModal, type, id }) => {
+export const TaskModal = ({ onCloseModal, ...rest }) => {
   return (
     <Modal onCloseModal={onCloseModal}>
-      <TaskForm
-        date={date}
-        category={category}
-        onCloseModal={onCloseModal}
-        type={type}
-        id={id}
-      />
+      <TaskForm onCloseModal={onCloseModal} {...rest} />
     </Modal>
   );
 };
