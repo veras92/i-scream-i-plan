@@ -1,8 +1,10 @@
 import styled from '@emotion/styled';
 
 export const Svg = styled.svg`
-  fill: transparent;
-  stroke: var(--main-blue-color);
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
 `;
 
 export const UserAvatarWrapper = styled.div`
@@ -12,27 +14,27 @@ export const UserAvatarWrapper = styled.div`
 
   > h3 {
     font-weight: 700;
-    font-size: 14px;
-    line-height: 18px;
+    font-size: 0.875rem;
+    line-height: 1.125rem;
     color: ${props => props.theme.text};
 
     margin-bottom: 0.25rem;
 
     @media (min-width: 768px) {
-      font-size: 18px;
+      font-size: 1.125rem;
       margin-bottom: 0.5rem;
     }
   }
 
   > p {
     font-weight: 600;
-    font-size: 12px;
-    line-height: 14px;
+    font-size: 0.75rem;
+    line-height: 0.875rem;
     color: ${props => props.theme.textSecondary};
 
     @media (min-width: 768px) {
-      font-size: 14px;
-      line-height: 18px;
+      font-size: 0.875rem;
+      line-height: 1.125rem;
     }
   }
 `;
@@ -79,29 +81,55 @@ export const HiddenInput = styled.input`
   justify-content: center;
   aling-itms: center;
 
-  width: 14px;
-  height: 14px;
-  // margin: -1px;
+  width: 0.875rem;
+  height: 0.875rem;
   border: 0;
   padding: 0;
 
   border-radius: 50%;
   background-color: ${props => props.theme.componentAccent};
 
+  :before {
+    position: absolute;
+    content: '+';
+
+    width: 0.875rem;
+    height: 0.875rem;
+
+    font-size: 0.9375rem;
+    line-height: 0.8125rem;
+
+    display: flex;
+    justify-content: center;
+    aling-itms: center;
+
+    color: ${props => props.theme.componentPrimary};
+    background-color: ${props => props.theme.componentAccent};
+   }
+
   @media (min-width: 768px) {
-    width: 24px;
-    height: 24px;
+    width: 1.5rem;
+    height: 1.5rem;
 
     top: 9.0625rem;
     right: 1.5rem;
+
+    :before {
+       position: absolute;
+       content: '+';
+       color: ${props => props.theme.componentPrimary};
+       font-size: 1.5625rem;
+       line-height: 1.375rem;
+       display: flex;
+       justify-content: center;
+       aling-itms: center;
+       width: 24px;
+       height: 24px;
+       background-color: ${props => props.theme.componentAccent};
+      }
   }
 
   @media (min-width: 1087px) {
     top: 10.3125rem;
   }
-
-  // white-space: nowrap;
-  // clip-path: inset(100%);
-  // clip: rect(0 0 0 0);
-  // overflow: hidden;
 `;

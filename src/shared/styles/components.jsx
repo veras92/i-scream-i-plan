@@ -24,9 +24,9 @@ export const Svg = styled.svg`
     }
   }
   ${media({
-    width: ['18px', '18px', '20px', '20px'],
-    height: ['18px', '18px', '20px', '20px'],
-  })};
+  width: ['18px', '18px', '20px', '20px'],
+  height: ['18px', '18px', '20px', '20px'],
+})};
 `;
 
 export const Button = styled.button`
@@ -64,11 +64,12 @@ export const Button = styled.button`
 export const MainWrapper = styled.div`
   background-color: ${props => props.theme.bcgSecondary};
   ${media({
-    padding: [
-      '24px 20px 40px',
-      '24px 20px 40px',
-      '24px 32px 42px',
-      '40px 32px 32px',
-    ],
-  })};
+  padding: [
+    '24px 20px 40px',
+    '24px 20px 40px',
+    '24px 32px 42px',
+    '40px 32px 32px',
+  ],
+})};
+  width: 100%;
 `;

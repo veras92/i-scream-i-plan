@@ -3,12 +3,23 @@ import styled from '@emotion/styled';
 export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 6.25rem;
+
+  @media (min-width: 768px) {
+    margin-bottom: 4rem;
+  }
+
+  @media (min-width: 1440px) {
+    margin-bottom: 32px;
+  }
+  
 `;
 
 export const Info = styled.div`
   display: flex;
   align-items: center;
   margin-left: auto;
+  
 `;
 
 export const SectionTitle = styled.h1`

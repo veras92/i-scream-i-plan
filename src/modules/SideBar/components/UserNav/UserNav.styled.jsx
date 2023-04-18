@@ -9,6 +9,8 @@ export const NavList = styled.nav`
 
 export const StyledLink = styled(NavLink)`
   color: ${props => props.theme.text};
+  width: 185px;
+  
   font-weight: 600;
   font-size: 14px;
   padding: 10px 14px;
@@ -28,6 +30,11 @@ export const StyledLink = styled(NavLink)`
   @media (min-width: 765px) {
     font-size: 16px;
     padding: 16px 20px;
+    width: 225px;
+  }
+
+  @media (min-width: 1087px) {
+    width: 241px;
   }
 `;
 

@@ -14,7 +14,6 @@ export const DatePicker = ({
   return (
     <div>
       <Label htmlFor={id}>{label}</Label>
-
       <Controller
         control={control}
         name={inputName}
