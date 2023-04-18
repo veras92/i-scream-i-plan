@@ -72,3 +72,8 @@ const tasksSlice = createSlice({
 export const { setTasks } = tasksSlice.actions;
 
 export const tasksReducer = tasksSlice.reducer;
+
+export const selectTasksForToday = state => {
+  const today = new Date().toISOString().slice(0, 10);
+  return state.tasks.filter(({ date }) => date === today);
+};
