@@ -2,7 +2,7 @@
 // 2. На сторінці знаходиться компонент форми UserForm"
 
 import { UserForm } from 'modules/UserForm/UserForm';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 export default function AccountPage() {
   return (

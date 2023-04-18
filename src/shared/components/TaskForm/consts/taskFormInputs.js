@@ -26,29 +26,28 @@ export const timeInputs = [
   },
 ];
 
+const radioButtonsName = 'priority';
+
 export const priorityInputs = [
   {
-    inputName: 'priority',
+    inputName: radioButtonsName,
     type: 'radio',
+    value: PRIORITY_OPTIONS.low,
     id: nanoid(),
     label: 'Low',
-    value: PRIORITY_OPTIONS.low,
-    checked: true,
   },
   {
-    inputName: 'priority',
+    inputName: radioButtonsName,
     type: 'radio',
+    value: PRIORITY_OPTIONS.medium,
     id: nanoid(),
     label: 'Medium',
-    value: PRIORITY_OPTIONS.medium,
-    checked: false,
   },
   {
-    inputName: 'priority',
+    inputName: radioButtonsName,
     type: 'radio',
+    value: PRIORITY_OPTIONS.high,
     id: nanoid(),
     label: 'High',
-    value: PRIORITY_OPTIONS.high,
-    checked: false,
   },
 ];
