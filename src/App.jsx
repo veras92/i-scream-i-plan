@@ -15,15 +15,16 @@ export const App = () => {
     useRefreshTokensMutation();
 
   useEffect(() => {
-    const refreshUserInfo = (getUserInfo, refreshTokens) => {
+    const refreshUserInfo = (getUserInfo, refreshTokens, accessToken) => {
       if (!accessToken) return;
       getUserInfo();
       if (error?.status === 401) {
         refreshTokens();
       }
     };
-    refreshUserInfo(getUserInfo, refreshTokens);
-  }, [accessToken, error, getUserInfo, refreshTokens]);
+    refreshUserInfo(getUserInfo, refreshTokens, accessToken);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [accessToken, error]);
 
   return isUserRefreshing || isTokenRefreshing ? (
     <Loader />
