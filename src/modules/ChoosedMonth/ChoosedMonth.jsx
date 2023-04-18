@@ -4,57 +4,40 @@
 //  - CalendarTable - таблиця з днями обраного місяця, відповідно до днів тижня.
 // 3. Модуль підписаний на колекцію задач з глобального стейту."
 
+// import { useGetTasksByMonthQuery } from 'redux/tasks/tasksApi';
 import CalendarTable from './components/CalendarTable/CalendarTable';
 import MonthCalendarHead from './components/MonthCalendarHead/MonthCalendarHead';
 import { useSelector } from 'react-redux';
 import { selectDate } from 'redux/date/selectors';
+// import { useEffect } from 'react';
+// import { setTasks } from 'redux/tasks/tasksSlice';
+import { selectTasks } from 'redux/tasks/selectors';
+import { endOfMonth, isWithinInterval, startOfMonth } from 'date-fns';
 // import { useSelector } from 'react-redux';
 // import { selectTasks } from 'redux/tasks/selectors';
 
 export function ChoosedMonth() {
-  // const { currentDate } = useParams();
   const currentDate = useSelector(selectDate);
+  // const dispatch = useDispatch();
+  // const { data: tasks } = useGetTasksByMonthQuery('2023', '05');
+  // dispatch(setTasks(tasks));
 
-  // const tasks = useSelector(selectTasks);
+  const tasks = useSelector(selectTasks);
+
   //-----------------------example
-  const tasks = [
-    {
-      date: currentDate,
-      tasks: [
-        {
-          title: 'example',
-          date: currentDate,
-          priority: 'priority',
-        },
-        {
-          title: 'example2',
-          date: currentDate,
-          priority: 'priority',
-        },
-        {
-          title: 'example3',
-          date: currentDate,
-          priority: 'priority',
-        },
-      ],
-    },
-    {
-      date: '2023-04-25',
-      tasks: [
-        {
-          title: 'example',
-          date: currentDate,
-          priority: 'priority',
-        },
-      ],
-    },
-  ];
+  const startDate = startOfMonth(new Date(currentDate));
+  const endDate = endOfMonth(new Date(currentDate));
+
+  const filteredDates = tasks.filter(task => {
+    const dateObj = new Date(task.date);
+    return isWithinInterval(dateObj, { start: startDate, end: endDate });
+  });
 
   return (
     <>
       <div style={{ width: '1087px' }}>
         <MonthCalendarHead />
-        <CalendarTable tasks={tasks} currentDate={currentDate} />
+        <CalendarTable tasks={filteredDates} currentDate={currentDate} />
       </div>
     </>
   );
