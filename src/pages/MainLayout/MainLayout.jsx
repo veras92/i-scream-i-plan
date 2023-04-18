@@ -39,7 +39,6 @@ export default function MainLayout() {
   const toggleSidebar = () => setVisible(isVisible => !isVisible);
 
   const size = useWindowSize();
-  console.log(size.width);
 
   useEffect(() => {
     setVisible(size.width > 1440 && true);

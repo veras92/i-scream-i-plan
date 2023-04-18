@@ -34,4 +34,12 @@ export const StyledListTasks = styled.ul`
     background-color: #ceeefd;
     color: #3e85f3;
   }
+  .medium {
+    color: #f3b249;
+    background-color: #fcf0d4;
+  }
+  .high {
+    color: #ea3d65;
+    background-color: #ffd2dd;
+  }
 `;

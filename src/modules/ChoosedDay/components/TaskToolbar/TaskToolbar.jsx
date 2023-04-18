@@ -14,7 +14,7 @@ import { useDeleteTaskMutation } from 'redux/tasks/tasksApi';
 import { useChangeTaskMutation } from 'redux/tasks/tasksApi';
 import { TASK_MODAL_TYPES } from 'shared/services/taskModalTypes';
 import { TaskModal } from 'shared/components/TaskModal/TaskModal';
-import { parse } from 'date-fns';
+// import { parse } from 'date-fns';
 
 export const TaskToolbar = ({ task }) => {
   const [isModalOpened, setModalOpening] = useState(false);
