@@ -12,18 +12,12 @@ export const App = () => {
   const [refreshTokens] = useRefreshTokensMutation();
 
   useEffect(() => {
-    const refreshUserInfo = async (accessToken, getUserInfo, refreshTokens) => {
-      if (!accessToken) return;
-      try {
-        await getUserInfo().unwrap();
-      } catch (error) {
-        if (error.status === 401) {
-          await refreshTokens().unwrap();
-        }
-      }
+    const refreshUserInfo = async (getUserInfo, refreshTokens) => {
+      await refreshTokens().unwrap();
+      await getUserInfo().unwrap();
     };
-
-    refreshUserInfo(accessToken, getUserInfo, refreshTokens);
+    if (!accessToken) return;
+    refreshUserInfo(getUserInfo, refreshTokens);
   }, [accessToken, getUserInfo, refreshTokens]);
 
   return isRefreshing ? <Loader /> : <RouterProvider router={router} />;
