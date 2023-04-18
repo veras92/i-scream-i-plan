@@ -7,10 +7,12 @@ import { Loader } from 'shared/components/Loader/Loader';
 import { router } from 'shared/services/createRouter';
 
 export const App = () => {
-  const { isRefreshing, accessToken } = useAuth();
+  const { accessToken } = useAuth();
 
-  const [getUserInfo, { error }] = useLazyGetCurrentUserInfoQuery();
-  const [refreshTokens] = useRefreshTokensMutation();
+  const [getUserInfo, { error, isFetching: isUserRefreshing }] =
+    useLazyGetCurrentUserInfoQuery();
+  const [refreshTokens, { isLoading: isTokenRefreshing }] =
+    useRefreshTokensMutation();
 
   useEffect(() => {
     const refreshUserInfo = (getUserInfo, refreshTokens) => {
@@ -23,5 +25,9 @@ export const App = () => {
     refreshUserInfo(getUserInfo, refreshTokens);
   }, [accessToken, error, getUserInfo, refreshTokens]);
 
-  return isRefreshing ? <Loader /> : <RouterProvider router={router} />;
+  return isUserRefreshing || isTokenRefreshing ? (
+    <Loader />
+  ) : (
+    <RouterProvider router={router} />
+  );
 };
