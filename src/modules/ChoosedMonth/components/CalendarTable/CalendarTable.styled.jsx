@@ -1,11 +1,18 @@
 import styled from '@emotion/styled';
 
+export const StyledTable = styled.table`
+  border-collapse: collapse;
+  border-spacing: 0;
+`;
+
 export const StyledTd = styled.td`
   position: relative;
   width: 155px;
   height: 125px;
   border: 1px solid rgba(220, 227, 229, 0.8);
 
+  padding: 0;
+  margin: 0;
   .today {
     color: white;
     background-color: #3e85f3;

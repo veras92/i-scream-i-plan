@@ -9,12 +9,33 @@
 // 7. Успіх - данні записуються у відповідний стейт
 // 8. Помилка - користувачу показується відповідне пушповідомлення"
 
+// import { format } from 'date-fns';
 import { CalendarToolbar } from 'modules/CalendarToolbar/CalendarToolbar';
 import { Suspense } from 'react';
 import { Helmet } from 'react-helmet';
+// import { useDispatch, useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
+// import { selectDate } from 'redux/date/selectors';
+// import { selectTasks } from 'redux/tasks/selectors';
+// import { useGetTasksByMonthQuery } from 'redux/tasks/tasksApi';
+// import { setTasks } from 'redux/tasks/tasksSlice';
 
 export default function CalendarPage() {
+  // const normalizedDate = useSelector(selectDate);
+  // const tasks = useSelector(selectTasks);
+  // console.log(tasks);
+  // const date = parse(normalizedDate, 'yyyy-MM-dd', Date.now());
+
+  // const dispatch = useDispatch();
+
+  // const { data } = useGetTasksByMonthQuery({
+  //   year: format(normalizedDate, 'yyyy'),
+  //   month: format(normalizedDate, 'MM'),
+  // });
+
+  // useEffect(() => {
+  //   dispatch(setTasks(data));
+  // }, [dispatch, data]);
   return (
     <div>
       <Helmet>

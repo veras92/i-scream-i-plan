@@ -15,7 +15,12 @@ import {
 // import { Re } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
-import { StyledDay, StyledListTasks, StyledTd } from './CalendarTable.styled';
+import {
+  StyledDay,
+  StyledListTasks,
+  StyledTable,
+  StyledTd,
+} from './CalendarTable.styled';
 import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { setDates } from 'redux/date/dateSlice';
@@ -87,9 +92,9 @@ export default function CalendarTable({ tasks, currentDate }) {
   });
 
   return (
-    <table>
+    <StyledTable>
       <tbody>{rows}</tbody>
-    </table>
+    </StyledTable>
   );
 }
 CalendarTable.propTypes = {
