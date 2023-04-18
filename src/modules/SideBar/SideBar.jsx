@@ -31,7 +31,7 @@ export const SideBar = ({ onToggle }) => {
         </CloseIcon>
       </SidebarHeader>
       <SidebarSubTitle>User Panel</SidebarSubTitle>
-      <UserNav />
+      <UserNav closeModal={onToggle} />
       <LogoutBtn />
     </SidebarWrapper>
   );

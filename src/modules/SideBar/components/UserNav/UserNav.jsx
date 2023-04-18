@@ -3,18 +3,19 @@
 //  - /calendar - редіректить на CalendarPage з модулем календаря місяця."
 import sprite from 'shared/icons/sprite.svg';
 import { NavList, StyledLink, NavIcon } from './UserNav.styled';
+import { account, calendar } from 'shared/services/routes';
 
-export const UserNav = () => {
+export const UserNav = ({ closeModal }) => {
   return (
     <>
       <NavList>
-        <StyledLink to="/account">
+        <StyledLink to={account} onClick={() => closeModal()}>
           <NavIcon>
             <use href={`${sprite}#icon-user-check-01`} />
           </NavIcon>
           <span>My account</span>
         </StyledLink>
-        <StyledLink to="/calendar">
+        <StyledLink to={calendar} onClick={() => closeModal()}>
           <NavIcon>
             <use href={`${sprite}#icon-calendar-check-02`} />
           </NavIcon>
