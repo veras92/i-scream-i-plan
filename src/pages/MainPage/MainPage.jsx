@@ -59,6 +59,7 @@ import {
 } from './MainPage.styled';
 
 import goose from 'shared/icons/goose.svg';
+import { Helmet } from 'react-helmet-async';
 
 function SamplePrevArrow(props) {
   const { onClick } = props;
@@ -104,6 +105,9 @@ const settings = {
 export default function MainPage() {
   return (
     <>
+      <Helmet>
+        <title>Goose Track</title>
+      </Helmet>
       <StyledHeader>
         <LogoImg src={goose} alt="goose" />
         <AppTitle>GooseTrack</AppTitle>
