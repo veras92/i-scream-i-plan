@@ -3,6 +3,10 @@ import { NavLink } from 'react-router-dom';
 
 export const List = styled.ul`
   display: flex;
+  margin-top: 18px;
+  @media (min-width: 768px) {
+    margin-top: 0;
+  }
 `;
 export const Item = styled.li`
   background-color: ${props => props.theme.PeriodTypeSelect};
@@ -29,5 +33,13 @@ export const Item = styled.li`
   }
 `;
 export const StyledNavLink = styled(NavLink)`
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+
   color: ${props => props.theme.activeText};
+
+  @media (min-width: 768px) {
+    font-size: 16px;
+  }
 `;

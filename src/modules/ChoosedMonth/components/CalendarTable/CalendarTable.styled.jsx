@@ -5,9 +5,8 @@ export const StyledTable = styled.table`
   border-spacing: 0;
   border-style: hidden;
 
-  margin-top: 14px;
-
   height: 470px;
+
   width: 100%;
 
   border-radius: 8px;
@@ -106,4 +105,12 @@ export const StyledListTasks = styled.ul`
     padding-top: 4px;
     padding-bottom: 4px;
   }
+`;
+
+export const OverflowWrapper = styled.div`
+  height: 627px;
+  overflow-y: auto;
+
+  border: 1px solid rgba(220, 227, 229, 0.8);
+  border-radius: 8px;
 `;

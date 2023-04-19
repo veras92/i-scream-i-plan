@@ -7,7 +7,12 @@ import { format, parse, add, sub } from 'date-fns';
 import { setDates } from 'redux/date/dateSlice';
 import { selectDate } from 'redux/date/selectors';
 import sprite from 'shared/icons/sprite.svg';
-import { Btn, Li } from './PeriodPaginator.styled';
+import {
+  Btn,
+  Li,
+  StyledDate,
+  WrapperPeriodPaginator,
+} from './PeriodPaginator.styled';
 
 export const PeriodPaginator = ({ type }) => {
   const params = useParams();
@@ -62,8 +67,10 @@ export const PeriodPaginator = ({ type }) => {
   const shouldDisable = date < Date.now();
 
   return (
-    <>
-      <p>{type === 'month' ? currentDate.slice(3) : currentDate}</p>
+    <WrapperPeriodPaginator>
+      <StyledDate>
+        {type === 'month' ? currentDate.slice(3) : currentDate}
+      </StyledDate>
       <ul>
         <Li>
           <Btn
@@ -83,6 +90,6 @@ export const PeriodPaginator = ({ type }) => {
           </Btn>
         </Li>
       </ul>
-    </>
+    </WrapperPeriodPaginator>
   );
 };
