@@ -43,7 +43,7 @@ export default function CalendarTable({ tasks, currentDate }) {
   const navigate = useNavigate();
 
   const size = useWindowSize();
-  console.log(selectedTask);
+
   const daysWithTasks = daysOfMonth.map(day => ({
     date: format(day, 'yyyy-MM-dd'),
     tasks: tasks.filter(task => task.date === format(day, 'yyyy-MM-dd')),
