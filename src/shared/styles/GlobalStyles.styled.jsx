@@ -109,5 +109,9 @@ export const GlobalStyles = css`
     &:hover {
       cursor: pointer;
     }
+    &:disabled {
+      background-color: #ccc;
+      color: #666;
+    }
   }
 `;

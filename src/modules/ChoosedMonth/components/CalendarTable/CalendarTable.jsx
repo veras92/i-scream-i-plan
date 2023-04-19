@@ -28,7 +28,6 @@ import { useWindowSize } from 'pages/MainLayout/MainLayout';
 import { useState } from 'react';
 import { TaskModal } from 'shared/components/TaskModal/TaskModal';
 import { TASK_MODAL_TYPES } from 'shared/services/taskModalTypes';
-// import { parse } from 'date-fns';
 
 export default function CalendarTable({ tasks, currentDate }) {
   const [isOpened, setOpening] = useState(false);
@@ -128,6 +127,14 @@ export default function CalendarTable({ tasks, currentDate }) {
     }
   });
 
+  const formattedDate = () => {
+    if (selectedTask) {
+      const date = new Date(selectedTask.date);
+      const formattedDate = format(date, 'yyyy-MM-dd');
+      return formattedDate;
+    }
+  };
+
   return (
     <>
       <StyledTable>
@@ -135,7 +142,7 @@ export default function CalendarTable({ tasks, currentDate }) {
       </StyledTable>
       {isOpened && (
         <TaskModal
-          date={selectedTask.date}
+          date={formattedDate()}
           type={TASK_MODAL_TYPES.edit}
           onCloseModal={handleToggleModal}
           category={selectedTask.category}
