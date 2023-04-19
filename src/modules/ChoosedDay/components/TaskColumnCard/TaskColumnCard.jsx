@@ -6,14 +6,36 @@
 //  - пріоритет завдання, з фоном відповідного кольору.
 //  - TaskToolbar - інетрфейс для роботи з карткою
 //  - TaskModal - модалка з формою для редагування завдання."
-
+import { useAuth } from 'hooks/useAuth';
 import { TaskToolbar } from '../TaskToolbar/TaskToolbar';
 
 export const TaskColumnCard = ({ task }) => {
+  function getInitials(name) {
+    if (name) {
+      const initials = name
+        .split(' ')
+        .map(word => word.charAt(0))
+        .join('')
+        .toUpperCase();
+      return initials;
+    } else {
+      return name;
+    }
+  }
+
+  const { name, userImgUrl } = useAuth();
+
+  const displayName = userImgUrl ? (
+    <img src={userImgUrl} alt="UserPicture" />
+  ) : (
+    <p className="initials">{getInitials(name)}</p>
+  );
+
   return (
     <>
       <h3>{task.title}</h3>
       <p>{task.priority}</p>
+      <div>{displayName}</div>
       <TaskToolbar task={task} />
     </>
   );

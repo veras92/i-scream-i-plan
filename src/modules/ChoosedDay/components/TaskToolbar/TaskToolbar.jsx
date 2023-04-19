@@ -26,8 +26,6 @@ export const TaskToolbar = ({ task }) => {
 
   const date = useSelector(selectDate);
 
-  const handleEditClick = () => setModalOpening(true);
-
   const handleDeleteClick = async () => {
     await deleteTask(task._id);
   };
@@ -52,14 +50,14 @@ export const TaskToolbar = ({ task }) => {
     setMenuOpening(false);
   };
 
-  const handleClosure = () => setModalOpening(false);
+  const handleToggleModal = () => setModalOpening(!isModalOpened);
 
   return (
     <>
       <button type="button" onClick={() => handleMoveClick('done')}>
         Move
       </button>
-      <button type="button" onClick={handleEditClick}>
+      <button type="button" onClick={handleToggleModal}>
         Edit
       </button>
       <button type="button" onClick={handleDeleteClick}>
@@ -111,7 +109,7 @@ export const TaskToolbar = ({ task }) => {
         <TaskModal
           date={date}
           type={TASK_MODAL_TYPES.edit}
-          onCloseModal={handleClosure}
+          onCloseModal={handleToggleModal}
           id={task._id}
           title={task.title}
           start={task.start}
