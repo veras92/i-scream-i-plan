@@ -112,6 +112,8 @@ export const GlobalStyles = css`
     &:disabled {
       background-color: #ccc;
       color: #666;
+      transform: none;
+      outline: none;
     }
   }
 `;
