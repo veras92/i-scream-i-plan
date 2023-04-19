@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/i-scream-i-plan/static/css/main.98ec47ca.css",
-    "main.js": "/i-scream-i-plan/static/js/main.a25df005.js",
+    "main.js": "/i-scream-i-plan/static/js/main.75e793a6.js",
     "static/js/601.8c360fd9.chunk.js": "/i-scream-i-plan/static/js/601.8c360fd9.chunk.js",
     "static/js/860.7a49cd3a.chunk.js": "/i-scream-i-plan/static/js/860.7a49cd3a.chunk.js",
-    "static/js/758.851da7bc.chunk.js": "/i-scream-i-plan/static/js/758.851da7bc.chunk.js",
+    "static/js/758.bec19fea.chunk.js": "/i-scream-i-plan/static/js/758.bec19fea.chunk.js",
     "static/js/988.6a1746b0.chunk.js": "/i-scream-i-plan/static/js/988.6a1746b0.chunk.js",
     "static/js/995.5a8ee549.chunk.js": "/i-scream-i-plan/static/js/995.5a8ee549.chunk.js",
     "static/css/962.af2047f2.chunk.css": "/i-scream-i-plan/static/css/962.af2047f2.chunk.css",
@@ -41,10 +41,10 @@
     "static/media/slick.woff": "/i-scream-i-plan/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/i-scream-i-plan/index.html",
     "main.98ec47ca.css.map": "/i-scream-i-plan/static/css/main.98ec47ca.css.map",
-    "main.a25df005.js.map": "/i-scream-i-plan/static/js/main.a25df005.js.map",
+    "main.75e793a6.js.map": "/i-scream-i-plan/static/js/main.75e793a6.js.map",
     "601.8c360fd9.chunk.js.map": "/i-scream-i-plan/static/js/601.8c360fd9.chunk.js.map",
     "860.7a49cd3a.chunk.js.map": "/i-scream-i-plan/static/js/860.7a49cd3a.chunk.js.map",
-    "758.851da7bc.chunk.js.map": "/i-scream-i-plan/static/js/758.851da7bc.chunk.js.map",
+    "758.bec19fea.chunk.js.map": "/i-scream-i-plan/static/js/758.bec19fea.chunk.js.map",
     "988.6a1746b0.chunk.js.map": "/i-scream-i-plan/static/js/988.6a1746b0.chunk.js.map",
     "995.5a8ee549.chunk.js.map": "/i-scream-i-plan/static/js/995.5a8ee549.chunk.js.map",
     "962.af2047f2.chunk.css.map": "/i-scream-i-plan/static/css/962.af2047f2.chunk.css.map",
@@ -55,6 +55,6 @@
   },
   "entrypoints": [
     "static/css/main.98ec47ca.css",
-    "static/js/main.a25df005.js"
+    "static/js/main.75e793a6.js"
   ]
 }
