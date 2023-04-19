@@ -24,7 +24,7 @@ export const Input = styled.input`
   border: 1px solid ${props => props.theme.disabled};
   outline: none;
   border-radius: 8px;
-
+  color: ${props => props.theme.text};
   padding: 0.875rem;
 
   width: 100%;

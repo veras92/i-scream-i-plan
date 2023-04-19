@@ -19,7 +19,7 @@ export const Input = styled.input`
   outline: none;
   border: 1px solid ${props => props.theme.disabled};
   border-radius: 8px;
-
+  color: ${props => props.theme.text};
   padding: 0.875rem;
 
   width: 100%;
