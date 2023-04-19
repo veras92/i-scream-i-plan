@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/i-scream-i-plan/static/css/main.98ec47ca.css",
-    "main.js": "/i-scream-i-plan/static/js/main.dbecda6e.js",
+    "main.js": "/i-scream-i-plan/static/js/main.9d6355f0.js",
     "static/js/601.82d4f6fe.chunk.js": "/i-scream-i-plan/static/js/601.82d4f6fe.chunk.js",
     "static/js/860.7a49cd3a.chunk.js": "/i-scream-i-plan/static/js/860.7a49cd3a.chunk.js",
-    "static/js/758.bec19fea.chunk.js": "/i-scream-i-plan/static/js/758.bec19fea.chunk.js",
+    "static/js/758.45e5e097.chunk.js": "/i-scream-i-plan/static/js/758.45e5e097.chunk.js",
     "static/js/988.6a1746b0.chunk.js": "/i-scream-i-plan/static/js/988.6a1746b0.chunk.js",
     "static/js/995.5a8ee549.chunk.js": "/i-scream-i-plan/static/js/995.5a8ee549.chunk.js",
     "static/css/962.af2047f2.chunk.css": "/i-scream-i-plan/static/css/962.af2047f2.chunk.css",
@@ -41,10 +41,10 @@
     "static/media/slick.woff": "/i-scream-i-plan/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/i-scream-i-plan/index.html",
     "main.98ec47ca.css.map": "/i-scream-i-plan/static/css/main.98ec47ca.css.map",
-    "main.dbecda6e.js.map": "/i-scream-i-plan/static/js/main.dbecda6e.js.map",
+    "main.9d6355f0.js.map": "/i-scream-i-plan/static/js/main.9d6355f0.js.map",
     "601.82d4f6fe.chunk.js.map": "/i-scream-i-plan/static/js/601.82d4f6fe.chunk.js.map",
     "860.7a49cd3a.chunk.js.map": "/i-scream-i-plan/static/js/860.7a49cd3a.chunk.js.map",
-    "758.bec19fea.chunk.js.map": "/i-scream-i-plan/static/js/758.bec19fea.chunk.js.map",
+    "758.45e5e097.chunk.js.map": "/i-scream-i-plan/static/js/758.45e5e097.chunk.js.map",
     "988.6a1746b0.chunk.js.map": "/i-scream-i-plan/static/js/988.6a1746b0.chunk.js.map",
     "995.5a8ee549.chunk.js.map": "/i-scream-i-plan/static/js/995.5a8ee549.chunk.js.map",
     "962.af2047f2.chunk.css.map": "/i-scream-i-plan/static/css/962.af2047f2.chunk.css.map",
@@ -55,6 +55,6 @@
   },
   "entrypoints": [
     "static/css/main.98ec47ca.css",
-    "static/js/main.dbecda6e.js"
+    "static/js/main.9d6355f0.js"
   ]
 }
