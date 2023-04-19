@@ -9,7 +9,7 @@
 import { useSelector } from 'react-redux';
 import { selectDate } from 'redux/date/selectors';
 import { Item, List, StyledNavLink } from './PeriodTypeSelect.styled';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 export const PeriodTypeSelect = ({ onChangeType }) => {
   const date = useSelector(selectDate);
