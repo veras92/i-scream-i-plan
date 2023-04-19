@@ -8,6 +8,7 @@
 
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import { format, parse } from 'date-fns';
 import { useGetTasksByMonthQuery } from 'redux/tasks/tasksApi';
 import { setTasks } from 'redux/tasks/tasksSlice';
@@ -17,6 +18,18 @@ import { PeriodTypeSelect } from './components/PeriodTypeSelect/PeriodTypeSelect
 
 export const CalendarToolbar = () => {
   const [type, setType] = useState('month');
+
+  const location = useLocation();
+
+  const pathname = location.pathname.slice(0, -11);
+
+  useEffect(() => {
+    if (pathname === '/calendar/day') {
+      setType('day');
+      return;
+    }
+    setType('month');
+  }, [pathname]);
 
   const normalizedDate = useSelector(selectDate);
 

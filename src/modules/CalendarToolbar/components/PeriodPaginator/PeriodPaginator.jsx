@@ -1,18 +1,29 @@
 // "1. Компонент рендерить блок навігації для переадресацї юзера на таблицю з задачами відповідно до обраного типу періоду day | month.
 // 2. Кнопка що вказує поточний тип обраного періоду має активні стилі, як показано на макеті."
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { format, parse, add, sub } from 'date-fns';
 import { setDates } from 'redux/date/dateSlice';
 import { selectDate } from 'redux/date/selectors';
 import sprite from 'shared/icons/sprite.svg';
 
 export const PeriodPaginator = ({ type }) => {
+  const params = useParams();
+
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
   const normalizedDate = useSelector(selectDate);
+
+  useEffect(() => {
+    if (params.currentDay) {
+      if (normalizedDate !== params.currentDay) {
+        dispatch(setDates(params.currentDay));
+      }
+    }
+  }, [dispatch, normalizedDate, params.currentDay]);
 
   const date = parse(normalizedDate, 'yyyy-MM-dd', Date.now());
 
