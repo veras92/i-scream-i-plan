@@ -28,7 +28,7 @@ import { useWindowSize } from 'pages/MainLayout/MainLayout';
 import { useState } from 'react';
 import { TaskModal } from 'shared/components/TaskModal/TaskModal';
 import { TASK_MODAL_TYPES } from 'shared/services/taskModalTypes';
-import { parse } from 'date-fns';
+// import { parse } from 'date-fns';
 
 export default function CalendarTable({ tasks, currentDate }) {
   const [isOpened, setOpening] = useState(false);
