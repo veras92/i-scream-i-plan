@@ -8,6 +8,13 @@ export const ColumnTitleWrapper = styled.div`
   & + button {
     margin-top: 35px;
   }
+
+  & + ul {
+    margin-top: 24px;
+    @media (min-width: 765px) {
+      margin-top: 35px;
+    }
+  }
 `;
 
 export const ColumnTitle = styled.h2`
