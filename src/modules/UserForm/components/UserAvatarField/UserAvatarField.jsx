@@ -16,6 +16,7 @@ export const UserAvatarField = ({
   id,
   currentAvatarUrl,
   setCurrentAvatarUrl,
+  setIsDisabled,
   register,
   errors,
 }) => {
@@ -39,10 +40,11 @@ export const UserAvatarField = ({
         {...register(inputName)}
         id={id}
         type={type}
-        // accept="image/*"
+        accept="image/*"
         onChange={e => {
           const file = e.target.files[0];
           setFileUrl(file, setCurrentAvatarUrl);
+          setIsDisabled(false);
           return e;
         }}
       />

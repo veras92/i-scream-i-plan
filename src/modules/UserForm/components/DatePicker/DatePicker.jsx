@@ -25,6 +25,8 @@ export const DatePicker = ({
             onChange={onChange}
             onBlur={onBlur}
             selected={value}
+            closeOnScroll={e => e.target === document}
+            maxDate={new Date()}
             dateFormat="dd/MM/yyyy"
             customInput={<Input />}
           />
