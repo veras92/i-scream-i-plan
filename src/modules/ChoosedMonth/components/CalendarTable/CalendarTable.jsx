@@ -25,8 +25,15 @@ import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { setDates } from 'redux/date/dateSlice';
 import { useWindowSize } from 'pages/MainLayout/MainLayout';
+import { useState } from 'react';
+import { TaskModal } from 'shared/components/TaskModal/TaskModal';
+import { TASK_MODAL_TYPES } from 'shared/services/taskModalTypes';
+// import { parse } from 'date-fns';
 
 export default function CalendarTable({ tasks, currentDate }) {
+  const [isOpened, setOpening] = useState(false);
+  const [selectedTask, setSelectedTask] = useState(null);
+
   const startMonth = startOfMonth(new Date(currentDate));
   const endMonth = endOfMonth(new Date(currentDate));
   const firstDayOfMonth = getDay(startMonth) - 1;
@@ -37,7 +44,7 @@ export default function CalendarTable({ tasks, currentDate }) {
   const navigate = useNavigate();
 
   const size = useWindowSize();
-
+  console.log(selectedTask);
   const daysWithTasks = daysOfMonth.map(day => ({
     date: format(day, 'yyyy-MM-dd'),
     tasks: tasks.filter(task => task.date === format(day, 'yyyy-MM-dd')),
@@ -52,9 +59,17 @@ export default function CalendarTable({ tasks, currentDate }) {
 
     return day.startsWith('0') ? day.slice(1) : day;
   }
-  const handleClick = date => {
-    dispatch(setDates(date));
-    navigate(`/calendar/day/${date}`);
+  const handleClick = (e, date) => {
+    const { currentTarget, target } = e;
+
+    if (currentTarget === target) {
+      dispatch(setDates(date));
+      navigate(`/calendar/day/${date}`);
+    }
+  };
+
+  const handleToggleModal = () => {
+    setOpening(!isOpened);
   };
   function truncateString(str) {
     if (size.width < 767) {
@@ -66,22 +81,38 @@ export default function CalendarTable({ tasks, currentDate }) {
     return str;
   }
 
+  const currentTask = data => {
+    setSelectedTask(data);
+  };
+
   const rows = [];
 
   let cells = [...emptyCells];
 
   daysWithTasks.forEach((day, index) => {
     cells.push(
-      <StyledTd key={index} onClick={() => handleClick(day.date)}>
+      <StyledTd key={index} onClick={e => handleClick(e, day.date)}>
         {day.tasks.length > 0 &&
           day.tasks.map(({ tasks }, index) => {
             return (
               <StyledListTasks key={index}>
-                {tasks.map(task => (
-                  <li className={task.priority} key={task._id}>
-                    {truncateString(task.title)}
-                  </li>
-                ))}
+                {tasks.map((task, index) => {
+                  if (index >= 3) {
+                    return null;
+                  }
+                  return (
+                    <li
+                      key={task._id}
+                      className={task.priority}
+                      onClick={() => {
+                        setOpening(true);
+                        currentTask(task);
+                      }}
+                    >
+                      {truncateString(task.title)}
+                    </li>
+                  );
+                })}
               </StyledListTasks>
             );
           })}
@@ -98,9 +129,24 @@ export default function CalendarTable({ tasks, currentDate }) {
   });
 
   return (
-    <StyledTable>
-      <tbody>{rows}</tbody>
-    </StyledTable>
+    <>
+      <StyledTable>
+        <tbody>{rows}</tbody>
+      </StyledTable>
+      {isOpened && (
+        <TaskModal
+          date={selectedTask.date}
+          type={TASK_MODAL_TYPES.edit}
+          onCloseModal={handleToggleModal}
+          category={selectedTask.category}
+          id={selectedTask._id}
+          title={selectedTask.title}
+          start={selectedTask.start}
+          end={selectedTask.end}
+          priority={selectedTask.priority}
+        />
+      )}
+    </>
   );
 }
 CalendarTable.propTypes = {

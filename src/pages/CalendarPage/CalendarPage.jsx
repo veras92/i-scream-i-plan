@@ -16,6 +16,7 @@ import { Helmet } from 'react-helmet-async';
 
 // import { useDispatch, useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
+import { Loader } from 'shared/components/Loader/Loader';
 // import { selectDate } from 'redux/date/selectors';
 // import { selectTasks } from 'redux/tasks/selectors';
 // import { useGetTasksByMonthQuery } from 'redux/tasks/tasksApi';
@@ -44,7 +45,7 @@ export default function CalendarPage() {
       </Helmet>
       CalendarPage
       <CalendarToolbar />
-      <Suspense fallback={null}>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </div>
