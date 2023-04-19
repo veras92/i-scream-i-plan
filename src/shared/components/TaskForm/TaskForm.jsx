@@ -26,7 +26,6 @@ import { FormFiled } from '../FormFiled/FormField';
 import { RadioButton } from '../RadioButton/RadioButton';
 
 import sprite from 'shared/icons/sprite.svg';
-import { Button } from 'shared/styles/components';
 import { formatTimeOnInput, formatTimeOnOutput } from 'shared/utils/formatTime';
 import { formatDate } from 'shared/utils/formatDate';
 import { notify } from 'shared/utils/errorToast';
@@ -87,7 +86,7 @@ export const TaskForm = props => {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isValid },
+    formState: { errors, isDirty },
   } = useForm({
     resolver: yupResolver(taskFormSchema),
     defaultValues: {
@@ -149,24 +148,20 @@ export const TaskForm = props => {
       </RadioBtnsWrap>
       {isAdd ? (
         <BtnsWrap>
-          <Button
-            type="submit"
-            function="add"
-            disabled={!isValid || isCreating}
-          >
+          <button type="submit" disabled={isCreating}>
             <Svg width="20" height="20">
               <use href={`${sprite}#icon-plus`} />
             </Svg>
             <span>{type}</span>
-          </Button>
+          </button>
           <Cancel type="button" onClick={onCloseModal}>
             Cancel
           </Cancel>
         </BtnsWrap>
       ) : (
-        <Button type="submit" function="save" disabled={!isValid || isChanging}>
+        <button type="submit" disabled={!isDirty || isChanging}>
           {type}
-        </Button>
+        </button>
       )}
     </Form>
   );
