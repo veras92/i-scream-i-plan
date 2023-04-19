@@ -17,14 +17,16 @@ export const themeLight = {
   bcgTernary: '#FFFFFF', //  white background that is light black in DT (User profile as an example)
   bcgFocus: '#E3F3FF', // Sidebar active tab background,  Add task background, Calendar acactive "Day/Month" tab - changes to accent blue in DT
   bcgFocusSecondary: '#E3F3FF', // Calendar incactive "Day/Month" tab. Light blue that changes to light dark in DT
+  // bcgCard: 'F7F6F9', //Calendar Day card background that changes to black in DT
 
   disabled: 'rgba(220, 227, 229, 0.8)', // for all inactive items (inputs or arrows) + Weekend dates color. Remains the same in both themes
-  disabledSecondary: 'rgba(220, 227, 229, 0.8)', // for things like calendar day, outlines that sem disabled
+  disabledSecondary: 'rgba(220, 227, 229, 0.8)', // for things like calendar day, outlines that seem disabled
   btnShadow: 'rgba(136, 165, 191, 0.48)',
 
   text: '#111111', // Main text black color - changes to white in dark theme (+sidebar inactive tab text)
   textSecondary: '#616161', //grey subheaders text - remains greay in dark theme.  Sidebar "User panel" text
   activeText: '#3E85F3', // Sidebar active tab text and icon, + calendar active "Day/Month" -  blue that changes to white in DT
+  textActions: '#616161', // Card actions color - grey that turns to White in DT
 
   priorityLowText: '#3E85F3',
   priorityMediumText: '#F3B249',
@@ -45,10 +47,15 @@ export const themeLight = {
   SvgArowSecondary: '#616161',
   SvgDisabled: '#DCE3E5',
 
+
   PeriodTypeSelect: '#CAE8FF',
   PeriodTypeSelectDisabled: '#E3F3FF',
 
   ToDoPageBg: '#FFFFFF',
+
+  PeriodTypeSelect: '#E3F3FF',
+  PeriodTypeSelectDisabled: '#CAE8FF',
+
 };
 
 export const themeDark = {
@@ -70,6 +77,7 @@ export const themeDark = {
   bcgTernary: '#21222C', // Light black background that is white in LT (User profile as an example)
   bcgFocus: '#3E85F3', // Sidebar active tab background,  Add task background, Calendar active "Day/Month" tab background - changes to transparent blue in LT
   bcgFocusSecondary: 'rgba(255, 255, 255, 0.15)', // Calendar incactive "Day/Month" tab. Light dark that changes to light blue in DT
+  // bcgCard: '#171820', //Calendar Day card black background that changes to grey in LT
 
   disabled: 'rgba(220, 227, 229, 0.8)', // for all inactive items (inputs or arrows) + Weekend dates color. Remains the same in both themes
   disabledSecondary: 'rgba(255, 255, 255, 0.15);', // for things like calendar day, outlines that sem disabled
@@ -79,6 +87,7 @@ export const themeDark = {
   text: '#FFFFFF', // Main text white color,  changes to black in white theme
   textSecondary: 'rgba(250, 250, 250, 0.3)', // grey subheaders text - remains greay in dark theme. Sidebar "User panel" text
   activeText: '#FFFFFF', // Sidebar active tab text and icon, + calendar active "Day/Month" -  white that changes to blue in LT
+  textActions: '#FFFFFF', // Card actions color - white that turns to grey in LT
 
   priorityLowText: '#3E85F3',
   priorityMediumText: '#F3B249',
@@ -98,8 +107,13 @@ export const themeDark = {
 
   SvgArowSecondary: '#FFFFFF',
   SvgDisabled: '#ffffff26',
+
   PeriodTypeSelect: '#3E85F3',
   PeriodTypeSelectDisabled: '#21222C',
 
   ToDoPageBg: '#22232D',
+
+  PeriodTypeSelect: '#21222C',
+  PeriodTypeSelectDisabled: '#3E85F3',
+
 };

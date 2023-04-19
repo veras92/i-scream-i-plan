@@ -5,9 +5,10 @@ import {
   Label,
   Svg,
   UserAvatarWrapper,
+  InfoWrapper,
 } from './UserAvatarField.styled';
 import { ErrorMessage } from '@hookform/error-message';
-
+import { StyledError } from './UserAvatarField.styled';
 export const UserAvatarField = ({
   userName,
   inputName,
@@ -20,7 +21,9 @@ export const UserAvatarField = ({
 }) => {
   return (
     <UserAvatarWrapper>
-      <ErrorMessage errors={errors} name={inputName} />
+      <StyledError>
+        <ErrorMessage errors={errors} name={inputName} />
+      </StyledError>
       <Label htmlFor={id}>
         {!currentAvatarUrl ? (
           <p>
@@ -43,9 +46,10 @@ export const UserAvatarField = ({
           return e;
         }}
       />
-
-      <h3>{userName}</h3>
-      <p>User</p>
+      <InfoWrapper>
+        <h3>{userName}</h3>
+        <p>User</p>
+      </InfoWrapper>
     </UserAvatarWrapper>
   );
 };
