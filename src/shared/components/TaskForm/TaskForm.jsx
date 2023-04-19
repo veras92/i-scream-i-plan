@@ -7,13 +7,32 @@
 // 7. Помилка - юзеру показується відповідне пушповідомлення
 // 8. Клік по кнопці Cancel або кнопці закриття на формі закриває модалку."
 
+import { useEffect } from 'react';
+
+import {
+  useChangeTaskMutation,
+  useCreateTaskMutation,
+} from 'redux/tasks/tasksApi';
+
 import { useForm } from 'react-hook-form';
-import { FormFiled } from '../FormFiled/FormField';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { taskFormSchema } from './consts/taskFormSchema';
 import {
   priorityInputs,
   timeInputs,
   titleInput,
 } from './consts/taskFormInputs';
+import { FormFiled } from '../FormFiled/FormField';
+import { RadioButton } from '../RadioButton/RadioButton';
+
+import sprite from 'shared/icons/sprite.svg';
+import { Button } from 'shared/styles/components';
+import { formatTimeOnInput, formatTimeOnOutput } from 'shared/utils/formatTime';
+import { formatDate } from 'shared/utils/formatDate';
+import { notify } from 'shared/utils/errorToast';
+
+import { CATEGORIES_OPTIONS } from 'shared/services/categoriesOptions';
+import { TASK_MODAL_TYPES } from 'shared/services/taskModalTypes';
 import {
   BtnsWrap,
   Cancel,
@@ -22,24 +41,32 @@ import {
   Svg,
   TimePickerWrap,
 } from './TaskForm.styled';
-import { RadioButton } from '../RadioButton/RadioButton';
-
-import sprite from 'shared/icons/sprite.svg';
-import { Button } from 'shared/styles/components';
-import {
-  useChangeTaskMutation,
-  useCreateTaskMutation,
-} from 'redux/tasks/tasksApi';
-import { formatTimeOnInput, formatTimeOnOutput } from 'shared/utils/formatTime';
-import { formatDate } from 'shared/utils/formatDate';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { taskFormSchema } from './consts/taskFormSchema';
-import { CATEGORIES_OPTIONS } from 'shared/services/categoriesOptions';
-import { TASK_MODAL_TYPES } from 'shared/services/taskModalTypes';
 
 export const TaskForm = props => {
-  const [createTask, { isLoading: isCreating }] = useCreateTaskMutation();
-  const [changeTask, { isLoading: isChanging }] = useChangeTaskMutation();
+  const [
+    createTask,
+    {
+      isLoading: isCreating,
+      isError: isCreactTaskError,
+      error: createTaskError,
+    },
+  ] = useCreateTaskMutation();
+  const [
+    changeTask,
+    {
+      isLoading: isChanging,
+      isError: isChangeTaskError,
+      error: changeTaskError,
+    },
+  ] = useChangeTaskMutation();
+
+  useEffect(() => {
+    if (isCreactTaskError)
+      notify(createTaskError?.data?.message || 'Sorry, something went wrong');
+    if (isChangeTaskError)
+      notify(changeTaskError?.data?.message || 'Sorry, something went wrong');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isChangeTaskError, isCreactTaskError]);
 
   const {
     id = '',

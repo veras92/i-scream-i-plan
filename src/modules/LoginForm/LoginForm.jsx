@@ -4,6 +4,7 @@
 // 4. В разі успішної відповіді інформацію про користувача потрібно записати в глобальний стейт і виконати редірект на приватний маршрут /calendar/month.
 // 5. В разі помилки користувачу потрібно вивести відповідне пуш-повідомлення з помилкою"
 
+import { useEffect } from 'react';
 import { useLoginUserMutation } from 'redux/auth/authApi';
 
 import { useForm } from 'react-hook-form';
@@ -30,11 +31,16 @@ import {
   Button,
   GooseIMG,
 } from './LoginForm.styled';
+import { notify } from 'shared/utils/errorToast';
 
 const defaultValues = getDefaultValues(loginFormInputs);
 
 export const LoginForm = () => {
-  const [login] = useLoginUserMutation();
+  const [login, { isError, error }] = useLoginUserMutation();
+
+  useEffect(() => {
+    if (isError) notify(error?.data?.message || 'Sorry, something went wrong');
+  }, [error, isError]);
 
   const {
     register: reg,

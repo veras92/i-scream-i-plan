@@ -9,6 +9,8 @@
 // 9. При успішній відповіді данні пишуться в глобальний стейт.
 // 10. При помилці юзеру виводиться відповідне пушповідомлення."
 
+import { useEffect, useState } from 'react';
+
 import { useAuth } from 'hooks/useAuth';
 import { useUpdateUserInfoMutation } from 'redux/auth/authApi';
 
@@ -17,15 +19,15 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { userFormSchema } from './consts/userFormSchema';
 import { formatDate } from 'shared/utils/formatDate';
 import { userAvatarInput, userFormInputs } from './consts/userFormInputs';
+import { parse } from 'date-fns';
 
 import { UserAvatarField } from './components/UserAvatarField/UserAvatarField';
 import { FormFiled } from 'shared/components/FormFiled/FormField';
 import { DatePicker } from './components/DatePicker/DatePicker';
-
 import { Button } from 'shared/styles/components';
-import { parse } from 'date-fns';
-import { useState } from 'react';
-import { Form, FormBody } from './UserForm.styled'
+
+import { Form, FormBody } from './UserForm.styled';
+import { notify } from 'shared/utils/errorToast';
 
 const today = new Date();
 
@@ -33,7 +35,14 @@ export const UserForm = () => {
   const { name, email, phone, skype, birthday, userImgUrl } = useAuth();
   const [currentAvatarUrl, setCurrentAvatarUrl] = useState(userImgUrl);
 
-  const [update, { isLoading }] = useUpdateUserInfoMutation();
+  const [update, { isLoading, isError, error }] = useUpdateUserInfoMutation();
+
+  useEffect(() => {
+    if (isError && error?.status !== 413)
+      notify(error?.data?.message || 'Sorry, something went wrong');
+    if (isError && error.status === 413) notify('The image is too large');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isError]);
 
   const {
     register: reg,
@@ -46,13 +55,13 @@ export const UserForm = () => {
       name,
       email,
       phone: !phone ? '' : phone,
-      birthday: !birthday ? today : parse('2023-04-15', 'yyyy-MM-dd', today),
+      birthday: !birthday ? today : parse(birthday, 'yyyy-MM-dd', today),
       skype: !skype ? '' : skype,
       userImgUrl: !userImgUrl ? '' : userImgUrl,
     },
   });
 
-  const onSubmit = async data => {
+  const onSubmit = data => {
     const preparedBirthday =
       formatDate(data.birthday) === formatDate(today)
         ? null
@@ -67,13 +76,7 @@ export const UserForm = () => {
       birthday: preparedBirthday,
       userImgUrl: preparedUserImgUrl,
     };
-    try {
-      await update(preparedData).unwrap();
-    } catch (e) {
-      if (e.status === 413) {
-        alert('the image is too large');
-      }
-    }
+    update(preparedData);
   };
 
   return (
