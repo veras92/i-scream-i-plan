@@ -47,6 +47,8 @@ export const themeLight = {
 
   PeriodTypeSelect: '#CAE8FF',
   PeriodTypeSelectDisabled: '#E3F3FF',
+
+  ToDoPageBg: '#FFFFFF',
 };
 
 export const themeDark = {
@@ -98,4 +100,6 @@ export const themeDark = {
   SvgDisabled: '#ffffff26',
   PeriodTypeSelect: '#3E85F3',
   PeriodTypeSelectDisabled: '#21222C',
+
+  ToDoPageBg: '#22232D',
 };
