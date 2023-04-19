@@ -21,6 +21,6 @@ export const userFormSchema = Yup.object().shape({
     .email('Invalid email format')
     .required('This field is required'),
   userImgUrl: Yup.mixed().test('is-valid-type', 'Ivalid image type', value => {
-    return isValidFileType(value);
+    return value === '' || isValidFileType(value);
   }),
 });
