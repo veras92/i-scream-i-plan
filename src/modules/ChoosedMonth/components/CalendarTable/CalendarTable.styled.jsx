@@ -71,6 +71,7 @@ export const StyledListTasks = styled.ul`
   gap: 1px;
 
   li {
+    cursor: pointer;
     font-weight: 700;
     font-size: 10px;
     line-height: 14px;
