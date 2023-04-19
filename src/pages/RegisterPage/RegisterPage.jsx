@@ -5,13 +5,13 @@
 //  - RegisterForm - блок з формою реєстрації
 //  - AuthNavigate - загальний компонент навігації для сторінок login/register"
 import { RegisterForm } from 'modules/RegisterForm/RegisterForm';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 export default function RegisterPage() {
   return (
     <div>
       <Helmet>
-        <title>Log in</title>
+        <title>Sign Up</title>
       </Helmet>
       <RegisterForm />
     </div>
