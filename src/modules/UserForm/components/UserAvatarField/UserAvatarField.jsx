@@ -9,17 +9,18 @@ import {
 import { ErrorMessage } from '@hookform/error-message';
 
 export const UserAvatarField = ({
-  inputName,
-  id,
-  type,
   userName,
-  register,
+  inputName,
+  type,
+  id,
   currentAvatarUrl,
   setCurrentAvatarUrl,
+  register,
   errors,
 }) => {
   return (
     <UserAvatarWrapper>
+      <ErrorMessage errors={errors} name={inputName} />
       <Label htmlFor={id}>
         {!currentAvatarUrl ? (
           <p>
@@ -32,16 +33,17 @@ export const UserAvatarField = ({
         )}
       </Label>
       <HiddenInput
-        id={id}
         {...register(inputName)}
+        id={id}
         type={type}
+        // accept="image/*"
         onChange={e => {
           const file = e.target.files[0];
           setFileUrl(file, setCurrentAvatarUrl);
           return e;
         }}
       />
-      <ErrorMessage errors={errors} name="userImgUrl" />
+
       <h3>{userName}</h3>
       <p>User</p>
     </UserAvatarWrapper>

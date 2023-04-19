@@ -1,7 +1,9 @@
+import 'react-toastify/dist/ReactToastify.css';
 import { css } from '@emotion/react';
 import { modernNormalizeCss } from 'emotion-modern-normalize';
 import Coolvetica from '../fonts/Coolvetica/CoolveticaRg-Regular.ttf';
 import Inter from '../fonts/Inter/Inter-VariableFont_slnt,wght.ttf';
+
 export const GlobalStyles = css`
   ${modernNormalizeCss}
   @font-face {

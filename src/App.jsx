@@ -9,7 +9,7 @@ import { router } from 'shared/services/createRouter';
 export const App = () => {
   const { accessToken } = useAuth();
 
-  const [getUserInfo, { error, isFetching: isUserRefreshing }] =
+  const [getUserInfo, { error, isLoading: isUserRefreshing }] =
     useLazyGetCurrentUserInfoQuery();
   const [refreshTokens, { isLoading: isTokenRefreshing }] =
     useRefreshTokensMutation();
