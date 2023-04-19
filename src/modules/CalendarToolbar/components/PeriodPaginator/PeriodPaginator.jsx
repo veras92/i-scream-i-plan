@@ -6,6 +6,7 @@ import { format, parse, add, sub } from 'date-fns';
 import { setDates } from 'redux/date/dateSlice';
 import { selectDate } from 'redux/date/selectors';
 import sprite from 'shared/icons/sprite.svg';
+import { Btn, Li } from './PeriodPaginator.styled';
 
 export const PeriodPaginator = ({ type }) => {
   const dispatch = useDispatch();
@@ -53,24 +54,23 @@ export const PeriodPaginator = ({ type }) => {
     <>
       <p>{type === 'month' ? currentDate.slice(3) : currentDate}</p>
       <ul>
-        <li></li>
-        <li>
-          <button
+        <Li>
+          <Btn
             type="button"
             name="subtraction"
             onClick={onChangeDate}
             disabled={shouldDisable}
           >
-            <svg>
-              <use href={`${sprite}#icon-smoll-arrow-left`} />
+            <svg height={'10px'} width={'8px'}>
+              <use href={`${sprite}#icon-arrow-left-small`} />
             </svg>
-          </button>
-          <button type="button" name="addition" onClick={onChangeDate}>
-            <svg>
-              <use href={`${sprite}#icon-smoll-arrow-right`} />
+          </Btn>
+          <Btn type="button" name="addition" onClick={onChangeDate}>
+            <svg height={'10px'} width={'8px'}>
+              <use href={`${sprite}#icon-arrow-right-small`} />
             </svg>
-          </button>
-        </li>
+          </Btn>
+        </Li>
       </ul>
     </>
   );
