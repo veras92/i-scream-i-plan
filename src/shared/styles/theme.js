@@ -41,6 +41,9 @@ export const themeLight = {
   calendarTableBorder: 'rgba(220, 227, 229, 0.5)',
   calendarDate: '#343434',
   calendarHeadDate: '#616161',
+
+  SvgArowSecondary: '#616161',
+  SvgDisabled: '#DCE3E5',
 };
 
 export const themeDark = {
@@ -87,4 +90,7 @@ export const themeDark = {
   calendarTableBorder: 'rgba(255, 255, 255, 0.15)',
   calendarDate: '#FFFFFF',
   calendarHeadDate: '#FFFFFF',
+
+  SvgArowSecondary: '#FFFFFF',
+  SvgDisabled: '#ffffff26',
 };
