@@ -5,17 +5,19 @@ import { Wrapper, UserName, UserPicture, UserNameIcon, BackgroundName } from './
 import { useAuth } from 'hooks/useAuth';
 
 
+
 export const UserInfo = () => {
-  function getInitials(name) {
-    const initials = name
-      .split(' ')
-      .map((word) => word.charAt(0))
-      .join('')
-      .toUpperCase();
-  
-    return initials;
+  function getInitials(name) { 
+    if (name) { const initials = name 
+      .split(' ') 
+      .map(word => word.charAt(0))
+      .join('') 
+      .toUpperCase(); 
+    return initials; 
+  } else { 
+    return name; } 
   }
-    
+  
   const {name, userImgUrl} = useAuth();
   
   const displayName = userImgUrl ? (
