@@ -9,6 +9,15 @@
 import { useAuth } from 'hooks/useAuth';
 import { TaskToolbar } from '../TaskToolbar/TaskToolbar';
 
+import {
+  TaskCard,
+  CardTitle,
+  PriorityTitle,
+  UserLogo,
+  CardInfo,
+  StyledInfo,
+} from './TaskColumnCard.styled';
+
 export const TaskColumnCard = ({ task }) => {
   function getInitials(name) {
     if (name) {
@@ -32,11 +41,16 @@ export const TaskColumnCard = ({ task }) => {
   );
 
   return (
-    <>
-      <h3>{task.title}</h3>
-      <p>{task.priority}</p>
-      <div>{displayName}</div>
-      <TaskToolbar task={task} />
-    </>
+    <TaskCard>
+      <CardTitle>{task.title}</CardTitle>
+      <CardInfo>
+        <StyledInfo>
+          <UserLogo>{displayName}</UserLogo>
+
+          <PriorityTitle>{task.priority}</PriorityTitle>
+        </StyledInfo>
+        <TaskToolbar task={task} />
+      </CardInfo>
+    </TaskCard>
   );
 };

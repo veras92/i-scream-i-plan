@@ -14,6 +14,16 @@ import { useDeleteTaskMutation } from 'redux/tasks/tasksApi';
 import { useChangeTaskMutation } from 'redux/tasks/tasksApi';
 import { TASK_MODAL_TYPES } from 'shared/services/taskModalTypes';
 import { TaskModal } from 'shared/components/TaskModal/TaskModal';
+import sprite from 'shared/icons/sprite.svg';
+import {
+  ButtonsWrapper,
+  TaskAction,
+  MoveButton,
+  MoveAction,
+  MoveWrapper,
+  PopUp,
+} from './TaskToolbar.styled';
+
 // import { parse } from 'date-fns';
 
 export const TaskToolbar = ({ task }) => {
@@ -54,56 +64,79 @@ export const TaskToolbar = ({ task }) => {
 
   return (
     <>
-      <button type="button" onClick={() => handleMoveClick('done')}>
-        Move
-      </button>
-      <button type="button" onClick={handleToggleModal}>
-        Edit
-      </button>
-      <button type="button" onClick={handleDeleteClick}>
-        Delete
-      </button>
+      <ButtonsWrapper>
+        <TaskAction>
+          <use
+            href={`${sprite}#icon-arrow-circle-right`}
+            onClick={() => handleMoveClick('done')}
+          />
+        </TaskAction>
+        <TaskAction>
+          <use href={`${sprite}#icon-pencil`} onClick={handleToggleModal} />
+        </TaskAction>
+        <TaskAction>
+          <use href={`${sprite}#icon-basket`} onClick={handleDeleteClick} />
+        </TaskAction>
+      </ButtonsWrapper>
       {isMenuOpened && task.category === 'to-do' && (
-        <ul>
-          <li>
-            <button type="button" name="in-progress" onClick={onMenuClick}>
+        <PopUp>
+          <MoveWrapper>
+            <MoveButton type="button" name="in-progress" onClick={onMenuClick}>
               In progress
-            </button>
-          </li>
-          <li>
-            <button type="button" name="done" onClick={onMenuClick}>
+              <MoveAction>
+                <use href={`${sprite}#icon-arrow-circle-right`} />
+              </MoveAction>
+            </MoveButton>
+          </MoveWrapper>
+          <MoveWrapper>
+            <MoveButton type="button" name="done" onClick={onMenuClick}>
               Done
-            </button>
-          </li>
-        </ul>
+              <MoveAction>
+                <use href={`${sprite}#icon-arrow-circle-right`} />
+              </MoveAction>
+            </MoveButton>
+          </MoveWrapper>
+        </PopUp>
       )}
       {isMenuOpened && task.category === 'in-progress' && (
-        <ul>
-          <li>
-            <button type="button" name="to-do" onClick={onMenuClick}>
+        <PopUp>
+          <MoveWrapper>
+            <MoveButton type="button" name="to-do" onClick={onMenuClick}>
               To do
-            </button>
-          </li>
-          <li>
-            <button type="button" name="done" onClick={onMenuClick}>
+              <MoveAction>
+                <use href={`${sprite}#icon-arrow-circle-right`} />
+              </MoveAction>
+            </MoveButton>
+          </MoveWrapper>
+          <MoveWrapper>
+            <MoveButton type="button" name="done" onClick={onMenuClick}>
               Done
-            </button>
-          </li>
-        </ul>
+              <MoveAction>
+                <use href={`${sprite}#icon-arrow-circle-right`} />
+              </MoveAction>
+            </MoveButton>
+          </MoveWrapper>
+        </PopUp>
       )}
       {isMenuOpened && task.category === 'done' && (
-        <ul>
-          <li>
-            <button type="button" name="in-progress" onClick={onMenuClick}>
+        <PopUp>
+          <MoveWrapper>
+            <MoveButton type="button" name="in-progress" onClick={onMenuClick}>
               In progress
-            </button>
-          </li>
-          <li>
-            <button type="button" name="to-do" onClick={onMenuClick}>
+              <MoveAction>
+                <use href={`${sprite}#icon-arrow-circle-right`} />
+              </MoveAction>
+            </MoveButton>
+          </MoveWrapper>
+          <MoveWrapper>
+            <MoveButton type="button" name="to-do" onClick={onMenuClick}>
               To do
-            </button>
-          </li>
-        </ul>
+              <MoveAction>
+                <use href={`${sprite}#icon-arrow-circle-right`} />
+              </MoveAction>
+            </MoveButton>
+          </MoveWrapper>
+        </PopUp>
       )}
       {isModalOpened && (
         <TaskModal

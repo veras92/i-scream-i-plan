@@ -133,3 +133,26 @@ export const HiddenInput = styled.input`
     top: 10.3125rem;
   }
 `;
+
+export const InfoWrapper = styled.div`
+  position: relative;
+  padding-top: 10px;
+`;
+export const StyledError = styled.h6`
+  color: red;
+  font-size: 12px;
+  font-weight: 500;
+  position: absolute;
+  top: 50px;
+
+  right: 50%;
+  transform: translate(50%, -50%);
+  white-space: nowrap;
+  @media (min-width: 768px) {
+    top: 180px;
+  }
+
+  @media (min-width: 1086px) {
+    top: 200px;
+  }
+`;
