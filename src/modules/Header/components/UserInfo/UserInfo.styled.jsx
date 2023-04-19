@@ -16,7 +16,7 @@ export const UserName = styled.p`
 export const BackgroundName = styled.div`
   width: 100%;
   height: 100%;
-  background-color: #f4f800;
+  background: linear-gradient(0deg, rgba(228,216,30,0.7147233893557423) 9%, rgba(241,255,13,0.8155637254901961) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
