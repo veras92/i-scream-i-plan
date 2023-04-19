@@ -47,8 +47,15 @@ export const themeLight = {
   SvgArowSecondary: '#616161',
   SvgDisabled: '#DCE3E5',
 
+
+  PeriodTypeSelect: '#CAE8FF',
+  PeriodTypeSelectDisabled: '#E3F3FF',
+
+  ToDoPageBg: '#FFFFFF',
+
   PeriodTypeSelect: '#E3F3FF',
   PeriodTypeSelectDisabled: '#CAE8FF',
+
 };
 
 export const themeDark = {
@@ -100,6 +107,13 @@ export const themeDark = {
 
   SvgArowSecondary: '#FFFFFF',
   SvgDisabled: '#ffffff26',
+
+  PeriodTypeSelect: '#3E85F3',
+  PeriodTypeSelectDisabled: '#21222C',
+
+  ToDoPageBg: '#22232D',
+
   PeriodTypeSelect: '#21222C',
   PeriodTypeSelectDisabled: '#3E85F3',
+
 };
