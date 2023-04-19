@@ -7,24 +7,32 @@
 //  - month - MARCH 2023
 //  - day - 6 MARCH 2023"
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import { selectDate } from 'redux/date/selectors';
+import { Item, List, StyledNavLink } from './PeriodTypeSelect.styled';
+import { useLocation, useParams } from 'react-router-dom';
 
 export const PeriodTypeSelect = ({ onChangeType }) => {
   const date = useSelector(selectDate);
 
+  const location = useLocation();
+  const isMonthRoute = location.pathname.includes('month');
+  const isDayRoute = location.pathname.includes('day');
+
   return (
-    <ul>
-      <li>
-        <NavLink to={`month/${date}`} onClick={() => onChangeType('month')}>
+    <List>
+      <Item className={isMonthRoute && 'active'}>
+        <StyledNavLink
+          to={`month/${date}`}
+          onClick={() => onChangeType('month')}
+        >
           Month
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to={`day/${date}`} onClick={() => onChangeType('day')}>
+        </StyledNavLink>
+      </Item>
+      <Item className={isDayRoute && 'active'}>
+        <StyledNavLink to={`day/${date}`} onClick={() => onChangeType('day')}>
           Day
-        </NavLink>
-      </li>
-    </ul>
+        </StyledNavLink>
+      </Item>
+    </List>
   );
 };
