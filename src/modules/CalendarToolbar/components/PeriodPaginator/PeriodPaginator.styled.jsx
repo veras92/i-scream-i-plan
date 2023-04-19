@@ -1,5 +1,15 @@
 import styled from '@emotion/styled';
 
+export const WrapperPeriodPaginator = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  @media (min-width: 768px) {
+    justify-content: flex-start;
+    gap: 8px;
+  }
+`;
+
 export const Li = styled.li`
   display: flex;
 
@@ -40,5 +50,30 @@ export const Btn = styled.button`
   }
   @media (min-width: 768px) {
     width: 38px;
+  }
+`;
+
+export const StyledDate = styled.p`
+  display: inline-block;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+
+  padding: 6px 12px;
+
+  border-radius: 8px;
+
+  background-color: #3e85f3;
+  color: #ffffff;
+
+  text-transform: uppercase;
+  text-align: center;
+  @media (min-width: 768px) {
+    font-size: 16px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;

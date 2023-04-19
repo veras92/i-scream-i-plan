@@ -12,10 +12,10 @@ import {
   isToday,
   parseISO,
 } from 'date-fns';
-// import { Re } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 import {
+  OverflowWrapper,
   StyledDay,
   StyledListTasks,
   StyledTable,
@@ -137,9 +137,11 @@ export default function CalendarTable({ tasks, currentDate }) {
 
   return (
     <>
-      <StyledTable>
-        <tbody>{rows}</tbody>
-      </StyledTable>
+      <OverflowWrapper>
+        <StyledTable>
+          <tbody>{rows}</tbody>
+        </StyledTable>
+      </OverflowWrapper>
       {isOpened && (
         <TaskModal
           date={formattedDate()}

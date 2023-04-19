@@ -1,4 +1,3 @@
-//  - MonthCalendarHead - дні тижня без дат
 import { StyledItem, StyledList } from './MonthCalendarHead.styled';
 
 export default function MonthCalendarHead() {

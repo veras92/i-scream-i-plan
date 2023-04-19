@@ -15,6 +15,7 @@ import { setTasks } from 'redux/tasks/tasksSlice';
 import { selectDate } from 'redux/date/selectors';
 import { PeriodPaginator } from './components/PeriodPaginator/PeriodPaginator';
 import { PeriodTypeSelect } from './components/PeriodTypeSelect/PeriodTypeSelect';
+import { CalendarToolbarWrapper } from './CalendarToolbar.styled';
 
 export const CalendarToolbar = () => {
   const [type, setType] = useState('month');
@@ -47,9 +48,9 @@ export const CalendarToolbar = () => {
   }, [dispatch, data]);
 
   return (
-    <>
+    <CalendarToolbarWrapper>
       <PeriodPaginator type={type} />
       <PeriodTypeSelect onChangeType={setType} />
-    </>
+    </CalendarToolbarWrapper>
   );
 };
