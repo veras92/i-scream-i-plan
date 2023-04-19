@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
 
 export const Form = styled.form`
-  // width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+
   border-radius: 16px;
   background-color: ${props => props.theme.bcgTernary};
 
@@ -45,7 +45,8 @@ export const FormBody = styled.div`
 
   @media (min-width: 1440px) {
     max-width: 1080px;
-    padding: 0;
+    padding-left: 164px;
+    padding-right: 164px;
     margin-top: 44px;
     margin-bottom: 88px;
   }

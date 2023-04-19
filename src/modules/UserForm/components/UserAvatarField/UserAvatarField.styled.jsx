@@ -79,7 +79,7 @@ export const HiddenInput = styled.input`
 
   display: flex;
   justify-content: center;
-  aling-itms: center;
+  align-items: center;
 
   width: 0.875rem;
   height: 0.875rem;
@@ -101,11 +101,11 @@ export const HiddenInput = styled.input`
 
     display: flex;
     justify-content: center;
-    aling-itms: center;
+    align-items: center;
 
     color: ${props => props.theme.componentPrimary};
     background-color: ${props => props.theme.componentAccent};
-   }
+  }
 
   @media (min-width: 768px) {
     width: 1.5rem;
@@ -115,18 +115,18 @@ export const HiddenInput = styled.input`
     right: 1.5rem;
 
     :before {
-       position: absolute;
-       content: '+';
-       color: ${props => props.theme.componentPrimary};
-       font-size: 1.5625rem;
-       line-height: 1.375rem;
-       display: flex;
-       justify-content: center;
-       aling-itms: center;
-       width: 24px;
-       height: 24px;
-       background-color: ${props => props.theme.componentAccent};
-      }
+      position: absolute;
+      content: '+';
+      color: ${props => props.theme.componentPrimary};
+      font-size: 1.5625rem;
+      line-height: 1.375rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 24px;
+      height: 24px;
+      background-color: ${props => props.theme.componentAccent};
+    }
   }
 
   @media (min-width: 1087px) {
