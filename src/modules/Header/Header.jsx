@@ -7,7 +7,7 @@
 
 import { ThemeToggler } from './components/ThemeToggler/ThemeToggler';
 import { UserInfo } from './components/UserInfo/UserInfo';
-import { Wrapper, Info, SectionTitle, Toggler } from './Header.styled';
+import { Wrapper, Info, SectionTitle, Toggler, GooseTask, MotivationTask } from './Header.styled';
 import { useLocation } from 'react-router-dom';
 import sprite from 'shared/icons/sprite.svg';
 
@@ -33,9 +33,11 @@ export const Header = ({ onToggle }) => {
   return (
     <>
       <Wrapper>
-        {isCalendarPage && tasksForToday.length > 0 && <img src={gooseTask} alt="goose"/>}
+        {isCalendarPage && tasksForToday.length > 0 && <GooseTask src={gooseTask} alt="goose"/>}
+        <div>
         <SectionTitle>{title}</SectionTitle>
-        {isCalendarPage && tasksForToday.length > 0 && <p>Let go of the past and focus on the present!</p>}
+        {isCalendarPage && tasksForToday.length > 0 && <MotivationTask>Let go of the past and focus on the present!</MotivationTask>}
+        </div>
         <Toggler
           onClick={() => {
             onToggle();

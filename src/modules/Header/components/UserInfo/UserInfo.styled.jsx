@@ -13,6 +13,16 @@ export const UserName = styled.p`
   color: ${props => props.theme.text};
 `;
 
+export const BackgroundName = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: #f4f800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+`;
+
 export const UserNameIcon = styled.p`
   
   font-size: 18px;
@@ -28,11 +38,8 @@ export const UserPicture = styled.div`
   overflow: hidden;
   border: 1.8px solid ${props => props.theme.componentAccent};
   border-radius: 50%;
-  background-color: #f4f800;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
+  
   
   @media (min-width: 765px) {
     width: 44px;
