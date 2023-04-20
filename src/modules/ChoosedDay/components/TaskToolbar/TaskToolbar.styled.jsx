@@ -3,6 +3,10 @@ import styled from '@emotion/styled/macro';
 export const ButtonsWrapper = styled.div`
   display: flex;
   gap: 13px;
+
+  &.active {
+    stroke: blue;
+  }
 `;
 
 export const TaskButton = styled.button`
@@ -19,7 +23,10 @@ export const TaskAction = styled.svg`
   border-radius: 50%;
   width: 14px;
   height: 14px;
-
+  cursor: pointer;
+  &.active {
+    stroke: #3e85f3;
+  }
   @media (min-width: 765px) {
     width: 16px;
     height: 16px;
@@ -65,6 +72,9 @@ export const MoveWrapper = styled.li`
 `;
 
 export const PopUp = styled.ul`
+  position: absolute;
+  top: 35px;
+  right: -70px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -73,7 +83,7 @@ export const PopUp = styled.ul`
   border-radius: 8px;
 
   padding: 14px;
-
+  z-index: 10;
   @media (min-width: 765px) {
     padding: 20px 24px;
   }

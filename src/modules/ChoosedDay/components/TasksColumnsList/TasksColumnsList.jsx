@@ -3,7 +3,11 @@ import { useSelector } from 'react-redux';
 import { selectTasks } from 'redux/tasks/selectors';
 import { selectDate } from 'redux/date/selectors';
 import { TasksColumn } from '../TasksColumn/TasksColumn';
-import { ColumnsWrapper, StyledColumn } from './TasksColumnsList.styled';
+import {
+  ColumnsWrapper,
+  Conatainer,
+  StyledColumn,
+} from './TasksColumnsList.styled';
 
 export const TasksColumnsList = () => {
   const tasks = useSelector(selectTasks);
@@ -33,16 +37,18 @@ export const TasksColumnsList = () => {
   });
 
   return (
-    <ColumnsWrapper>
-      <StyledColumn>
-        <TasksColumn type={'to-do'} tasks={toDo} />
-      </StyledColumn>
-      <StyledColumn>
-        <TasksColumn type={'in-progress'} tasks={inProgress} />
-      </StyledColumn>
-      <StyledColumn>
-        <TasksColumn type={'done'} tasks={done} />
-      </StyledColumn>
-    </ColumnsWrapper>
+    <Conatainer>
+      <ColumnsWrapper>
+        <StyledColumn>
+          <TasksColumn type={'to-do'} tasks={toDo} />
+        </StyledColumn>
+        <StyledColumn>
+          <TasksColumn type={'in-progress'} tasks={inProgress} />
+        </StyledColumn>
+        <StyledColumn>
+          <TasksColumn type={'done'} tasks={done} />
+        </StyledColumn>
+      </ColumnsWrapper>
+    </Conatainer>
   );
 };

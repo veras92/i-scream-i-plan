@@ -7,7 +7,7 @@
 // - видалення картки - виконує запит на бек, який видаляє завдання.
 // Успіх - завдання видаляється зі списку на сторінці, юзеру показується пушповідомлення про видалення
 // Помилка - юзеру показується відповідне пушповідомлення"
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectDate } from 'redux/date/selectors';
 import { useDeleteTaskMutation } from 'redux/tasks/tasksApi';
@@ -30,6 +30,19 @@ export const TaskToolbar = ({ task }) => {
   const [isModalOpened, setModalOpening] = useState(false);
 
   const [isMenuOpened, setMenuOpening] = useState(false);
+
+  useEffect(() => {
+    const onKeyDown = e => {
+      if (e.code === 'Escape') {
+        setMenuOpening(false);
+      }
+    };
+    if (isMenuOpened) {
+      window.addEventListener('keydown', onKeyDown);
+    }
+
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [isMenuOpened]);
 
   const [deleteTask] = useDeleteTaskMutation();
   const [changeTask] = useChangeTaskMutation();
@@ -65,13 +78,13 @@ export const TaskToolbar = ({ task }) => {
   return (
     <>
       <ButtonsWrapper>
-        <TaskAction>
+        <TaskAction className={isMenuOpened ? 'active' : null}>
           <use
             href={`${sprite}#icon-arrow-circle-right`}
             onClick={() => handleMoveClick('done')}
           />
         </TaskAction>
-        <TaskAction>
+        <TaskAction className={isModalOpened ? 'active' : null}>
           <use href={`${sprite}#icon-pencil`} onClick={handleToggleModal} />
         </TaskAction>
         <TaskAction>

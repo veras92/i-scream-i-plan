@@ -28,6 +28,10 @@ export const SidebarWrapper = styled.div`
     position: absolute;
     z-index: 5000;
   }
+
+  @media (min-width: 1440px) {
+    height: 100%;
+  }
 `;
 
 export const SidebarHeader = styled.div`

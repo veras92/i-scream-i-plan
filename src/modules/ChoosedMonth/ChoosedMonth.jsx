@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 import { selectDate } from 'redux/date/selectors';
 import { selectTasks } from 'redux/tasks/selectors';
 import { endOfMonth, isWithinInterval, startOfMonth } from 'date-fns';
+import { Wrapper } from './ChoosedMonth.styled';
 
 export function ChoosedMonth() {
   const currentDate = useSelector(selectDate);
@@ -26,9 +27,9 @@ export function ChoosedMonth() {
   });
 
   return (
-    <div>
+    <Wrapper>
       <MonthCalendarHead />
       <CalendarTable tasks={filteredDates} currentDate={currentDate} />
-    </div>
+    </Wrapper>
   );
 }
