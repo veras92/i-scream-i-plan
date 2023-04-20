@@ -12,5 +12,5 @@ export const Wrapper = styled.div`
 `;
 
 export const WrapperForFixSideBar = styled.div`
-  background-color: #13151a;
+  background-color: ${props => props.theme.bcgPrimary};
 `;
