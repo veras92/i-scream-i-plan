@@ -25,7 +25,7 @@ export const CardTitle = styled.h3`
   font-weight: 500;
   line-height: 1.3;
 
-  overflow: hidden;
+  /* overflow: hidden; */
   white-space: nowrap;
   text-overflow: ellipsis;
 

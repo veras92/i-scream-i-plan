@@ -54,7 +54,7 @@ export const TaskToolbar = ({ task }) => {
   };
 
   const handleMoveClick = async category => {
-    setMenuOpening(true);
+    setMenuOpening(!isMenuOpened);
   };
 
   const onMenuClick = async e => {
