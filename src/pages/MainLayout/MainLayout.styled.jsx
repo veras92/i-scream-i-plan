@@ -10,3 +10,7 @@ export const Wrapper = styled.div`
     min-height: 900px;
   } */
 `;
+
+export const WrapperForFixSideBar = styled.div`
+  background-color: #13151a;
+`;
