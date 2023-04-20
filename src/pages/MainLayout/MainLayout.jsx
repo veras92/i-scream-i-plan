@@ -44,13 +44,13 @@ export default function MainLayout() {
     setVisible(size.width > 1439 && true);
   }, [size.width]);
 
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
+  // useEffect(() => {
+  //   document.body.style.overflow = 'hidden';
 
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, []);
+  //   return () => {
+  //     document.body.style.overflow = 'auto';
+  //   };
+  // }, []);
 
   return (
     <>

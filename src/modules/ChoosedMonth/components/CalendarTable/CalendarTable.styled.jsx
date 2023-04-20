@@ -121,9 +121,16 @@ export const StyledListTasks = styled.ul`
 `;
 
 export const OverflowWrapper = styled.div`
-  height: 627px;
+  max-height: 472px;
   overflow-y: auto;
 
   border: 1px solid rgba(220, 227, 229, 0.8);
   border-radius: 8px;
+
+  @media (min-width: 768px) {
+    max-height: 722px;
+  }
+  @media (min-width: 1440px) {
+    max-height: 627px;
+  }
 `;
