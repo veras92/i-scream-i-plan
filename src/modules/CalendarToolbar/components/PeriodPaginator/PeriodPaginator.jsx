@@ -64,7 +64,7 @@ export const PeriodPaginator = ({ type }) => {
 
   const currentDate = format(date, 'dd MMMM yyyy');
 
-  const shouldDisable = date < Date.now();
+  // const shouldDisable = date < Date.now();
 
   return (
     <WrapperPeriodPaginator>
@@ -77,7 +77,7 @@ export const PeriodPaginator = ({ type }) => {
             type="button"
             name="subtraction"
             onClick={onChangeDate}
-            disabled={shouldDisable}
+            // disabled={shouldDisable}
           >
             <svg height={'10px'} width={'8px'}>
               <use href={`${sprite}#icon-arrow-left-small`} />
