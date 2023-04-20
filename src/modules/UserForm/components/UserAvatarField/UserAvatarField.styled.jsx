@@ -54,7 +54,7 @@ export const Label = styled.label`
 
   border-radius: 50%;
   border: 2px solid #3e85f3;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.bgcUserAvatar};
   overflow: hidden;
 
   & > img {

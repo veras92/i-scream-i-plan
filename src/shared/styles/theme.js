@@ -43,6 +43,8 @@ export const themeLight = {
   cancelBtnColor: '#111111',
   bgcCancelBtn: '#EFEFEF',
 
+  bgcUserAvatar: '#FFFFFF',
+
   calendarTableBorder: 'rgba(220, 227, 229, 0.5)',
   calendarDate: '#343434',
   calendarHeadDate: '#616161',
@@ -101,6 +103,8 @@ export const themeDark = {
 
   cancelBtnColor: '#111111',
   bgcCancelBtn: '#EFEFEF',
+
+  bgcUserAvatar: '#171820',
 
   calendarTableBorder: 'rgba(255, 255, 255, 0.15)',
   calendarDate: '#FFFFFF',
