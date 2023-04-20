@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const StyledTable = styled.table`
-  border-collapse: collapse;
+  /* border-collapse: ''; */
   border-spacing: 0;
   border-style: hidden;
 
@@ -23,10 +23,16 @@ export const StyledTable = styled.table`
 
 export const StyledTd = styled.td`
   position: relative;
+  cursor: pointer;
   width: 48px;
   height: 94px;
   border: 1px solid ${props => props.theme.calendarTableBorder};
+  transition: border 250ms linear;
 
+  &:hover,
+  &:focus {
+    border: 1px solid #3e85f3;
+  }
   .today {
     color: white;
     background-color: #3e85f3;
@@ -81,6 +87,12 @@ export const StyledListTasks = styled.ul`
     text-align: center;
     border-radius: 8px;
     width: 92%;
+    transition: scale 250ms linear;
+
+    &:hover,
+    &:focus {
+      scale: 1.05;
+    }
   }
   .low {
     background-color: #ceeefd;
