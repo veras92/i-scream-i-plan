@@ -9,34 +9,7 @@ export const Svg = styled.svg`
 
 export const UserAvatarWrapper = styled.div`
   position: relative;
-
   text-align: center;
-
-  > h3 {
-    font-weight: 700;
-    font-size: 0.875rem;
-    line-height: 1.125rem;
-    color: ${props => props.theme.text};
-
-    margin-bottom: 0.25rem;
-
-    @media (min-width: 768px) {
-      font-size: 1.125rem;
-      margin-bottom: 0.5rem;
-    }
-  }
-
-  > p {
-    font-weight: 600;
-    font-size: 0.75rem;
-    line-height: 0.875rem;
-    color: ${props => props.theme.textSecondary};
-
-    @media (min-width: 768px) {
-      font-size: 0.875rem;
-      line-height: 1.125rem;
-    }
-  }
 `;
 
 export const Label = styled.label`
@@ -54,11 +27,13 @@ export const Label = styled.label`
 
   border-radius: 50%;
   border: 2px solid #3e85f3;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.bgcUserAvatar};
   overflow: hidden;
 
-  & > img {
-    object-fit: contain;
+  & img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
   }
 
   @media (min-width: 768px) {
@@ -137,6 +112,31 @@ export const HiddenInput = styled.input`
 export const InfoWrapper = styled.div`
   position: relative;
   padding-top: 10px;
+  > h3 {
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+    color: ${props => props.theme.text};
+
+    margin-bottom: 0.25rem;
+
+    @media (min-width: 768px) {
+      font-size: 1.125rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  > p {
+    font-weight: 600;
+    font-size: 0.75rem;
+    line-height: 0.875rem;
+    color: ${props => props.theme.textSecondary};
+
+    @media (min-width: 768px) {
+      font-size: 0.875rem;
+      line-height: 1.125rem;
+    }
+  }
 `;
 export const StyledError = styled.h6`
   color: red;

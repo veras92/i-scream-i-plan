@@ -3,6 +3,7 @@ import { Input, Label, StyledDatePicker } from './DatePicker.styled';
 import { Controller } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import { StyledErrorMessage } from 'shared/styles/components';
+import locale from 'date-fns/locale/en-AU';
 
 export const DatePicker = ({
   control,
@@ -29,6 +30,7 @@ export const DatePicker = ({
             maxDate={new Date()}
             dateFormat="dd/MM/yyyy"
             customInput={<Input />}
+            locale={locale}
           />
         )}
       />

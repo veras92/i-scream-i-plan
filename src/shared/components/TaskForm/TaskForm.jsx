@@ -34,12 +34,16 @@ import { CATEGORIES_OPTIONS } from 'shared/services/categoriesOptions';
 import { TASK_MODAL_TYPES } from 'shared/services/taskModalTypes';
 import {
   BtnsWrap,
+  BtnsWrapItem,
+  Button,
   Cancel,
   Form,
   RadioBtnsWrap,
+  RadioBtnsWrapItem,
   Svg,
   TimePickerWrap,
 } from './TaskForm.styled';
+import { Loader } from '../Loader/Loader';
 
 export const TaskForm = props => {
   const [
@@ -129,41 +133,52 @@ export const TaskForm = props => {
   };
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
-      <FormFiled register={register} errors={errors} {...titleInput} />
-      <TimePickerWrap>
-        {timeInputs.map(input => (
-          <FormFiled
-            key={input.id}
-            register={register}
-            errors={errors}
-            {...input}
-          />
-        ))}
-      </TimePickerWrap>
-      <RadioBtnsWrap>
-        {priorityInputs.map(input => (
-          <RadioButton key={input.id} register={register} {...input} />
-        ))}
-      </RadioBtnsWrap>
-      {isAdd ? (
-        <BtnsWrap>
-          <button type="submit" disabled={isCreating}>
-            <Svg width="20" height="20">
-              <use href={`${sprite}#icon-plus`} />
-            </Svg>
-            <span>{type}</span>
-          </button>
-          <Cancel type="button" onClick={onCloseModal}>
-            Cancel
-          </Cancel>
-        </BtnsWrap>
-      ) : (
-        <button type="submit" disabled={!isDirty || isChanging}>
-          {type}
-        </button>
-      )}
-    </Form>
+    <>
+      {isCreating && <Loader />}
+      {isChanging && <Loader />}
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <FormFiled register={register} errors={errors} {...titleInput} />
+        <TimePickerWrap>
+          {timeInputs.map(input => (
+            <li key={input.id}>
+              <FormFiled register={register} errors={errors} {...input} />
+            </li>
+          ))}
+        </TimePickerWrap>
+        <RadioBtnsWrap>
+          {priorityInputs.map(input => (
+            <RadioBtnsWrapItem key={input.id}>
+              <RadioButton register={register} {...input} />
+            </RadioBtnsWrapItem>
+          ))}
+        </RadioBtnsWrap>
+        {isAdd ? (
+          <BtnsWrap>
+            <BtnsWrapItem>
+              <Button type="submit" function="save" disabled={isCreating}>
+                <Svg width="20" height="20">
+                  <use href={`${sprite}#icon-plus`} />
+                </Svg>
+                <span>{type}</span>
+              </Button>
+            </BtnsWrapItem>
+            <BtnsWrapItem>
+              <Cancel type="button" onClick={onCloseModal}>
+                Cancel
+              </Cancel>
+            </BtnsWrapItem>
+          </BtnsWrap>
+        ) : (
+          <Button
+            type="submit"
+            function="edit"
+            disabled={!isDirty || isChanging}
+          >
+            {type}
+          </Button>
+        )}
+      </Form>
+    </>
   );
 };
 

@@ -10,7 +10,7 @@ export const themeLight = {
   //reviewsTitle: '#343434', //! Homepage reviews title - use homepageTitle instead
   reviewsText: 'rgba(17, 17, 17, 0.7)', // Homepage reviews text
   reviewsStars: '#FFAC33', // Yellow color for stars in reviews
-  reviewsMissingStars: '##CEC9C1', // Grey color for stars in reviews
+  reviewsMissingStars: '#CEC9C1', // Grey color for stars in reviews
 
   bcgPrimary: '#FFFFFF', // Main white background - changes to black in DT (Sidebar)
   bcgSecondary: '#F7F6F9', // Light greay background (User profile as an example)
@@ -39,6 +39,11 @@ export const themeLight = {
   bcgPriorityLowStrong: '#72C2F8',
   bcgPriorityMediumStrong: '#F3B249',
   bcgPriorityHighStrong: '#EA3D65',
+
+  cancelBtnColor: '#111111',
+  bgcCancelBtn: '#EFEFEF',
+
+  bgcUserAvatar: '#FFFFFF',
 
   calendarTableBorder: 'rgba(220, 227, 229, 0.5)',
   calendarDate: '#343434',
@@ -95,6 +100,11 @@ export const themeDark = {
   bcgPriorityLowStrong: '#72C2F8',
   bcgPriorityMediumStrong: '#F3B249',
   bcgPriorityHighStrong: '#EA3D65',
+
+  cancelBtnColor: '#111111',
+  bgcCancelBtn: '#EFEFEF',
+
+  bgcUserAvatar: '#171820',
 
   calendarTableBorder: 'rgba(255, 255, 255, 0.15)',
   calendarDate: '#FFFFFF',

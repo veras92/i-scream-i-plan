@@ -55,6 +55,12 @@ export const PriorityTitle = styled.p`
 `;
 
 export const UserLogo = styled.div`
+  & img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+
   width: 32px;
   height: 32px;
   border-radius: 50%;
