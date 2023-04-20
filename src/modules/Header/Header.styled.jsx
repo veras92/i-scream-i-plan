@@ -12,14 +12,12 @@ export const Wrapper = styled.div`
   @media (min-width: 1440px) {
     margin-bottom: 32px;
   }
-  
 `;
 
 export const Info = styled.div`
   display: flex;
   align-items: center;
   margin-left: auto;
-  
 `;
 
 export const SectionTitle = styled.h1`
@@ -51,30 +49,26 @@ export const Toggler = styled.svg`
   }
 `;
 
-
 export const GooseTask = styled.img`
   display: none;
 
-  
   @media (min-width: 1440px) {
-    weight:64px;
+    weight: 64px;
     display: block;
     margin-right: 8px;
   }
 `;
 
-
 export const MotivationTask = styled.p`
   display: none;
+  color: ${({ theme }) => theme.text};
 
-  
   @media (min-width: 1440px) {
     display: block;
     font-family: 'Inter';
-    
+
     font-weight: 600;
     font-size: 14px;
     line-height: 1.3;
   }
 `;
-
