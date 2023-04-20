@@ -73,8 +73,8 @@ export const MoveWrapper = styled.li`
 
 export const PopUp = styled.ul`
   position: absolute;
-  top: 35px;
-  right: -70px;
+  top: 100%;
+  right: 0;
   display: flex;
   flex-direction: column;
   gap: 8px;
