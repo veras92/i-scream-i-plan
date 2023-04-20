@@ -13,13 +13,6 @@ export const UserName = styled.p`
   color: ${props => props.theme.text};
 `;
 
-export const ImgWrap = styled.div`
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 export const BackgroundName = styled.div`
   width: 100%;
   height: 100%;
@@ -47,6 +40,11 @@ export const UserPicture = styled.div`
   overflow: hidden;
   border: 1.8px solid ${props => props.theme.componentAccent};
   border-radius: 50%;
+
+  & img {
+    object-fit: cover;
+    height: 100%;
+  }
 
   @media (min-width: 765px) {
     width: 44px;

@@ -55,6 +55,15 @@ export const PriorityTitle = styled.p`
 `;
 
 export const UserLogo = styled.div`
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+
+  & img {
+    object-fit: cover;
+    height: 100%;
+  }
+
   width: 32px;
   height: 32px;
   border-radius: 50%;

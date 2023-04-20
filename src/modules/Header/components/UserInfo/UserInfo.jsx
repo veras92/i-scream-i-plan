@@ -28,9 +28,7 @@ export const UserInfo = () => {
   const { name, userImgUrl } = useAuth();
 
   const displayName = userImgUrl ? (
-    <ImgWrap>
-      <img src={userImgUrl} alt="UserPicture" />
-    </ImgWrap>
+    <img src={userImgUrl} alt="UserPicture" />
   ) : (
     <BackgroundName className="initials">
       <UserNameIcon>{getInitials(name)}</UserNameIcon>

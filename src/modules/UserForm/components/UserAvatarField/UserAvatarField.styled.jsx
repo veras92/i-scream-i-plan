@@ -57,8 +57,9 @@ export const Label = styled.label`
   background-color: ${({ theme }) => theme.bgcUserAvatar};
   overflow: hidden;
 
-  & > img {
-    object-fit: contain;
+  & img {
+    object-fit: cover;
+    height: 100%;
   }
 
   @media (min-width: 768px) {
