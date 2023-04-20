@@ -8,15 +8,7 @@ export const taskFormSchema = Yup.object().shape({
     .required('This field is required')
     .max(250, 'The title is too long'),
   start: Yup.string().required('This field is required'),
-  // .test('start_end_test', 'Start time must be before end time', function () {
-  //   const { start, end } = this.parent;
-  //   const arrStart = start.split(':');
-  //   const arrEnd = end.split(':');
-  //   const isValid =
-  //     parseInt(arrStart[0] * 3600 + arrStart[1] * 60) <
-  //     parseInt(arrEnd[0] * 3600 + arrEnd[1] * 60);
-  //   return isValid;
-  // })
+
   end: Yup.string()
     .required('This field is required')
     .test('start_end_test', 'End time must be after start time', function () {

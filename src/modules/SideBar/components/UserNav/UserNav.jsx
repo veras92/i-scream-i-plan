@@ -1,6 +1,3 @@
-// "Компонент  в собі містить блок список елементів навігації за наступними маршрутами:
-//  - /account - редіректить на AccountPage
-//  - /calendar - редіректить на CalendarPage з модулем календаря місяця."
 import sprite from 'shared/icons/sprite.svg';
 import { NavList, StyledLink, NavIcon } from './UserNav.styled';
 import { useWindowSize } from 'pages/MainLayout/MainLayout';

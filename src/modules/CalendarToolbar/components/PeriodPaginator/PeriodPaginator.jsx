@@ -1,5 +1,4 @@
-// "1. Компонент рендерить блок навігації для переадресацї юзера на таблицю з задачами відповідно до обраного типу періоду day | month.
-// 2. Кнопка що вказує поточний тип обраного періоду має активні стилі, як показано на макеті."
+
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
