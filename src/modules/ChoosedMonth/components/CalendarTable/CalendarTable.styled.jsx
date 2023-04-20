@@ -10,6 +10,7 @@ export const StyledTable = styled.table`
   width: 100%;
 
   border-radius: 8px;
+  background-color: ${props => props.theme.bcgTernary};
 
   box-shadow: 0 0 0 1px ${props => props.theme.calendarTableBorder};
 

@@ -10,6 +10,8 @@ export const StyledList = styled.ul`
   border-radius: 8px;
   margin-bottom: 14px;
 
+  background-color: ${props => props.theme.bcgTernary};
+
   @media (min-width: 768px) {
     margin-bottom: 18px;
   }
