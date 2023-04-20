@@ -60,6 +60,7 @@ export const Label = styled.label`
   & img {
     object-fit: cover;
     height: 100%;
+    width: 100%;
   }
 
   @media (min-width: 768px) {
