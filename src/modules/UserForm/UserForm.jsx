@@ -28,18 +28,16 @@ import { Button } from 'shared/styles/components';
 
 import { Form, FormBody } from './UserForm.styled';
 import { notify } from 'shared/utils/errorToast';
-import { Loader } from 'shared/components/Loader/Loader';
+import { useNavigate } from 'react-router';
 
 const today = new Date();
 
 export const UserForm = () => {
   const { name, email, phone, skype, birthday, userImgUrl } = useAuth();
-
   const [isDisabled, setIsDisabled] = useState(true);
-
   const [currentAvatarUrl, setCurrentAvatarUrl] = useState(userImgUrl);
-
-  const [update, { isError, error, isLoading }] = useUpdateUserInfoMutation();
+  const [update, { isError, error, isSuccess }] = useUpdateUserInfoMutation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isError && error?.status !== 413)
@@ -48,11 +46,16 @@ export const UserForm = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isError]);
 
+  useEffect(() => {
+    if (isSuccess) navigate(0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSuccess]);
+
   const {
     register: reg,
     control,
     handleSubmit,
-    formState: { errors, dirtyFields },
+    formState: { errors, isDirty, dirtyFields },
   } = useForm({
     resolver: yupResolver(userFormSchema),
     defaultValues: {
@@ -64,10 +67,6 @@ export const UserForm = () => {
       userImgUrl: !userImgUrl ? '' : userImgUrl,
     },
   });
-
-  useEffect(() => {
-    setIsDisabled(false);
-  }, [dirtyFields]);
 
   const onSubmit = async data => {
     const preparedBirthday =
@@ -88,43 +87,53 @@ export const UserForm = () => {
     setIsDisabled(true);
   };
 
+  useEffect(() => {
+    const checkIsDirty = () => {
+      if (currentAvatarUrl === userImgUrl) {
+        if (isDirty) setIsDisabled(false);
+        if (!isDirty) setIsDisabled(true);
+        if (isError && error?.status !== 413) setIsDisabled(true);
+      }
+    };
+
+    checkIsDirty();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isDirty, dirtyFields]);
+
   return (
-    <>
-      {isLoading && <Loader />}
-      <Form onSubmit={handleSubmit(onSubmit)} autoComplete="false">
-        <UserAvatarField
-          userName={name}
-          errors={errors}
-          register={reg}
-          currentAvatarUrl={currentAvatarUrl}
-          setCurrentAvatarUrl={setCurrentAvatarUrl}
-          setIsDisabled={setIsDisabled}
-          {...userAvatarInput}
-        />
-        <FormBody>
-          {userFormInputs.map(input =>
-            input.type !== 'date' ? (
-              <FormFiled
-                key={input.id}
-                {...input}
-                register={reg}
-                errors={errors}
-              />
-            ) : (
-              <DatePicker
-                key={input.id}
-                {...input}
-                control={control}
-                errors={errors}
-              />
-            )
-          )}
-        </FormBody>
-        <Button type="submit" function="save" disabled={isDisabled}>
-          Save changes
-        </Button>
-      </Form>
-    </>
+    <Form onSubmit={handleSubmit(onSubmit)} autoComplete="false">
+      <UserAvatarField
+        userName={name}
+        errors={errors}
+        register={reg}
+        currentAvatarUrl={currentAvatarUrl}
+        setCurrentAvatarUrl={setCurrentAvatarUrl}
+        setIsDisabled={setIsDisabled}
+        {...userAvatarInput}
+      />
+      <FormBody>
+        {userFormInputs.map(input =>
+          input.type !== 'date' ? (
+            <FormFiled
+              key={input.id}
+              {...input}
+              register={reg}
+              errors={errors}
+            />
+          ) : (
+            <DatePicker
+              key={input.id}
+              {...input}
+              control={control}
+              errors={errors}
+            />
+          )
+        )}
+      </FormBody>
+      <Button type="submit" function="save" disabled={isDisabled}>
+        Save changes
+      </Button>
+    </Form>
   );
 };
 
