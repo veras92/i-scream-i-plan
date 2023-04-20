@@ -33,6 +33,7 @@ export const StyledColumn = styled.li`
   background: ${props => props.theme.bcgTernary};
   border: 1px solid ${props => props.theme.disabledSecondary};
   border-radius: 8px;
+  align-self: flex-start;
 
   /* min-height: 432px; */
 
