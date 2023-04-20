@@ -7,7 +7,6 @@ import {
   UserPicture,
   UserNameIcon,
   BackgroundName,
-  ImgWrap,
 } from './UserInfo.styled';
 import { useAuth } from 'hooks/useAuth';
 
