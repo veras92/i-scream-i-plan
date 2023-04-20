@@ -10,8 +10,6 @@ export const ColumnsWrapper = styled.ul`
   ${media({
     gap: ['22px', '22px', '16px', '27px'],
   })};
-
-  
 `;
 
 export const StyledColumn = styled.li`
@@ -22,9 +20,9 @@ export const StyledColumn = styled.li`
   border-radius: 8px;
 
   max-height: 432px;
-  overflow-y: auto;
+  /* overflow-y: auto; */
 
-  over @media (min-width: 765px) {
+  @media (min-width: 765px) {
     padding: 20px;
     max-width: 344px;
     max-height: 568px;

@@ -65,6 +65,9 @@ export const MoveWrapper = styled.li`
 `;
 
 export const PopUp = styled.ul`
+  position: absolute;
+  top: 35px;
+  right: -70px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -73,7 +76,7 @@ export const PopUp = styled.ul`
   border-radius: 8px;
 
   padding: 14px;
-
+  z-index: 10;
   @media (min-width: 765px) {
     padding: 20px 24px;
   }

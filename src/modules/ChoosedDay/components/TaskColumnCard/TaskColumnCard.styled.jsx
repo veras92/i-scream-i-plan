@@ -63,6 +63,7 @@ export const UserLogo = styled.div`
 `;
 
 export const CardInfo = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
