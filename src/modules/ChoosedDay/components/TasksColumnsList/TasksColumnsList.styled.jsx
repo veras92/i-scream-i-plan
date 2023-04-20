@@ -5,7 +5,7 @@ import { BREAKPOINTS } from 'shared/services/deviceWidth';
 
 const media = facepaint(BREAKPOINTS.map(bp => `@media (min-width: ${bp}px)`));
 export const Conatainer = styled.div`
-  height: 568px;
+  /* height: 568px; */
   overflow-y: auto;
 `;
 export const ColumnsWrapper = styled.ul`
