@@ -78,13 +78,13 @@ export const TaskToolbar = ({ task }) => {
   return (
     <>
       <ButtonsWrapper>
-        <TaskAction>
+        <TaskAction className={isMenuOpened ? 'active' : null}>
           <use
             href={`${sprite}#icon-arrow-circle-right`}
             onClick={() => handleMoveClick('done')}
           />
         </TaskAction>
-        <TaskAction>
+        <TaskAction className={isModalOpened ? 'active' : null}>
           <use href={`${sprite}#icon-pencil`} onClick={handleToggleModal} />
         </TaskAction>
         <TaskAction>

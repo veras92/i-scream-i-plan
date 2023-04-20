@@ -3,6 +3,10 @@ import styled from '@emotion/styled/macro';
 export const ButtonsWrapper = styled.div`
   display: flex;
   gap: 13px;
+
+  &.active {
+    stroke: blue;
+  }
 `;
 
 export const TaskButton = styled.button`
@@ -19,7 +23,10 @@ export const TaskAction = styled.svg`
   border-radius: 50%;
   width: 14px;
   height: 14px;
-
+  cursor: pointer;
+  &.active {
+    stroke: #3e85f3;
+  }
   @media (min-width: 765px) {
     width: 16px;
     height: 16px;

@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 
 import { Svg, Button } from 'shared/styles/components';
 import sprite from 'shared/icons/sprite.svg';
+import { Wrap } from './LogoutBtn.styled';
 
 export const LogoutBtn = () => {
   const [logout] = useLazyLogoutUserQuery();
@@ -22,13 +23,13 @@ export const LogoutBtn = () => {
   };
 
   return (
-    <div>
+    <Wrap>
       <Button type="button" onClick={handleLogout}>
         Log out
         <Svg>
           <use href={`${sprite}#icon-log-out`} />
         </Svg>
       </Button>
-    </div>
+    </Wrap>
   );
 };
