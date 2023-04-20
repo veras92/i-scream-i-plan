@@ -33,4 +33,8 @@ export const Input = styled.input`
 
     color: ${props => props.theme.text};
   }
+
+  &[type='time']::-webkit-calendar-picker-indicator {
+    background: none;
+  }
 `;

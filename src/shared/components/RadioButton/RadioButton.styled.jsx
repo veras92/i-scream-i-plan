@@ -11,7 +11,7 @@ export const Label = styled.label`
   font-size: 12px;
   line-height: 1.17;
 
-  color: ${theme => {
+  color: ${({ theme }) => {
     const mode = useSelector(selectTheme);
     return mode === THEME_OPTIONS.light ? theme.textSecondary : theme.text;
   }};
