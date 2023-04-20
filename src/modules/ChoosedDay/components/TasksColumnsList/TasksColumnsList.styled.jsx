@@ -34,7 +34,7 @@ export const StyledColumn = styled.li`
   border: 1px solid ${props => props.theme.disabledSecondary};
   border-radius: 8px;
 
-  min-height: 432px;
+  /* min-height: 432px; */
 
   @media (min-width: 765px) {
     padding: 20px;
