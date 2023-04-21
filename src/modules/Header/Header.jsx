@@ -12,8 +12,8 @@ import { useLocation } from 'react-router-dom';
 import sprite from 'shared/icons/sprite.svg';
 
 import { useSelector } from 'react-redux';
-import { selectTasksForToday } from '../../redux/tasks/tasksSlice';
 import gooseTask from 'shared/icons/goose-task.svg';
+import { selectTasksForToday } from 'redux/tasks/selectors';
 
 export const Header = ({ onToggle }) => {
   const location = useLocation();
