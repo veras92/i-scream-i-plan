@@ -1,13 +1,4 @@
-import {
-  format,
-  startOfMonth,
-  endOfMonth,
-  eachDayOfInterval,
-  getDay,
-  isToday,
-  parseISO,
-} from 'date-fns';
-
+import { format, isToday, parseISO } from 'date-fns';
 import PropTypes from 'prop-types';
 import {
   OverflowWrapper,
@@ -20,21 +11,20 @@ import {
 import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { setDates } from 'redux/date/dateSlice';
-import { useWindowSize } from 'pages/MainLayout/MainLayout';
+
 import { useState } from 'react';
 import { TaskModal } from 'shared/components/TaskModal/TaskModal';
 import { TASK_MODAL_TYPES } from 'shared/services/taskModalTypes';
+import { useWindowSize } from 'hooks/useWindowSize';
+import { useDaysOfMonth } from 'hooks/useDaysOfMonth';
+import { formattedDay } from './helpers';
+import { EmptyCells } from './components/EmptyCells';
 
 export default function CalendarTable({ tasks, currentDate }) {
   const [isOpened, setOpening] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
 
-  const startMonth = startOfMonth(new Date(currentDate));
-  const endMonth = endOfMonth(new Date(currentDate));
-  const firstDayOfMonth = getDay(startMonth) - 1;
-
-  const daysOfMonth = eachDayOfInterval({ start: startMonth, end: endMonth });
-
+  const { daysOfMonth, firstDayOfMonth } = useDaysOfMonth(currentDate);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -45,15 +35,6 @@ export default function CalendarTable({ tasks, currentDate }) {
     tasks: tasks.filter(task => task.date === format(day, 'yyyy-MM-dd')),
   }));
 
-  const emptyCells = Array.from({ length: firstDayOfMonth }, (_, index) => (
-    <td key={`empty-${index}`}></td>
-  ));
-
-  function formattedDay(date) {
-    const day = date.split('-')[2];
-
-    return day.startsWith('0') ? day.slice(1) : day;
-  }
   const handleClick = (e, date) => {
     const { currentTarget, target } = e;
 
@@ -82,7 +63,7 @@ export default function CalendarTable({ tasks, currentDate }) {
 
   const rows = [];
 
-  let cells = [...emptyCells];
+  let cells = EmptyCells(firstDayOfMonth);
 
   daysWithTasks.forEach((day, index) => {
     cells.push(
