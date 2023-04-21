@@ -59,6 +59,7 @@ const tasksSlice = createSlice({
       )
       .addMatcher(
         isAnyOf(
+          authApi.endpoints.getCurrentUserInfo.matchRejected,
           authApi.endpoints.logoutUser.matchFulfilled,
           authApi.endpoints.logoutUser.matchRejected,
           reauthApi.endpoints.refreshTokens.matchRejected

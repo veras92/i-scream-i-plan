@@ -1,6 +1,7 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { authApi } from './authApi';
 import { reauthApi } from './reauthApi';
+import { tasksApi } from 'redux/tasks/tasksApi';
 
 const initialState = {
   user: {
@@ -25,36 +26,11 @@ const slice = createSlice({
     builder
       .addMatcher(
         isAnyOf(
-          authApi.endpoints.getCurrentUserInfo.matchPending,
-          reauthApi.endpoints.refreshTokens.matchPending
+          reauthApi.endpoints.refreshTokens.matchPending,
+          authApi.endpoints.getCurrentUserInfo.matchPending
         ),
         state => {
           state.isRefreshing = true;
-        }
-      )
-      .addMatcher(
-        isAnyOf(
-          authApi.endpoints.getCurrentUserInfo.matchRejected,
-          reauthApi.endpoints.refreshTokens.matchRejected
-        ),
-        state => {
-          state.isRefreshing = false;
-        }
-      )
-      .addMatcher(
-        authApi.endpoints.getCurrentUserInfo.matchFulfilled,
-        (
-          state,
-          { payload: { name, email, phone, birthday, skype, userImgUrl } }
-        ) => {
-          state.user.name = name;
-          state.user.email = email;
-          state.user.phone = phone;
-          state.user.birthday = birthday;
-          state.user.skype = skype;
-          state.user.userImgUrl = userImgUrl;
-          state.isLoggedIn = true;
-          state.isRefreshing = false;
         }
       )
       .addMatcher(
@@ -63,10 +39,23 @@ const slice = createSlice({
           state.token = data.accessToken;
           state.refreshToken = data.refreshToken;
           state.isLoggedIn = true;
+          state.isRefreshing = false;
         }
       )
       .addMatcher(
-        authApi.endpoints.updateUserInfo.matchFulfilled,
+        isAnyOf(
+          reauthApi.endpoints.refreshTokens.matchRejected,
+          authApi.endpoints.getCurrentUserInfo.matchRejected
+        ),
+        state => {
+          state.isRefreshing = false;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          authApi.endpoints.updateUserInfo.matchFulfilled,
+          authApi.endpoints.getCurrentUserInfo.matchFulfilled
+        ),
         (
           state,
           { payload: { name, email, phone, birthday, skype, userImgUrl } }
@@ -94,6 +83,8 @@ const slice = createSlice({
       )
       .addMatcher(
         isAnyOf(
+          tasksApi.endpoints.getTasksByMonth.matchRejected,
+          authApi.endpoints.getCurrentUserInfo.matchRejected,
           authApi.endpoints.logoutUser.matchFulfilled,
           authApi.endpoints.logoutUser.matchRejected,
           reauthApi.endpoints.refreshTokens.matchRejected
