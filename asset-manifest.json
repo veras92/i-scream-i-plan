@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/i-scream-i-plan/static/css/main.98ec47ca.css",
-    "main.js": "/i-scream-i-plan/static/js/main.0fefe0ce.js",
-    "static/js/31.f127f101.chunk.js": "/i-scream-i-plan/static/js/31.f127f101.chunk.js",
+    "main.js": "/i-scream-i-plan/static/js/main.e17ef0d0.js",
+    "static/js/31.205772ab.chunk.js": "/i-scream-i-plan/static/js/31.205772ab.chunk.js",
     "static/js/860.7a49cd3a.chunk.js": "/i-scream-i-plan/static/js/860.7a49cd3a.chunk.js",
-    "static/js/887.c999ba8a.chunk.js": "/i-scream-i-plan/static/js/887.c999ba8a.chunk.js",
+    "static/js/546.9409daec.chunk.js": "/i-scream-i-plan/static/js/546.9409daec.chunk.js",
     "static/js/988.6a1746b0.chunk.js": "/i-scream-i-plan/static/js/988.6a1746b0.chunk.js",
     "static/js/713.b63fb464.chunk.js": "/i-scream-i-plan/static/js/713.b63fb464.chunk.js",
     "static/js/995.b2756a73.chunk.js": "/i-scream-i-plan/static/js/995.b2756a73.chunk.js",
@@ -43,10 +43,10 @@
     "static/media/slick.woff": "/i-scream-i-plan/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/i-scream-i-plan/index.html",
     "main.98ec47ca.css.map": "/i-scream-i-plan/static/css/main.98ec47ca.css.map",
-    "main.0fefe0ce.js.map": "/i-scream-i-plan/static/js/main.0fefe0ce.js.map",
-    "31.f127f101.chunk.js.map": "/i-scream-i-plan/static/js/31.f127f101.chunk.js.map",
+    "main.e17ef0d0.js.map": "/i-scream-i-plan/static/js/main.e17ef0d0.js.map",
+    "31.205772ab.chunk.js.map": "/i-scream-i-plan/static/js/31.205772ab.chunk.js.map",
     "860.7a49cd3a.chunk.js.map": "/i-scream-i-plan/static/js/860.7a49cd3a.chunk.js.map",
-    "887.c999ba8a.chunk.js.map": "/i-scream-i-plan/static/js/887.c999ba8a.chunk.js.map",
+    "546.9409daec.chunk.js.map": "/i-scream-i-plan/static/js/546.9409daec.chunk.js.map",
     "988.6a1746b0.chunk.js.map": "/i-scream-i-plan/static/js/988.6a1746b0.chunk.js.map",
     "713.b63fb464.chunk.js.map": "/i-scream-i-plan/static/js/713.b63fb464.chunk.js.map",
     "995.b2756a73.chunk.js.map": "/i-scream-i-plan/static/js/995.b2756a73.chunk.js.map",
@@ -59,6 +59,6 @@
   },
   "entrypoints": [
     "static/css/main.98ec47ca.css",
-    "static/js/main.0fefe0ce.js"
+    "static/js/main.e17ef0d0.js"
   ]
 }
