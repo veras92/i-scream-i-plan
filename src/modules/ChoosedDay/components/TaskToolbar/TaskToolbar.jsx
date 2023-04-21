@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
 import { useSelector } from 'react-redux';
 import { selectDate } from 'redux/date/selectors';
 import { useDeleteTaskMutation } from 'redux/tasks/tasksApi';
@@ -15,13 +16,12 @@ import {
   PopUp,
 } from './TaskToolbar.styled';
 
-// import { parse } from 'date-fns';
-
 export const TaskToolbar = ({ task }) => {
   const [isModalOpened, setModalOpening] = useState(false);
 
   const [isMenuOpened, setMenuOpening] = useState(false);
 
+  const modalRef = useRef(null);
   useEffect(() => {
     const onKeyDown = e => {
       if (e.code === 'Escape') {
@@ -30,10 +30,20 @@ export const TaskToolbar = ({ task }) => {
     };
     if (isMenuOpened) {
       window.addEventListener('keydown', onKeyDown);
+      document.addEventListener('click', handleClickOutside, true);
     }
 
-    return () => window.removeEventListener('keydown', onKeyDown);
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+      document.removeEventListener('click', handleClickOutside, true);
+    };
   }, [isMenuOpened]);
+
+  const handleClickOutside = event => {
+    if (modalRef.current && !modalRef.current.contains(event.target)) {
+      setMenuOpening(false);
+    }
+  };
 
   const [deleteTask] = useDeleteTaskMutation();
   const [changeTask] = useChangeTaskMutation();
@@ -83,7 +93,7 @@ export const TaskToolbar = ({ task }) => {
         </TaskAction>
       </ButtonsWrapper>
       {isMenuOpened && task.category === 'to-do' && (
-        <PopUp>
+        <PopUp ref={modalRef}>
           <MoveWrapper>
             <MoveButton type="button" name="in-progress" onClick={onMenuClick}>
               In progress
@@ -103,7 +113,7 @@ export const TaskToolbar = ({ task }) => {
         </PopUp>
       )}
       {isMenuOpened && task.category === 'in-progress' && (
-        <PopUp>
+        <PopUp ref={modalRef}>
           <MoveWrapper>
             <MoveButton type="button" name="to-do" onClick={onMenuClick}>
               To do
@@ -123,7 +133,7 @@ export const TaskToolbar = ({ task }) => {
         </PopUp>
       )}
       {isMenuOpened && task.category === 'done' && (
-        <PopUp>
+        <PopUp ref={modalRef}>
           <MoveWrapper>
             <MoveButton type="button" name="in-progress" onClick={onMenuClick}>
               In progress

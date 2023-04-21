@@ -29,7 +29,7 @@ export const StyledTd = styled.td`
   height: 94px;
   border: 1px solid ${props => props.theme.calendarTableBorder};
   transition: border 250ms linear;
-
+  text-align: center;
   &:hover,
   &:focus {
     border: 1px solid #3e85f3;
@@ -74,7 +74,7 @@ export const StyledListTasks = styled.ul`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1px;
+  gap: 2px;
 
   li {
     cursor: pointer;
@@ -132,5 +132,19 @@ export const OverflowWrapper = styled.div`
   }
   @media (min-width: 1440px) {
     max-height: 627px;
+  }
+`;
+export const Span = styled.span`
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 14px;
+  /* display: inline-block; */
+  flex-grow: 1;
+
+  color: ${props => props.theme.calendarDate};
+
+  @media (min-width: 768px) {
+    font-size: 14px;
+    line-height: 18px;
   }
 `;

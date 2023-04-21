@@ -11,6 +11,7 @@ import {
 import PropTypes from 'prop-types';
 import {
   OverflowWrapper,
+  Span,
   StyledDay,
   StyledListTasks,
   StyledTable,
@@ -89,25 +90,28 @@ export default function CalendarTable({ tasks, currentDate }) {
         {day.tasks.length > 0 &&
           day.tasks.map(({ tasks }, index) => {
             return (
-              <StyledListTasks key={index}>
-                {tasks.map((task, index) => {
-                  if (index >= 3) {
-                    return null;
-                  }
-                  return (
-                    <li
-                      key={task._id}
-                      className={task.priority}
-                      onClick={() => {
-                        setOpening(true);
-                        currentTask(task);
-                      }}
-                    >
-                      {truncateString(task.title)}
-                    </li>
-                  );
-                })}
-              </StyledListTasks>
+              <div key={index}>
+                <StyledListTasks>
+                  {tasks.map((task, index) => {
+                    if (index >= 2) {
+                      return null;
+                    }
+                    return (
+                      <li
+                        key={task._id}
+                        className={task.priority}
+                        onClick={() => {
+                          setOpening(true);
+                          currentTask(task);
+                        }}
+                      >
+                        {truncateString(task.title)}
+                      </li>
+                    );
+                  })}
+                </StyledListTasks>
+                {tasks.length > 2 && <Span>+{tasks.length - 2} tasks</Span>}
+              </div>
             );
           })}
         <StyledDay className={isToday(parseISO(day.date)) && 'today'}>
