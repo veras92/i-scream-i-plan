@@ -49,11 +49,12 @@ const tasksSlice = createSlice({
       .addMatcher(
         tasksApi.endpoints.deleteTask.matchFulfilled,
         (state, { payload }) => {
-          state.forEach(({ tasks }) => {
-            const index = tasks.findIndex(task => task._id === payload._id);
-            if (index) tasks.splice(index, 1);
+          return state.map(item => {
+            return {
+              ...item,
+              tasks: item.tasks.filter(task => task._id !== payload._id),
+            };
           });
-          return state.filter(({ tasks }) => tasks.length !== 0);
         }
       )
       .addMatcher(
@@ -72,8 +73,3 @@ const tasksSlice = createSlice({
 export const { setTasks } = tasksSlice.actions;
 
 export const tasksReducer = tasksSlice.reducer;
-
-export const selectTasksForToday = state => {
-  const today = new Date().toISOString().slice(0, 10);
-  return state.tasks.filter(({ date }) => date === today);
-};
