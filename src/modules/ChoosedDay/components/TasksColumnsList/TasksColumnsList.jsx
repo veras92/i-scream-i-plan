@@ -1,4 +1,3 @@
-//  - TasksColumnsList - блок з трьома колонками списків завданнь - TasksColumn (To do | In progress | Done). На мобільній та планшетній версії має горизонтальний скрол, якщо колонок більше ніж вміщає ширина екрану пристрою юзера."
 import { useSelector } from 'react-redux';
 import { selectTasks } from 'redux/tasks/selectors';
 import { selectDate } from 'redux/date/selectors';

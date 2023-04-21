@@ -35,7 +35,6 @@ const basename = '/i-scream-i-plan';
 const AccountPageWithRedirect = withAuthRedirect(AccountPage, '/');
 const CalendarPageWithRedirect = withAuthRedirect(CalendarPage, '/');
 
-// const MainPageWithRedirect = withAuthRedirect(MainPage, account);
 const NotFoundPageWithRedirect = withAuthRedirect(MainPage, '/');
 
 export const router = createBrowserRouter(
