@@ -1,7 +1,7 @@
 import sprite from 'shared/icons/sprite.svg';
 import { NavList, StyledLink, NavIcon } from './UserNav.styled';
-import { useWindowSize } from 'pages/MainLayout/MainLayout';
 import { account, calendar } from 'shared/services/routes';
+import { useWindowSize } from 'hooks/useWindowSize';
 
 export const UserNav = ({ closeSideBar }) => {
   const windowSize = useWindowSize();
