@@ -5,7 +5,7 @@ export const ChoosedDay = () => {
   return (
     <>
       <DayCalendarHead />
-      <TasksColumnsList />
+      <TasksColumnsList categories={['to-do', 'in-progress', 'done']} />
     </>
   );
 };

@@ -10,7 +10,7 @@ import {
   StyledInfo,
 } from './TaskColumnCard.styled';
 
-export const TaskColumnCard = ({ task }) => {
+export const TaskColumnCard = ({ task, otherCategories }) => {
   function getInitials(name) {
     if (name) {
       const initials = name
@@ -41,7 +41,7 @@ export const TaskColumnCard = ({ task }) => {
 
           <PriorityTitle>{task.priority}</PriorityTitle>
         </StyledInfo>
-        <TaskToolbar task={task} />
+        <TaskToolbar task={task} otherCategories={otherCategories} />
       </CardInfo>
     </TaskCard>
   );

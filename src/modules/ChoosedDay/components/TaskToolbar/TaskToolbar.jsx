@@ -16,7 +16,7 @@ import {
   PopUp,
 } from './TaskToolbar.styled';
 
-export const TaskToolbar = ({ task }) => {
+export const TaskToolbar = ({ task, otherCategories }) => {
   const [isModalOpened, setModalOpening] = useState(false);
 
   const [isMenuOpened, setMenuOpening] = useState(false);
@@ -92,64 +92,21 @@ export const TaskToolbar = ({ task }) => {
           <use href={`${sprite}#icon-basket`} onClick={handleDeleteClick} />
         </TaskAction>
       </ButtonsWrapper>
-      {isMenuOpened && task.category === 'to-do' && (
+      {isMenuOpened && (
         <PopUp ref={modalRef}>
-          <MoveWrapper>
-            <MoveButton type="button" name="in-progress" onClick={onMenuClick}>
-              In progress
-              <MoveAction>
-                <use href={`${sprite}#icon-arrow-circle-right`} />
-              </MoveAction>
-            </MoveButton>
-          </MoveWrapper>
-          <MoveWrapper>
-            <MoveButton type="button" name="done" onClick={onMenuClick}>
-              Done
-              <MoveAction>
-                <use href={`${sprite}#icon-arrow-circle-right`} />
-              </MoveAction>
-            </MoveButton>
-          </MoveWrapper>
-        </PopUp>
-      )}
-      {isMenuOpened && task.category === 'in-progress' && (
-        <PopUp ref={modalRef}>
-          <MoveWrapper>
-            <MoveButton type="button" name="to-do" onClick={onMenuClick}>
-              To do
-              <MoveAction>
-                <use href={`${sprite}#icon-arrow-circle-right`} />
-              </MoveAction>
-            </MoveButton>
-          </MoveWrapper>
-          <MoveWrapper>
-            <MoveButton type="button" name="done" onClick={onMenuClick}>
-              Done
-              <MoveAction>
-                <use href={`${sprite}#icon-arrow-circle-right`} />
-              </MoveAction>
-            </MoveButton>
-          </MoveWrapper>
-        </PopUp>
-      )}
-      {isMenuOpened && task.category === 'done' && (
-        <PopUp ref={modalRef}>
-          <MoveWrapper>
-            <MoveButton type="button" name="in-progress" onClick={onMenuClick}>
-              In progress
-              <MoveAction>
-                <use href={`${sprite}#icon-arrow-circle-right`} />
-              </MoveAction>
-            </MoveButton>
-          </MoveWrapper>
-          <MoveWrapper>
-            <MoveButton type="button" name="to-do" onClick={onMenuClick}>
-              To do
-              <MoveAction>
-                <use href={`${sprite}#icon-arrow-circle-right`} />
-              </MoveAction>
-            </MoveButton>
-          </MoveWrapper>
+          {otherCategories.map(category => {
+            return (
+              <MoveWrapper>
+                <MoveButton type="button" name={category} onClick={onMenuClick}>
+                  {category.slice(0, 1).toUpperCase() +
+                    category.slice(1).replace('-', ' ')}
+                  <MoveAction>
+                    <use href={`${sprite}#icon-arrow-circle-right`} />
+                  </MoveAction>
+                </MoveButton>
+              </MoveWrapper>
+            );
+          })}
         </PopUp>
       )}
       {isModalOpened && (
