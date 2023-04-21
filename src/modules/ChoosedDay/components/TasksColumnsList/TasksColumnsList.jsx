@@ -29,8 +29,8 @@ export const TasksColumnsList = ({ categories }) => {
   return (
     <Conatainer>
       <ColumnsWrapper>
-        {categories.map(category => (
-          <StyledColumn>
+        {categories.map((category, index) => (
+          <StyledColumn key={index}>
             <TasksColumn
               type={category}
               tasks={categoriesTasks[category]}
