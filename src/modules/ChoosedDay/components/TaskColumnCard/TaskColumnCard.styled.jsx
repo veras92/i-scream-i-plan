@@ -49,18 +49,34 @@ export const PriorityTitle = styled.p`
   padding: 4px 12px;
   border-radius: 4px;
   text-transform: capitalize;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: ${PriorityColor};
   color: ${props => props.theme.componentPrimary};
+
+  align-self: flex-end;
 `;
 
 export const UserLogo = styled.div`
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: black;
+
+  background: linear-gradient(
+    0deg,
+    rgba(228, 216, 30, 0.7147233893557423) 9%,
+    rgba(241, 255, 13, 0.8155637254901961) 100%
+  );
   & img {
     object-fit: cover;
     height: 100%;
     width: 100%;
   }
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 32px;
   height: 32px;
   border-radius: 50%;

@@ -32,7 +32,7 @@ const RegisterPage = lazy(() =>
 );
 const MainPage = lazy(() => import('../../pages/MainPage/MainPage'));
 const basename = '/i-scream-i-plan';
-const AccountPageWithRedirect = withAuthRedirect(AccountPage, login);
+const AccountPageWithRedirect = withAuthRedirect(AccountPage, '/');
 const CalendarPageWithRedirect = withAuthRedirect(CalendarPage, '/');
 
 const NotFoundPageWithRedirect = withAuthRedirect(MainPage, '/');
