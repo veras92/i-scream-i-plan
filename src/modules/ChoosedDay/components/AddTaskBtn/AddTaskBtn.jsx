@@ -1,6 +1,3 @@
-// "1. Компонент отримує в пропсах id групи завдань
-// 2. Компонент рендерить блок розмітки кнопки.
-// 3. Клік по кнопці відкриває модалку TaskModal для створення нового завдання в поточній колонці"
 import { useState } from 'react';
 import { TaskModal } from 'shared/components/TaskModal/TaskModal';
 import { TASK_MODAL_TYPES } from 'shared/services/taskModalTypes';
