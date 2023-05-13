@@ -13,7 +13,9 @@ export const App = () => {
   useEffect(() => {
     const refreshToken = async () => {
       if (!accessToken) return setCanEnter(true);
+
       await refreshTokens().unwrap();
+
       setCanEnter(true);
     };
     refreshToken();
